@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html; charset=EUC-KR" %>
  <%
  		String id = (String)session.getAttribute("idKey");  
