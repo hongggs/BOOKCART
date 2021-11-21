@@ -82,6 +82,23 @@
 </script>
 </head>
 <body>
+<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<div class="book-icon"><i class="fas fa-book fa-2x"></i></div>
+			<h1>BookSoorae</h1>
+		</div>
+		
+		<div class="header-btns">
+			<button type="button" class="signup-button">Sign-up</button>
+			<button type="button" class="login-button">Login</button>
+		</div>
+	</div>
+	<div class="write-btn">
+		<button type="button">글 작성하러 가기
+			<i class="fas fa-pencil-alt"></i>
+		</button>
+	</div>
 <div align="center">
 	<br/>
 	<h2>책 목록</h2>
