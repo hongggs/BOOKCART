@@ -1,35 +1,60 @@
+<%@ page contentType="text/html; charset=utf-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>BookSooRae</title>
- 
-    <!-- 외부 스타일시트 적용 -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+	<!-- 외부 스타일시트 적용 -->
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <header>
+	<% 
+		String userId = null;
+		if(session.getAttribute("idKey")!=null){
+			userId=(String)session.getAttribute("idKey");
+		}
+		if(userId==null){ //로그인 되지 않은 경우
+	%>
+	<header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.html">BookSooRae</a>
+            <a href="index.jsp">BookSooRae</a>
 			
         </h1>
        
-            <ul>
+             <ul>
             <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="sign-up.html">SIGN-UP</a>
+            <a class="button" href="signup1.jsp">SIGN-UP</a>
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
         
     </header>
-
+    <%}
+		else{//로그인 된 경우
+	%>
+	<header>
+        <h1>
+            <img src="./images/logo.png" alt="shop" width="50" height="50">
+            <a href="index.jsp">BookSooRae</a>
+			
+        </h1>
+       
+             <ul>
+            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="logout.jsp">LOGOUT</a>
+            </ul>
+        
+    </header>
+    <%} %>
+    
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a href="review_list.jsp">Review</a></li>
-            <li><a href="search.html">search</a></li>
+            <li><a onclick="location.href='review_list.jsp'"">Review</a></li>
+            <li><a href="search.jsp">search</a></li>
     
         </ul>
     </nav>
@@ -37,7 +62,7 @@
         
     </aside>
     <section id="main">
-        <h1>메인페이지</h1>
+         <h1>search-웹사이트 북수레 검색 페이지 입니다.</h1>
     </section>
     <aside id="right">
         
@@ -71,6 +96,7 @@
         </div>
       
     </footer>
-    
+	
+
 </body>
 </html>

@@ -1,36 +1,63 @@
+<%@ page contentType="text/html; charset=utf-8" %>
+
 <!DOCTYPE html>
+<html>
 <head>
- 	<meta charset="UTF-8">
-    <meta charset="euc-kr">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign-up Page</title>
-    <!-- 외부 스타일시트 적용 -->
+<title>Sign-up Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
+	<!-- 외부 스타일시트 적용 -->
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./signup.css">
 </head>
+
 <body>
-<header>
+	<% 
+		String userId = null;
+		if(session.getAttribute("idKey")!=null){
+			userId=(String)session.getAttribute("idKey");
+		}
+		if(userId==null){ //로그인 되지 않은 경우
+	%>
+	<header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.html">BookSooRae</a>
+            <a href="index.jsp">BookSooRae</a>
+			
         </h1>
        
-            <ul>
+             <ul>
             <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="sign-up.html">SIGN-UP</a>
+            <a class="button" href="signup1.jsp">SIGN-UP</a>
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
         
     </header>
-
+    <%}
+		else{//로그인 된 경우
+	%>
+	<header>
+        <h1>
+            <img src="./images/logo.png" alt="shop" width="50" height="50">
+            <a href="index.jsp">BookSooRae</a>
+			
+        </h1>
+       
+             <ul>
+            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="logout.jsp">LOGOUT</a>
+            </ul>
+        
+    </header>
+    <%} %>
+    
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a href="review_list.jsp">Review</a></li>
-            <li><a href="search.html">search</a></li>
+            <li><a onclick="location.href='review_list.jsp'"">Review</a></li>
+            <li><a href="search.jsp">search</a></li>
     
         </ul>
     </nav>
@@ -68,7 +95,7 @@
     </div>
     <div>
         <button type="submit">회원가입</button>
-        <button type="button" onclick="document.location.href='index.html'">메인페이지</button>  
+        <button type="button" onclick="document.location.href='index.jsp'">메인페이지</button>  
     </div>
     </form>
      </div>
@@ -106,5 +133,7 @@
         </div>
       
     </footer>
+	
+
 </body>
 </html>

@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+
+<% 
+		String userId = null;
+		if(session.getAttribute("idKey")!=null){
+			userId=(String)session.getAttribute("idKey");
+		}
+		if(userId==null){ //로그인 되지 않은 경우
+	%>
 	<header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
@@ -28,30 +36,53 @@
        
              <ul>
             <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="sign-up.html">SIGN-UP</a>
+            <a class="button" href="signup1.jsp">SIGN-UP</a>
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
         
     </header>
-
+    <%}
+		else{//로그인 된 경우
+	%>
+	<header>
+        <h1>
+            <img src="./images/logo.png" alt="shop" width="50" height="50">
+            <a href="index.html">BookSooRae</a>
+			
+        </h1>
+       
+             <ul>
+            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="logout.jsp">LOGOUT</a>
+            </ul>
+        
+    </header>
+    <%} %>
+    
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a href="review_list.jsp">Review</a></li>
-            <li><a href="search.html">search</a></li>
+            <li><a onclick="location.href='review_list.jsp'"">Review</a></li>
+            <li><a href="search.jsp">search</a></li>
     
         </ul>
     </nav>
-	<section id="main">
-
-		<h1><%=id %>님, 북수레에 로그인 되었습니다!</h1>
-    	<button type="button" onclick="document.location.href='index.html'">메인페이지 이동</button> 
+    <aside id="left">
+        
+    </aside>
+    <section id="main">
+       <h1><%=id %>님, 북수레에 로그인 되었습니다!</h1>
+    	<button type="button" onclick="document.location.href='index.jsp'">메인페이지 이동</button> 
         <button type="button" onclick="document.location.href='bookList.jsp'">내 책 목록</button>
         <button type="button" onclick="document.location.href='logout.jsp'">로그아웃</button> 
-       </section>
- <footer>
+    </section>
+    <aside id="right">
+        
+ 
+    </aside>
+    <footer>
         <div class="container">
             <a class="footerButton" href="https://www.nl.go.kr/" >
                 <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
@@ -79,6 +110,10 @@
         </div>
       
     </footer>
+	
+
 ​
 </body>
+
+
 </html>
