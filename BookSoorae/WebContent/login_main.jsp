@@ -30,13 +30,13 @@
 <header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.html">BookSooRae</a>
+            <a href="index.jsp">BookSooRae</a>
 			
         </h1>
        
              <ul>
             <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="sign-up.html">SIGN-UP</a>
+            <a class="button" href="signup1.jsp">SIGN-UP</a>
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
         
@@ -44,11 +44,11 @@
 
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
             <li><a href="review_list.jsp">Review</a></li>
-            <li><a href="search.html">search</a></li>
+            <li><a href="search.jsp">search</a></li>
     
         </ul>
     </nav>
@@ -90,7 +90,7 @@
 
 <div class="btnwrap">
 
-<button type="button" class="sign-up-btn" onclick="document.location.href='sign-up.html'">회원가입</button>
+<button type="button" class="sign-up-btn" onclick="document.location.href='signup1.jsp'">회원가입</button>
 <button type="submit" class="login-btn">로그인</button>
 
 

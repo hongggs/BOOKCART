@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*, bookcart.*"%>
 <jsp:useBean id="regMgr" class="bookcart.MemberRegisterMgr"/>
