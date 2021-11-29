@@ -30,7 +30,7 @@
 	<header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.html">BookSooRae</a>
+            <a href="index.jsp">BookSooRae</a>
 			
         </h1>
        
