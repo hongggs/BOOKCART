@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
 	<!-- 외부 스타일시트 적용 -->
-	<!-- 이거 test3 -->
+	<!-- 이거 test4 -->
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
