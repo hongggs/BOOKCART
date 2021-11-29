@@ -1,4 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%
+ 		String id = (String)session.getAttribute("idKey");  
+ 		if(id!=null){
+ 		} 
+		else{%>
+<script>
+alert("로그인이 필요한 서비스입니다");
+location.href = "login_main.jsp";
+</script>
+		<%} %>
 <html>
 <head>
 <title>책 등록</title>
@@ -19,6 +29,10 @@
 		<td align=center>
 		<table align="center">
 			<tr>
+				<td>아이디</td>
+				<td><%=id %></td>
+			</tr>
+			<tr>
 				<td>책 제목</td>
 				<td><input name="title" size="40" maxlength="30"></td>
 			</tr>
@@ -33,6 +47,10 @@
 			<tr>
 				<td>보증금</td>
 				<td><input name="money" size="40" maxlength="30" ></td>
+			</tr>
+			<tr>
+				<td>대여 가능<input type="radio" name="isValid" value="valid" checked></td>
+				<td>대여 불가능<input type="radio" name="isValid" value="invalid"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
@@ -58,7 +76,6 @@
 		</td>
 	</tr>
 </table>
-<input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
 </form>
 </div>
 </body>

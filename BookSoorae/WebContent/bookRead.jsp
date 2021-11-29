@@ -3,7 +3,7 @@
 <jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
 <%
 	  request.setCharacterEncoding("EUC-KR");
-	  int num = Integer.parseInt(request.getParameter("num"));
+	  int num = Integer.parseInt(request.getParameter("book_id"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");
 	  String keyWord = request.getParameter("keyWord");
@@ -21,7 +21,7 @@
 %>
 <html>
 <head>
-<title>JSP Board</title>
+<title>Ã¥ ¸ñ·Ï</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list(){

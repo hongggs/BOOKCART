@@ -43,13 +43,13 @@ public class BookBoardMgr {
 		try {
 			con = pool.getConnection();
 			if (keyWord.equals("null") || keyWord.equals("")) {
-				sql = "select * from book order by ref desc, pos limit ?, ?";
+				sql = "select * from book order by book_id desc, book_id limit ?, ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, start);
 				pstmt.setInt(2, end);
 			} else {
 				sql = "select * from book where " + keyField + " like ? ";
-				sql += "order by ref desc, pos limit ? , ?";
+				sql += "order by book_id desc, book_id limit ? , ?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%" + keyWord + "%");
 				pstmt.setInt(2, start);
@@ -62,7 +62,7 @@ public class BookBoardMgr {
 				bean.setTitle(rs.getString("title"));
 				bean.setWriter(rs.getString("writer"));
 				bean.setMoney(rs.getInt("money"));
-				bean.setHit(rs.getInt("hit"));
+				bean.setIsValid(rs.getString("isValid"));
 				vlist.add(bean);
 			}
 		} catch (Exception e) {
@@ -103,59 +103,59 @@ public class BookBoardMgr {
 	}
 	
 	// 게시물 입력
-	public void insertBoard(HttpServletRequest req) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = null;
-		MultipartRequest multi = null;
-		int filesize = 0;
-		String filename = null;
-		try {
-			con = pool.getConnection();
-			sql = "select max(num) from book";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			int ref = 1;
-			if (rs.next())
-				ref = rs.getInt(1) + 1;
-			File file = new File(SAVEFOLDER);
-			if (!file.exists())
-				file.mkdirs();
-			multi = new MultipartRequest(req, SAVEFOLDER,MAXSIZE, ENCTYPE,
-					new DefaultFileRenamePolicy());
+		public void insertBoard(HttpServletRequest req, String user_id) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			MultipartRequest multi = null;
+			int filesize = 0;
+			String filename = null;
+			try {
+				con = pool.getConnection();
+				sql = "select max(book_id) from book";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				File file = new File(SAVEFOLDER);
+				if (!file.exists())
+					file.mkdirs();
+				multi = new MultipartRequest(req, SAVEFOLDER,MAXSIZE, ENCTYPE,
+						new DefaultFileRenamePolicy());
 
-			if (multi.getFilesystemName("filename") != null) {
-				filename = multi.getFilesystemName("filename");
-				filesize = (int) multi.getFile("filename").length();
+				if (multi.getFilesystemName("filename") != null) {
+					filename = multi.getFilesystemName("filename");
+					filesize = (int) multi.getFile("filename").length();
+				}
+				String content = multi.getParameter("content");
+				/*if (multi.getParameter("contentType").equalsIgnoreCase("TEXT")) {
+					content = UtilMgr.replace(content, "<", "&lt;");
+				}*/
+				sql = "insert book(user_id,title,publisher,writer,money,wr_date,term,content,isValid,filename,filesize, hit)";
+				sql += "values(?, ?, ?, ?, ?, now(), 0, ?, ?, ?, ?, 0)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				pstmt.setString(2, multi.getParameter("title"));
+				pstmt.setString(3, multi.getParameter("publisher"));
+				pstmt.setString(4, multi.getParameter("writer"));
+				pstmt.setString(5, multi.getParameter("money"));
+				pstmt.setString(6, content);
+				if(multi.getParameter("isValid").equals("valid"))
+					pstmt.setString(7,"1");
+				else
+					pstmt.setString(7,"0");
+				pstmt.setString(8, filename);
+				pstmt.setInt(9, filesize);
+				System.out.print("isvalid: "+multi.getParameter("isValid"));
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
 			}
-			String content = multi.getParameter("content");
-			if (multi.getParameter("contentType").equalsIgnoreCase("TEXT")) {
-				content = UtilMgr.replace(content, "<", "&lt;");
-			}
-			sql = "insert book(user_id,title,publisher,writer,money,wr_date,term,content,isValid,filename,filesize, hit)";
-			sql += "values(?, ?, ?, ?, ?, now(), ?, ?, ?, ?, ?, 0)";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, multi.getParameter("user_id"));
-			pstmt.setString(2, multi.getParameter("title"));
-			pstmt.setString(3, multi.getParameter("publisher"));
-			pstmt.setString(4, multi.getParameter("writer"));
-			pstmt.setString(5, multi.getParameter("money"));
-			pstmt.setString(6, multi.getParameter("term"));
-			pstmt.setString(7, content);
-			pstmt.setString(8, multi.getParameter("isValid"));
-			pstmt.setString(9, filename);
-			pstmt.setInt(10, filesize);
-			pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt, rs);
 		}
-	}
 	
 	// 게시물 리턴
-	public BookBoardBean getBoard(int num) {
+	public BookBoardBean getBoard(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -165,7 +165,7 @@ public class BookBoardMgr {
 			con = pool.getConnection();
 			sql = "select * from book where book_id=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				bean.setBook_id(rs.getInt("book_id"));
@@ -191,7 +191,7 @@ public class BookBoardMgr {
 	}
 
 	// 조회수 증가
-	public void upCount(int num) {
+	public void upCount(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -199,7 +199,7 @@ public class BookBoardMgr {
 			con = pool.getConnection();
 			sql = "update book set hit=hit+1 where book_id=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, book_id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -209,7 +209,7 @@ public class BookBoardMgr {
 	}
 
 	// 게시물 삭제
-	public void deleteBoard(int num) {
+	public void deleteBoard(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
@@ -218,7 +218,7 @@ public class BookBoardMgr {
 			con = pool.getConnection();
 			sql = "select filename from book where book_id = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, book_id);
 			rs = pstmt.executeQuery();
 			if (rs.next() && rs.getString(1) != null) {
 				if (!rs.getString(1).equals("")) {
@@ -229,7 +229,7 @@ public class BookBoardMgr {
 			}
 			sql = "delete from book where book_id=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, book_id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -245,14 +245,15 @@ public class BookBoardMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "update book set title=?,writer=?,publisher=?,money=?,content=? where book_id=?";
+			sql = "update book set title=?,writer=?,publisher=?,money=?,isValid=?,content=? where book_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, bean.getTitle());
 			pstmt.setString(2, bean.getWriter());
 			pstmt.setString(3, bean.getPublisher());
 			pstmt.setInt(4, bean.getMoney());
-			pstmt.setString(5, bean.getContent());
-			pstmt.setInt(6, bean.getBook_id());
+			pstmt.setString(5, bean.getIsValid());
+			pstmt.setString(6, bean.getContent());
+			pstmt.setInt(7, bean.getBook_id());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -296,30 +297,35 @@ public class BookBoardMgr {
 			}
 		}
 		
-	/*
-	//페이징 및 블럭 테스트를 위한 게시물 저장 메소드 
-	public void post1000(){
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-		try {
-			con = pool.getConnection();
-			sql = "insert tblBoard(name,content,subject,ref,pos,depth,regdate,pass,count,ip,filename,filesize)";
-			sql+="values('aaa', 'bbb', 'ccc', 0, 0, 0, now(), '1111',0, '127.0.0.1', null, 0);";
-			pstmt = con.prepareStatement(sql);
-			for (int i = 0; i < 1000; i++) {
-				pstmt.executeUpdate();
+		
+		//페이징 및 블럭 테스트를 위한 게시물 저장 메소드 
+		public void post1000(){
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String sql = null;
+			try {
+				con = pool.getConnection();
+				sql = "insert book(book_id,user_id,title,publisher,writer,money,wr_date,term,content,isValid,filename,filesize,hit)";
+				sql+="values('aaa', 'bbb', 'ccc', 'ddd', 'eee', 100, now(), 0, 'fff', y, 'ggg', 0, 0);";
+				pstmt = con.prepareStatement(sql);
+				for (int i = 0; i < 1000; i++) {
+					pstmt.executeUpdate();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt);
 		}
-	}
+		
+		//main
+		public static void main(String[] args) {
+			new BookBoardMgr().post1000();
+			System.out.println("SUCCESS");
+		}
 	
-	//main
-	public static void main(String[] args) {
-		new BoardMgr().post1000();
-		System.out.println("SUCCESS");
-	} */
+		
+		
+		
+		
 } 

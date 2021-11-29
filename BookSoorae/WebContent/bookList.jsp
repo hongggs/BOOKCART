@@ -66,19 +66,12 @@
 	} 
 	
 	function read(num){
-		document.readFrm.num.value=num;
+		console.log("num:"+num)
+		document.readFrm.book_id.value=num;//이게 이름이 잘못됨
 		document.readFrm.action="bookRead.jsp";
 		document.readFrm.submit();
 	}
-	
-	function check() {
-	     if (document.searchFrm.keyWord.value == "") {
-	   alert("검색어를 입력하세요.");
-	   document.searchFrm.keyWord.focus();
-	   return;
-	     }
-	  document.searchFrm.submit();
-	 }
+
 </script>
 </head>
 <body>
@@ -121,7 +114,8 @@
 					</tr>
 				  </table>
 			<% 
-				  } else {
+			out.println("등록된 게시물이 없습니다.");} 
+				  else {
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
 					<tr align="center" bgcolor="#D0D0D0" height="120%">
@@ -140,14 +134,12 @@
 							String writer = bean.getWriter();
 							int money = bean.getMoney();
 							String isValid = bean.getIsValid();
-
 					%>
 					<tr>
 						<td align="center">
 							<%=totalRecord-((nowPage-1)*numPerPage)-i%>
 						</td>
 						<td>
-
 						  <a href="javascript:read('<%=book_id%>')"><%=title%></a>
 						</td>
 						<td align="center"><%=writer%></td>
@@ -201,7 +193,7 @@
 		<input type="hidden" name="nowPage" value="1">
 	</form>
 	<form name="readFrm" method="get">
-		<input type="hidden" name="num"> 
+		<input type="hidden" name="book_id"> 
 		<input type="hidden" name="nowPage" value="<%=nowPage%>"> 
 		<input type="hidden" name="keyField" value="<%=keyField%>"> 
 		<input type="hidden" name="keyWord" value="<%=keyWord%>">

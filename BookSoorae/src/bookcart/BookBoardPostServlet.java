@@ -6,15 +6,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/bookBoardPost")
 public class BookBoardPostServlet extends HttpServlet {
-
+	HttpSession session = null;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		request.setCharacterEncoding("EUC-KR");
 		BookBoardMgr bMgr = new BookBoardMgr();
-		bMgr.insertBoard(request);
+		session = request.getSession();
+		bMgr.insertBoard(request,session.getAttribute("idKey").toString());
 		response.sendRedirect("bookList.jsp");
 	}
 }
