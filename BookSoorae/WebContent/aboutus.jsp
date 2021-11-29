@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
-	<!-- 외부 스타일시트 적용 ..-->
+	<!-- 외부 스타일시트 적용 -->
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
@@ -96,7 +96,7 @@
         </div>
       
     </footer>
-	
+	<!-- 주석우헤헤  -->
 
 </body>
 </html>
