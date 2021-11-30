@@ -1,6 +1,7 @@
 package bookcart;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Vector;
@@ -16,7 +17,27 @@ public class MemberRegisterMgr {
  	      System.out.println("Error : 커넥션 얻어오기 실패");
  	   }
      }
- 
+	// ID 중복확인
+	public boolean checkId(String user_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		boolean flag = false;
+		try {
+			con = pool.getConnection();
+			sql = "select user_id from member where user_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			flag = pstmt.executeQuery().next();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return flag;
+	}
+	
     public Vector<MemberRegisterBean> getRegisterList() {
 	   Connection conn = null;
 	   Statement stmt = null;

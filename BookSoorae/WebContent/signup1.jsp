@@ -9,6 +9,68 @@
 	<!-- 외부 스타일시트 적용  -->
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./signup.css">
+    
+    <script type="text/javascript">
+	function idCheck(user_id) {
+		frm = document.regFrm;
+		if (user_id == "") {
+			alert("아이디를 입력해 주세요.");
+			frm.user_id.focus();
+			return;
+		}
+		url = "idCheck.jsp?user_id=" + user_id;
+		window.open(url, "IDCheck", "width=300,height=150");
+	}
+	function inputCheck(){
+		if(document.regFrm.name.value==""){
+			alert("이름을 입력해주세요.");
+			document.regFrm.name.focus();
+			return;
+		}
+		if(document.regFrm.user_id.value==""){
+			alert("아이디를 입력해주세요.");
+			document.regFrm.id.focus();
+			return;
+		}
+		if(document.regFrm.pw.value==""){
+			alert("비밀번호를 입력해주세요.");
+			document.regFrm.pw.focus();
+			return;
+		}
+		if(document.regFrm.repw.value==""){
+			alert("비밀번호 확인을 입력해주세요");
+			document.regFrm.repw.focus();
+			return;
+		}
+		if(document.regFrm.pw.value != document.regFrm.repw.value){
+			alert("입력하신 비밀번호가 일치하지않습니다. \n 다시 입력해주세요");
+			document.regFrm.repw.value="";
+			document.regFrm.repw.focus();
+			return;
+		}
+		if(document.regFrm.email.value==""){
+			alert("이메일을 입력해주세요.");
+			document.regFrm.email.focus();
+			return;
+		}
+		if(document.regFrm.phone.value==""){
+			alert("휴대폰 번호를 입력해주세요.");
+			document.regFrm.phone.focus();
+			return;
+		}
+		if(document.regFrm.area1.value==""){
+			alert("시를 입력해주세요.");
+			document.regFrm.area1.focus();
+			return;
+		}		
+		if(document.regFrm.area2.value==""){
+			alert("동을 입력해주세요.");
+			document.regFrm.area2.focus();
+			return;
+		}
+		document.regFrm.submit();
+	}
+</script>
 </head>
 
 <body>
@@ -67,19 +129,20 @@
     <section id="main">
      <div class="signup">
     <h1>회원가입</h1>
-    <form method="post" action="sign_up.jsp">
+    <form name=regFrm method="post" action="sign_up.jsp">
     <div class="sign-up-p">
         <label for="user-name" class="label-username">이름</label>
         <input name="name"><br/>
 
         <label for="loginid" class="labelid">아이디</label>
-        <input name="user_id"><br/>
+        <input name="user_id">
+        <input type="button" value="ID중복확인" onClick="idCheck(this.form.user_id.value)"><br/>
 
         <label for="loginpw" class="labelpw">비밀번호</label>
         <input type="password" name="pw"><br/>
 
         <label for="pw-check" class="labelpw">비밀번호 확인</label>
-        <input type="password" name="pw"><br/>
+        <input type="password" name="repw"><br/>
         
         <label for="email" class="labelemail">이메일</label>
         <input type="email" name="email"><br/>
@@ -94,7 +157,7 @@
         <input type="text" name="area2"><br/>
     </div>
     <div>
-        <button type="submit">회원가입</button>
+        <input type="button" value="회원가입" onclick="inputCheck()">
         <button type="button" onclick="document.location.href='index.jsp'">메인페이지</button>  
     </div>
     </form>
