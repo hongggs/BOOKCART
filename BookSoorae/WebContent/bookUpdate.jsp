@@ -1,78 +1,85 @@
 <%@ page contentType="text/html; charset=EUC-KR" %>
  <%@ page import="bookcart.BookBoardBean"%>
 <% 
-	  int num = Integer.parseInt(request.getParameter("num"));
+	  int book_id = Integer.parseInt(request.getParameter("book_id"));
 	  String nowPage = request.getParameter("nowPage");
 	  BookBoardBean bean = (BookBoardBean)session.getAttribute("bean");
+	  String id = (String)session.getAttribute("idKey"); 
+	  String user_id = bean.getUser_id();
 	  String title = bean.getTitle();
 	  String writer = bean.getWriter(); 
-	  String publisher=bean.getPublisher();
+	  String publisher= bean.getPublisher();
+	  int money= bean.getMoney();
+	  String isValid = bean.getIsValid();
 	  String content = bean.getContent(); 
+	  String filename = bean.getFilename();
+	  int filesize= bean.getFilesize();
 %>
 <html>
 <head>
-<title>Ã¥ ¸ñ·Ï</title>
+<title>ì±… ëª©ë¡</title>
 <link href="style.css" rel="stylesheet" type="text/css">
-<script>
-	function check() {
-	   if (document.updateFrm.pass.value == "") {
-		 alert("¼öÁ¤À» À§ÇØ ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-		 document.updateFrm.pass.focus();
-		 return false;
-		 }
-	   document.updateFrm.submit();
-	}
-</script>
 </head>
 <body bgcolor="#FFFFCC">
 <div align="center"><br/><br/>
 <table width="600" cellpadding="3">
   <tr>
-   <td bgcolor="#FF9018"  height="21" align="center">¼öÁ¤ÇÏ±â</td>
+   <td bgcolor="#FF9018"  height="21" align="center">ìˆ˜ì •í•˜ê¸°</td>
   </tr>
 </table>
-<form name="updateFrm" method="post" action="boardUpdate">
+<form name="updateForm" method="post" action="bookBoardUpdate">
 <table width="600" cellpadding="7">
  <tr>
   <td>
    <table>
+     <tr>
+     <td width="15%">ì‘ì„±ì</td>
+     <td><%=user_id %></td>
     <tr>
-     <td width="20%">Ã¥ Á¦¸ñ</td>
-     <td width="80%">
-	  <input name="name" value="<%=title%>" size="30" maxlength="20">
+     <td>ì±… ì œëª©</td>
+     <td>
+	  <input name="title" value="<%=title%>" size="30" maxlength="20">
 	 </td>
 	</tr>
 	<tr>
-     <td>ÀúÀÚ</td>
+     <td>ì €ì</td>
      <td>
-	  <input name="subject" size="50" value="<%=writer%>" maxlength="50">
+	  <input name="writer" size="50" value="<%=writer%>" maxlength="50">
 	 </td>
 	</tr>
 	<tr>
-     <td>ÃâÆÇ»ç</td>
+     <td>ì¶œíŒì‚¬</td>
      <td>
-	  <input name="subject" size="50" value="<%=publisher%>" maxlength="50">
+	  <input name="publisher" size="50" value="<%=publisher%>" maxlength="50">
 	 </td>
 	</tr>
+	<tr>
+     <td>ë³´ì¦ê¸ˆ</td>
+     <td>
+	  <input name="money" size="50" value="<%=money%>" maxlength="50">
+	 </td>
+	</tr>
+	<tr>
+		<td>ëŒ€ì—¬</td>
+			<td>ê°€ëŠ¥<input type="radio" name="isValid" value="valid" checked>
+			ë¶ˆê°€ëŠ¥<input type="radio" name="isValid" value="invalid"></td>
+	</tr>
     <tr>
-     <td>³»¿ë</td>
+     <td>ë‚´ìš©</td>
      <td>
 	  <textarea name="content" rows="10" cols="50"><%=content%></textarea>
 	 </td>
-    </tr>
-	<tr>
-     <td>ºñ¹Ğ ¹øÈ£</td> 
-     <td><input type="password" name="pass" size="15" maxlength="15">
-      ¼öÁ¤ ½Ã¿¡´Â ºñ¹Ğ¹øÈ£°¡ ÇÊ¿äÇÕ´Ï´Ù.</td>
-    </tr>
+	 <tr>
+     	<td>ì‚¬ì§„ ì²¨ë¶€</td> 
+     	<td><input type="file" name="filename" size="50" maxlength="50"></td>
+     </tr>
 	<tr>
      <td colspan="2" height="5"><hr/></td>
     </tr>
 	<tr>
      <td colspan="2">
-	  <input type="button" value="¼öÁ¤¿Ï·á" onClick="check()">
-      <input type="reset" value="´Ù½Ã¼öÁ¤"> 
-      <input type="button" value="µÚ·Î" onClick="history.go(-1)">
+	  <input type="submit" value="ìˆ˜ì •ì™„ë£Œ"></td><td>
+      <input type="button" value="ë’¤ë¡œê°€ê¸°" onClick="history.go(-1)">
 	 </td>
     </tr> 
    </table>
@@ -80,7 +87,7 @@
  </tr>
 </table>
  <input type="hidden" name="nowPage" value="<%=nowPage %>">
- <input type='hidden' name="num" value="<%=num%>">
+ <input type='hidden' name="book_id" value="<%=book_id%>">
 </form> 
 </div>
 </body>
