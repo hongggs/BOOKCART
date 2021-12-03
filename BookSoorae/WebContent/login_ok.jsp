@@ -53,7 +53,7 @@
        
              <ul>
             <a class="button" href="mypage.jsp">MY PAGE</a>
-            <a class="button" href="logout.jsp">LOGOUT</a>          
+            <a class="button" href="logout.jsp">LOGOUT </a>          
             </ul>
         
     </header>
