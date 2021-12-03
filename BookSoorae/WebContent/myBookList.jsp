@@ -5,20 +5,20 @@
 <%	
 	  request.setCharacterEncoding("EUC-KR");
 	  String id = (String)session.getAttribute("idKey");
-      int totalRecord=0; //ì „ì²´ë ˆì½”ë“œìˆ˜
-	  int numPerPage=10; // í˜ì´ì§€ë‹¹ ë ˆì½”ë“œ ìˆ˜ 
-	  int pagePerBlock=15; //ë¸”ëŸ­ë‹¹ í˜ì´ì§€ìˆ˜ 
+      int totalRecord=0; //ÀüÃ¼·¹ÄÚµå¼ö
+	  int numPerPage=10; // ÆäÀÌÁö´ç ·¹ÄÚµå ¼ö 
+	  int pagePerBlock=15; //ºí·°´ç ÆäÀÌÁö¼ö 
 	  
-	  int totalPage=0; //ì „ì²´ í˜ì´ì§€ ìˆ˜
-	  int totalBlock=0;  //ì „ì²´ ë¸”ëŸ­ìˆ˜ 
+	  int totalPage=0; //ÀüÃ¼ ÆäÀÌÁö ¼ö
+	  int totalBlock=0;  //ÀüÃ¼ ºí·°¼ö 
 
-	  int nowPage=1; // í˜„ì¬í˜ì´ì§€
-	  int nowBlock=1;  //í˜„ì¬ë¸”ëŸ­
+	  int nowPage=1; // ÇöÀçÆäÀÌÁö
+	  int nowBlock=1;  //ÇöÀçºí·°
 	  
-	  int start=0; //ë””ë¹„ì˜ select ì‹œì‘ë²ˆí˜¸
-	  int end=10; //ì‹œì‘ë²ˆí˜¸ë¡œ ë¶€í„° ê°€ì ¸ì˜¬ select ê°¯ìˆ˜
+	  int start=0; //µğºñÀÇ select ½ÃÀÛ¹øÈ£
+	  int end=10; //½ÃÀÛ¹øÈ£·Î ºÎÅÍ °¡Á®¿Ã select °¹¼ö
 	  
-	  int listSize=0; //í˜„ì¬ ì½ì–´ì˜¨ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	  int listSize=0; //ÇöÀç ÀĞ¾î¿Â °Ô½Ã¹°ÀÇ ¼ö
 
 	String keyWord = "", keyField = "";
 	Vector<BookBoardBean> vlist = null;
@@ -40,18 +40,18 @@
 	 end = numPerPage;
 	 
 	totalRecord = bMgr.getTotalCount(keyField, keyWord);
-	totalPage = (int)Math.ceil((double)totalRecord / numPerPage);  //ì „ì²´í˜ì´ì§€ìˆ˜
-	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock); //í˜„ì¬ë¸”ëŸ­ ê³„ì‚°
+	totalPage = (int)Math.ceil((double)totalRecord / numPerPage);  //ÀüÃ¼ÆäÀÌÁö¼ö
+	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock); //ÇöÀçºí·° °è»ê
 	  
-	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);  //ì „ì²´ë¸”ëŸ­ê³„ì‚°
+	totalBlock = (int)Math.ceil((double)totalPage / pagePerBlock);  //ÀüÃ¼ºí·°°è»ê
 %>
 <html>
 <head>
-<title>ì±… ëª©ë¡</title>
+<title>³» Ã¥ ¸ñ·Ï</title>
 <link href="bookList.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list() {
-		document.listFrm.action = "bookList.jsp";
+		document.listFrm.action = "myBookList.jsp";
 		document.listFrm.submit();
 	}
 	
@@ -67,14 +67,14 @@
 	
 	function read(num){
 		console.log("num:"+ num)
-		document.readFrm.book_id.value = num;//ì´ê²Œ ì´ë¦„ì´ ì˜ëª»ë¨
+		document.readFrm.book_id.value = num;//ÀÌ°Ô ÀÌ¸§ÀÌ Àß¸øµÊ
 		document.readFrm.action="bookRead.jsp";
 		document.readFrm.submit();
 	}
 	
 	function check() {
 	   if (document.searchFrm.keyWord.value == "") {
-	   alert("ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+	   alert("°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
 	   document.searchFrm.keyWord.focus();
 	   return;
 	     }
@@ -97,26 +97,26 @@
 		</div>
 	</div>
 	<div class="write-btn">
-		<button type="button">ê¸€ ì‘ì„±í•˜ëŸ¬ ê°€ê¸°
+		<button type="button">±Û ÀÛ¼ºÇÏ·¯ °¡±â
 			<i class="fas fa-pencil-alt"></i>
 		</button>
 	</div>
 	<div align="center">
 	<br/>
-	<h2>ì±… ëª©ë¡</h2>
+	<h2>³» Ã¥ ¸ñ·Ï</h2>
 	<br/>
-	<form name="searchFrm"  method="get" action="bookList.jsp">
+	<form name="searchFrm"  method="get" action="myBookList.jsp" >
 	<table width="600" cellpadding="2" cellspacing="0">
  		<tr>
   			<td align="center" valign="bottom">
    				<select name="keyField" size="1" >
-    				<option value="idKey"> ì‘ì„±ì </option> 
-    				<option value="title"> ì±… ì œëª© </option>
-    				<option value="writer"> ì €ì </option>
-    				<option value="content"> ë‚´ìš© </option>
+    				<option value="idKey"> ÀÛ¼ºÀÚ </option> 
+    				<option value="title"> Ã¥ Á¦¸ñ </option>
+    				<option value="writer"> ÀúÀÚ </option>
+    				<option value="content"> ³»¿ë </option>
    				</select>
    				<input size="16" name="keyWord">
-   				<input type="button"  value="ì°¾ê¸°" onClick="javascript:check()">
+   				<input type="button"  value="Ã£±â" onClick="javascript:check()">
    				<input type="hidden" name="nowPage" value="1">
   			</td>
  		</tr>
@@ -127,32 +127,32 @@
 			<td align="center" colspan="2">
 			<%
 				  vlist = bMgr.getBoardList(keyField, keyWord, start, end);
-				  listSize = vlist.size();//ë¸Œë¼ìš°ì € í™”ë©´ì— ë³´ì—¬ì§ˆ ê²Œì‹œë¬¼ê°¯ìˆ˜
+				  listSize = vlist.size();//ºê¶ó¿ìÀú È­¸é¿¡ º¸¿©Áú °Ô½Ã¹°°¹¼ö
 				  if (vlist.isEmpty()) {
 			%>
 			
 				  <table width="100%" cellpadding="2" cellspacing="0">
 					<tr align="center" bgcolor="#D0D0D0" height="120%">
-						<th>ë²ˆí˜¸</th>
-						<th>ì±… ì œëª©</th>
-						<th>ì €ì</th>
-						<th>ë³´ì¦ê¸ˆ</th>
-						<th>ëŒ€ì—¬ê°€ëŠ¥</th>
-						<th>ì‘ì„±ì</th>
+						<th>¹øÈ£</th>
+						<th>Ã¥ Á¦¸ñ</th>
+						<th>ÀúÀÚ</th>
+						<th>º¸Áõ±İ</th>
+						<th>´ë¿©°¡´É</th>
+						<th>ÀÛ¼ºÀÚ</th>
 					</tr>
 				  </table>
 			<% 
-			out.println("ë“±ë¡ëœ ì±…ì´ ì—†ìŠµë‹ˆë‹¤.");} 
+			out.println("µî·ÏµÈ Ã¥ÀÌ ¾ø½À´Ï´Ù.");} 
 				  else {
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
 					<tr align="center" bgcolor="#D0D0D0" height="120%">
-						<th>ë²ˆí˜¸</th>
-						<th>ì±… ì œëª©</th>
-						<th>ì €ì</th>
-						<th>ë³´ì¦ê¸ˆ</th>
-						<th>ëŒ€ì—¬ê°€ëŠ¥</th>
-						<th>ì‘ì„±ì</th>
+						<th>¹øÈ£</th>
+						<th>Ã¥ Á¦¸ñ</th>
+						<th>ÀúÀÚ</th>
+						<th>º¸Áõ±İ</th>
+						<th>´ë¿©°¡´É</th>
+						<th>ÀÛ¼ºÀÚ</th>
 					</tr>
 					<%
 						  for (int i = 0;i<numPerPage; i++) {
@@ -166,6 +166,7 @@
 							String isValid = bean.getIsValid();
 							  
 					%>
+					<% if(id!=null && id.equals(user_id)){ %>
 					<tr>
 						<td align="center">
 							<%=totalRecord-((nowPage-1)*numPerPage)-i%>
@@ -174,10 +175,12 @@
 						  <a href="javascript:read('<%=book_id%>')"><%=title%></a>
 						</td>
 						<td align="center"><%=writer%></td>
-						<td align="center"><%=money%>ì›</td>
+						<td align="center"><%=money%>¿ø</td>
 						<td align="center"><%=isValid%></td>
 						<td align="center"><%=user_id%></td>
 					</tr>
+					<% if(user_id==null){out.println("µî·ÏµÈ Ã¥ÀÌ ¾ø½À´Ï´Ù.");} %>
+					<%}else{} %>
 					<%}//for%>
 				</table> <%
  			}//if
@@ -188,11 +191,11 @@
 		</tr>
 		<tr>
 			<td>
-			<!-- í˜ì´ì§• ë° ë¸”ëŸ­ ì²˜ë¦¬ Start--> 
+			<!-- ÆäÀÌÂ¡ ¹× ºí·° Ã³¸® Start--> 
 			<%
-   				  int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //í•˜ë‹¨ í˜ì´ì§€ ì‹œì‘ë²ˆí˜¸
+   				  int pageStart = (nowBlock -1)*pagePerBlock + 1 ; //ÇÏ´Ü ÆäÀÌÁö ½ÃÀÛ¹øÈ£
    				  int pageEnd = ((pageStart + pagePerBlock ) <= totalPage) ?  (pageStart + pagePerBlock): totalPage+1; 
-   				  //í•˜ë‹¨ í˜ì´ì§€ ëë²ˆí˜¸
+   				  //ÇÏ´Ü ÆäÀÌÁö ³¡¹øÈ£
    				  if(totalPage !=0){
     			  	if (nowBlock > 1) {%>
     			  		<a href="javascript:block('<%=nowBlock-1%>')">prev...</a><%}%>&nbsp; 
@@ -206,7 +209,7 @@
     					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
     				<%}%>&nbsp;  
    				<%}%>
- 				<!-- í˜ì´ì§• ë° ë¸”ëŸ­ ì²˜ë¦¬ End-->
+ 				<!-- ÆäÀÌÂ¡ ¹× ºí·° Ã³¸® End-->
 			</td>
 		</tr>
 	</table>
@@ -214,7 +217,7 @@
 	<table width="600" cellpadding="4" cellspacing="0">
  		<tr>
 			<td align="center" valign="bottom">
-				<a href="bookPost.jsp">ì±… ë“±ë¡</a> 
+				<a href="bookPost.jsp">Ã¥ µî·Ï</a> 
 			</td>
  		</tr>
 	</table>

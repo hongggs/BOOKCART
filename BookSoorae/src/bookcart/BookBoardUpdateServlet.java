@@ -27,15 +27,19 @@ public class BookBoardUpdateServlet extends HttpServlet {
 		String nowPage = request.getParameter("nowPage");
 		
 		BookBoardBean upBean = new BookBoardBean();
+		upBean.setUser_id(request.getParameter("user_id"));
 		upBean.setBook_id(Integer.parseInt(request.getParameter("book_id")));
 		upBean.setTitle(request.getParameter("title"));
 		upBean.setWriter(request.getParameter("writer"));
 		upBean.setPublisher(request.getParameter("publisher"));
 		upBean.setMoney(Integer.parseInt(request.getParameter("money")));
+		upBean.setIsValid(request.getParameter("isValid"));
 		upBean.setContent(request.getParameter("content"));
+		upBean.setFilename(request.getParameter("filename"));
+		upBean.setFilesize(Integer.parseInt(request.getParameter("filesize")));
 
 		bMgr.updateBoard(upBean);
-		String url = "bookRead.jsp?nowPage=" + nowPage + "&num=" + upBean.getBook_id();
+		String url = "bookRead.jsp?nowPage=" + nowPage + "&book_id=" + upBean.getBook_id();
 		response.sendRedirect(url);
 	}
 }

@@ -32,7 +32,7 @@ public class BookBoardMgr {
 		}
 	}
 
-	// °Ô½ÃÆÇ ¸®½ºÆ®
+	// ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸
 	public Vector<BookBoardBean> getBoardList(String keyField, String keyWord,
 			int start, int end) {
 		Connection con = null;
@@ -63,6 +63,7 @@ public class BookBoardMgr {
 				bean.setWriter(rs.getString("writer"));
 				bean.setMoney(rs.getInt("money"));
 				bean.setIsValid(rs.getString("isValid"));
+				bean.setUser_id(rs.getString("user_id"));
 				vlist.add(bean);
 			}
 		} catch (Exception e) {
@@ -73,7 +74,7 @@ public class BookBoardMgr {
 		return vlist;
 	}
 	
-	//ÃÑ °Ô½Ã¹°¼ö
+	//ì´ ê²Œì‹œë¬¼ìˆ˜
 	public int getTotalCount(String keyField, String keyWord) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -102,7 +103,7 @@ public class BookBoardMgr {
 		return totalCount;
 	}
 	
-	// °Ô½Ã¹° ÀÔ·Â
+	// ê²Œì‹œë¬¼ ì…ë ¥
 		public void insertBoard(HttpServletRequest req, String user_id) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -140,9 +141,9 @@ public class BookBoardMgr {
 				pstmt.setString(5, multi.getParameter("money"));
 				pstmt.setString(6, content);
 				if(multi.getParameter("isValid").equals("valid"))
-					pstmt.setString(7,"1");
+					pstmt.setString(7,"Y");
 				else
-					pstmt.setString(7,"0");
+					pstmt.setString(7,"N");
 				pstmt.setString(8, filename);
 				pstmt.setInt(9, filesize);
 				System.out.print("isvalid: "+multi.getParameter("isValid"));
@@ -154,7 +155,7 @@ public class BookBoardMgr {
 			}
 		}
 	
-	// °Ô½Ã¹° ¸®ÅÏ
+	// ê²Œì‹œë¬¼ ë¦¬í„´
 	public BookBoardBean getBoard(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -190,7 +191,7 @@ public class BookBoardMgr {
 		return bean;
 	}
 
-	// Á¶È¸¼ö Áõ°¡
+	// ì¡°íšŒìˆ˜ ì¦ê°€
 	public void upCount(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -208,7 +209,7 @@ public class BookBoardMgr {
 		}
 	}
 
-	// °Ô½Ã¹° »èÁ¦
+	// ê²Œì‹œë¬¼ ì‚­ì œ
 	public void deleteBoard(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -238,22 +239,28 @@ public class BookBoardMgr {
 		}
 	}
 
-	// °Ô½Ã¹° ¼öÁ¤
+	// ê²Œì‹œë¬¼ ìˆ˜ì •
 	public void updateBoard(BookBoardBean bean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "update book set title=?,writer=?,publisher=?,money=?,isValid=?,content=? where book_id=?";
+			sql = "update book set user_id=?,title=?,writer=?,publisher=?,money=?,isValid=?,content=?,filename=?,filesize=? where book_id=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bean.getTitle());
-			pstmt.setString(2, bean.getWriter());
-			pstmt.setString(3, bean.getPublisher());
-			pstmt.setInt(4, bean.getMoney());
-			pstmt.setString(5, bean.getIsValid());
-			pstmt.setString(6, bean.getContent());
-			pstmt.setInt(7, bean.getBook_id());
+			pstmt.setString(1, bean.getUser_id());
+			pstmt.setString(2, bean.getTitle());
+			pstmt.setString(3, bean.getWriter());
+			pstmt.setString(4, bean.getPublisher());
+			pstmt.setInt(5, bean.getMoney());
+			if(bean.getIsValid().equals("valid"))
+				pstmt.setString(6,"Y");
+			else
+				pstmt.setString(6,"N");
+			pstmt.setString(7, bean.getContent());
+			pstmt.setInt(8, bean.getBook_id());
+			pstmt.setString(9, bean.getFilename());
+			pstmt.setInt(10, bean.getFilesize());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -262,7 +269,7 @@ public class BookBoardMgr {
 		}
 	}
 
-	//ÆÄÀÏ ´Ù¿î·Îµå
+	//íŒŒì¼ ë‹¤ìš´ë¡œë“œ
 		public void downLoad(HttpServletRequest req, HttpServletResponse res,
 				JspWriter out, PageContext pageContext) {
 			try {
@@ -295,37 +302,5 @@ public class BookBoardMgr {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		
-		
-		//ÆäÀÌÂ¡ ¹× ºí·° Å×½ºÆ®¸¦ À§ÇÑ °Ô½Ã¹° ÀúÀå ¸Ş¼Òµå 
-		public void post1000(){
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			String sql = null;
-			try {
-				con = pool.getConnection();
-				sql = "insert book(book_id,user_id,title,publisher,writer,money,wr_date,term,content,isValid,filename,filesize,hit)";
-				sql+="values('aaa', 'bbb', 'ccc', 'ddd', 'eee', 100, now(), 0, 'fff', y, 'ggg', 0, 0);";
-				pstmt = con.prepareStatement(sql);
-				for (int i = 0; i < 1000; i++) {
-					pstmt.executeUpdate();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				pool.freeConnection(con, pstmt);
-			}
-		}
-		
-		//main
-		public static void main(String[] args) {
-			new BookBoardMgr().post1000();
-			System.out.println("SUCCESS");
-		}
-	
-		
-		
-		
-		
+		}		
 } 
