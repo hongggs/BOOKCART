@@ -17,7 +17,7 @@
 		}
 	%>
 	
-<%
+<% 
 MemberRegisterBean bean = regMgr.getRegister(userId);//회원정보 가져오기
 String user_id = bean.getUser_id();
 	if (request.getParameter("pw") != null) {

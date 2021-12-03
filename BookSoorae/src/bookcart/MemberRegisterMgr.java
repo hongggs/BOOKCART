@@ -18,7 +18,7 @@ public class MemberRegisterMgr {
  	   }
      }
 	
-	// È¸¿øÅ»Åğ
+	// È¸¿øÅ»Åğ 
 	public void deleteMember(String user_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;

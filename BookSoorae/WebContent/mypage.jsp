@@ -80,7 +80,7 @@
     </div>
     <div>
         <button type="submit">회원정보수정</button>
-        <button type="button" onclick="document.location.href='deleteMember.jsp'">회원탈퇴</button>
+        <button type="button" onclick="document.location.href='deleteMember.jsp'">회원탈퇴 </button>
         <button type="button" onclick="document.location.href='index.jsp'">취소</button>  
     </div>
     <%}%> 
