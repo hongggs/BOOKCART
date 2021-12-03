@@ -1,10 +1,10 @@
-<%@page contentType="text/html; charset=utf-8" %>
+<%@page contentType="text/html; charset=EUC-KR" %>
 <%@page import="bookcart.BookBoardBean"%>
 <%@page import="java.util.Vector"%>
 <jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
 <%	
-	  request.setCharacterEncoding("utf-8");
-	  
+	  request.setCharacterEncoding("EUC-KR");
+	  String id = (String)session.getAttribute("idKey");
       int totalRecord=0; //전체레코드수
 	  int numPerPage=10; // 페이지당 레코드 수 
 	  int pagePerBlock=15; //블럭당 페이지수 
@@ -66,11 +66,20 @@
 	} 
 	
 	function read(num){
-		console.log("num:"+num)
-		document.readFrm.book_id.value=num;//이게 이름이 잘못됨
+		console.log("num:"+ num)
+		document.readFrm.book_id.value = num;//이게 이름이 잘못됨
 		document.readFrm.action="bookRead.jsp";
 		document.readFrm.submit();
 	}
+	
+	function check() {
+	   if (document.searchFrm.keyWord.value == "") {
+	   alert("검색어를 입력하세요.");
+	   document.searchFrm.keyWord.focus();
+	   return;
+	     }
+	  document.searchFrm.submit();
+	 }
 
 </script>
 </head>
@@ -96,6 +105,23 @@
 	<br/>
 	<h2>책 목록</h2>
 	<br/>
+	<form name="searchFrm"  method="get" action="bookList.jsp">
+	<table width="600" cellpadding="2" cellspacing="0">
+ 		<tr>
+  			<td align="center" valign="bottom">
+   				<select name="keyField" size="1" >
+    				<option value="idKey"> 작성자 </option> 
+    				<option value="title"> 책 제목 </option>
+    				<option value="writer"> 저자 </option>
+    				<option value="content"> 내용 </option>
+   				</select>
+   				<input size="16" name="keyWord">
+   				<input type="button"  value="찾기" onClick="javascript:check()">
+   				<input type="hidden" name="nowPage" value="1">
+  			</td>
+ 		</tr>
+	</table>
+	</form>
 	<table align="center" width="600" cellpadding="3">
 		<tr>
 			<td align="center" colspan="2">
@@ -104,6 +130,7 @@
 				  listSize = vlist.size();//브라우저 화면에 보여질 게시물갯수
 				  if (vlist.isEmpty()) {
 			%>
+			
 				  <table width="100%" cellpadding="2" cellspacing="0">
 					<tr align="center" bgcolor="#D0D0D0" height="120%">
 						<th>번호</th>
@@ -111,10 +138,11 @@
 						<th>저자</th>
 						<th>보증금</th>
 						<th>대여가능</th>
+						<th>작성자</th>
 					</tr>
 				  </table>
 			<% 
-			out.println("등록된 게시물이 없습니다.");} 
+			out.println("등록된 책이 없습니다.");} 
 				  else {
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
@@ -124,16 +152,19 @@
 						<th>저자</th>
 						<th>보증금</th>
 						<th>대여가능</th>
+						<th>작성자</th>
 					</tr>
 					<%
 						  for (int i = 0;i<numPerPage; i++) {
 							if (i == listSize) break;
 							BookBoardBean bean = vlist.get(i);
 							int book_id = bean.getBook_id();
+							String user_id = bean.getUser_id();
 							String title = bean.getTitle();
 							String writer = bean.getWriter();
 							int money = bean.getMoney();
 							String isValid = bean.getIsValid();
+							  
 					%>
 					<tr>
 						<td align="center">
@@ -143,8 +174,9 @@
 						  <a href="javascript:read('<%=book_id%>')"><%=title%></a>
 						</td>
 						<td align="center"><%=writer%></td>
-						<td align="center"><%=money%></td>
+						<td align="center"><%=money%>원</td>
 						<td align="center"><%=isValid%></td>
+						<td align="center"><%=user_id%></td>
 					</tr>
 					<%}//for%>
 				</table> <%
@@ -179,7 +211,6 @@
 		</tr>
 	</table>
 	<hr width="600"/>
-	<form  name="searchFrm"  method="get" action="bookList.jsp">
 	<table width="600" cellpadding="4" cellspacing="0">
  		<tr>
 			<td align="center" valign="bottom">
@@ -187,7 +218,6 @@
 			</td>
  		</tr>
 	</table>
-	</form>
 	<form name="listFrm" method="post">
 		<input type="hidden" name="reload" value="true"> 
 		<input type="hidden" name="nowPage" value="1">
