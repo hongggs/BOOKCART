@@ -1,33 +1,63 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<% 
-		String id = (String)session.getAttribute("idKey");
-		if(id == null){
-%> 
-<script>
-	   alert("로그인 되지 않았습니다.");
-	   location.href="login_main.jsp";
-</script>
-<%	}	%>
+<%@page import="bookcart.MemberRegisterBean"%>
+<jsp:useBean id="regMgr" class="bookcart.MemberRegisterMgr" />
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta charset="UTF-8" />
-
-<title>Insert title here</title>
-	<!-- 외부 스타일시트 적용 -->
+<title>Login-Page</title>
+<!-- 외부 스타일시트 적용 -->
     <link rel="stylesheet" href="./index.css">
-</head>
-<body>
-
-<% 
+    <link rel="stylesheet" href="login.css">
+    <!--로그인 css 연결-->
+    
+    <% 
 		String userId = null;
 		if(session.getAttribute("idKey")!=null){
 			userId=(String)session.getAttribute("idKey");
 		}
-		if(userId==null){ //로그인 되지 않은 경우
 	%>
-	<header>
+	
+<%
+MemberRegisterBean bean = regMgr.getRegister(userId);//회원정보 가져오기
+String user_id = bean.getUser_id();
+	if (request.getParameter("pw") != null) {
+		String inPass = request.getParameter("pw");
+		String pw = bean.getPw();
+		if (inPass.equals(pw)) {
+			regMgr.deleteMember(user_id);			
+			%>
+			
+<script type="text/javascript">
+	alert("이용해주셔서 감사합니다.");
+	<%	session.invalidate(); %>
+	location.href="index.jsp";
+</script>			
+
+			<%
+		} else {
+%>
+<script type="text/javascript">
+	alert("입력하신 비밀번호가 아닙니다.");
+	history.back();
+</script>
+<%}
+	} else {
+%>
+<script type="text/javascript">
+	function check() {
+		if (document.delMember.pw.value == "") {
+			alert("비밀번호를 입력하세요.");
+			document.delMember.pw.focus();
+			return false;
+		}
+		document.delMember.submit();
+	}
+</script>
+</head>
+
+<body>
+
+<header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
             <a href="index.jsp">BookSooRae</a>
@@ -37,52 +67,49 @@
              <ul>
             <a class="button" href="#">MY PAGE</a>
             <a class="button" href="signup1.jsp">SIGN-UP</a>
-            <a class="button" href="login_main.jsp">LOGIN</a>
+            <a class="button" href="logout.jsp">LOGOUT</a>
             </ul>
         
     </header>
-    <%}
-		else{//로그인 된 경우
-	%>
-	<header>
-        <h1>
-            <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.html">BookSooRae</a>
-			
-        </h1>
-       
-             <ul>
-            <a class="button" href="mypage.jsp">MY PAGE</a>
-            <a class="button" href="logout.jsp">LOGOUT</a>          
-            </ul>
-        
-    </header>
-    <%} %>
-    
+
     <nav>
         <ul>
             <li><a href="index.jsp">Home</a></li>
             <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a onclick="location.href='review_list.jsp'"">Review</a></li>
+            <li><a href="review_list.jsp">Review</a></li>
             <li><a href="search.jsp">search</a></li>
     
         </ul>
     </nav>
-    <aside id="left">
-        
-    </aside>
-    <section id="main">
-       <h1><%=id %>님, 북수레에 로그인 되었습니다!</h1>
-    	<button type="button" onclick="document.location.href='index.jsp'">메인페이지 이동</button> 
-        <button type="button" onclick="document.location.href='bookList.jsp'">내 책 목록</button>
-        <button type="button" onclick="document.location.href='logout.jsp'">로그아웃</button> 
-    </section>
-    <aside id="right">
-        
- 
-    </aside>
-    <footer>
+<section id="main">
+<div class="loginbox">
+    
+
+<h1>회원탈퇴</h1>
+
+<form name=delMember method=post action="deleteMember.jsp">
+
+<label for="loginpw" class="labelpw">패스워드</label>
+
+<input type="password" name="pw">
+
+
+<div class="btnwrap">
+
+<input type="button" value="탈퇴하기" onClick="check()"> 
+<input type="button" value="뒤로" onClick="history.go(-1)">
+
+
+</div>
+
+</form>
+
+​
+
+</div>
+ </section>
+ <footer>
         <div class="container">
             <a class="footerButton" href="https://www.nl.go.kr/" >
                 <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
@@ -110,10 +137,8 @@
         </div>
       
     </footer>
-	
-
 ​
+	<%}%>
 </body>
-
 
 </html>
