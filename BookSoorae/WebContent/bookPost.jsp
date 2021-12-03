@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=EUC-KR" %>
 <%
  		String id = (String)session.getAttribute("idKey");  
  		if(id!=null){
@@ -29,7 +29,7 @@ location.href = "login_main.jsp";
 		<td align=center>
 		<table align="center">
 			<tr>
-				<td>아이디</td>
+				<td>작성자</td>
 				<td><%=id %></td>
 			</tr>
 			<tr>
@@ -49,8 +49,9 @@ location.href = "login_main.jsp";
 				<td><input name="money" size="40" maxlength="30" ></td>
 			</tr>
 			<tr>
-				<td>대여 가능<input type="radio" name="isValid" value="valid" checked></td>
-				<td>대여 불가능<input type="radio" name="isValid" value="invalid"></td>
+				<td>대여</td>
+					<td>가능<input type="radio" name="isValid" value="valid" checked>
+					불가능<input type="radio" name="isValid" value="invalid"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
