@@ -24,7 +24,7 @@
         </h1>
        
              <ul>
-            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="mypage.jsp">MY PAGE</a>
             <a class="button" href="signup1.jsp">SIGN-UP</a>
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
@@ -41,7 +41,7 @@
         </h1>
        
              <ul>
-            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="mypage.jsp">MY PAGE</a>
             <a class="button" href="logout.jsp">LOGOUT</a>
             </ul>
         

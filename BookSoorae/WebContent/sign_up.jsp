@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*, bookcart.*"%>
 <jsp:useBean id="regMgr" class="bookcart.MemberRegisterMgr"/>
 <%
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 
 		String user_id=request.getParameter("user_id");
 		String pw=request.getParameter("pw"); 
@@ -15,6 +15,6 @@
 %>
 
 <script>
-    alert("х╦©Ь╟║ютю╩ цЮгогу╢о╢ы!");
+    alert("М ▄Л⌡░Й╟─Л·┘Л²└ Л╤∙М∙≤М∙╘К▀┬К▀╓!");
 	location.href="login_main.jsp";
 </script>

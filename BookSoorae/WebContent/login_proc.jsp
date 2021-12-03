@@ -23,6 +23,7 @@
 	else{
 		session.setAttribute("idKey",user_id);
 
+		
 %>		
 		<script> 
 	  		alert("로그인 되었습니다.");
