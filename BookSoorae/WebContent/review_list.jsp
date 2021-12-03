@@ -19,13 +19,7 @@
 	  int end=10; //시작번호로 부터 가져올 select 갯수
 	  
 	  int listSize=0; //현재 읽어온 게시물의 수
-	  
-	String reviewTitle = "달러구트 꿈 백화점을 읽고";
-	String bookName = "달러구트 꿈 백화점";
-	int listNum = 1;
-	String author = "이미예";
-	String publisher = "팩토리나인";
-	String userName = "user";
+
 
 	String keyWord = "", keyField = "";
 	Vector<ReviewBoardBean> vlist = null;
@@ -100,19 +94,28 @@
 		<button type="button" class="login-button">Login</button>
 	</div>
 </div>
-
 <div class="search-area">
-	<form action="<%=request.getContextPath()%>" method="post">
-		<input type="text" name="bookSearch"  class="search-input" placeholder="검색하고 싶은 책 제목을 입력하세요">
-		<button type="submit">Search</button>
+	<form name="searchFrm"  method="get" action="review_list.jsp">
+		<select name="keyField" size="1" >
+    				<option value="user_id"> 이 름</option>
+    				<option value="subject"> 제 목</option>
+    				<option value="content"> 내 용</option>
+   		</select>
+		<input type="text" name="keyWord"  class="search-input" placeholder="검색어를 입력하세요">
+		<input type="button"  value="Search" onClick="javascript:check()">
+		<input type="hidden" name="nowPage" value="1">
 	</form>
 </div>
-<!--<h3><%=bookName%> 검색 결과입니다.</h3>  -->
 <div align="center">
 	<br/>
 	<h2>REVIEW BOARD</h2>
 	<br/>
 	<table align="center" width="600">
+		<%if(!keyWord.equals("")){ %>
+			<tr>
+				<td><%=keyWord%>의 검색결과는 다음과 같습니다.</td>
+			</tr>
+		<%}%>
 			<tr>
 				<td>Total : <%=totalRecord%>Articles(<font color="red">
 				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
@@ -203,22 +206,6 @@
 			</tr>
 		</table>
 	<hr width="600"/>
-	<form  name="searchFrm"  method="get" action="review_list.jsp">
-	<table width="600" cellpadding="4" cellspacing="0">
- 		<tr>
-  			<td align="center" valign="bottom">
-   				<select name="keyField" size="1" >
-    				<option value="name"> 이 름</option>
-    				<option value="subject"> 제 목</option>
-    				<option value="content"> 내 용</option>
-   				</select>
-   				<input size="16" name="keyWord">
-   				<input type="button"  value="찾기" onClick="javascript:check()">
-   				<input type="hidden" name="nowPage" value="1">
-  			</td>
- 		</tr>
-	</table>
-	</form>
 	<form name="listFrm" method="post">
 		<input type="hidden" name="reload" value="true"> 
 		<input type="hidden" name="nowPage" value="1">
