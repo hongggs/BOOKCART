@@ -238,6 +238,25 @@ public class BookBoardMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 	}
+	
+	public void lendBook(int book_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		MultipartRequest multi = null;
+		try {
+			con = pool.getConnection();
+			sql = "update book set isValid='N' where book_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			pstmt.executeUpdate();
+			pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt);
+		}
+	}
 
 	public void updateBoard(BookBoardBean bean) {
 		Connection con = null;
