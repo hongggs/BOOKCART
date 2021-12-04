@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=EUC-KR" %>
 <%@page import="bookcart.BookBoardBean"%>
 <jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
 <%
-	  request.setCharacterEncoding("utf-8");
+	  request.setCharacterEncoding("EUC-KR");
 	  int book_id = Integer.parseInt(request.getParameter("book_id"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");
@@ -88,11 +88,14 @@
  <hr/>
  <% if(id!=null && id.equals(user_id)){ 
  %>
- <a href="javascript:list()" >책 목록</a> 
+ <a href="javascript:list()" >책 목록</a>  
  <a href="bookUpdate.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" >수 정</a> 
  <a href="bookDelete.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>">삭 제</a> <br/>
   </td>
-  <%} else{%>  <a href="javascript:list()" >책 목록</a> <% }%>
+  <%} else{%> 
+  <a href="javascript:list()" >책 목록</a>
+  <% if(id!=null && isValid.equals("Y")){ %>
+  <a href="lendBook.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" action="myLendBook" enctype="multipart/form-data">대여하기</a><%} }%>
  </tr>
 </table>
 
@@ -107,5 +110,6 @@
 	<input type="hidden" name="keyWord" value="<%=keyWord%>">
 	<%}%>
 </form>
+
 </body>
 </html>
