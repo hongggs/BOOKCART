@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@page import="bookcart.BookBoardBean"%>
 <jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
-<title>å</title>
+<title>åa</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <% 
