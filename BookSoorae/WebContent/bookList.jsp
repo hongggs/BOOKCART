@@ -111,7 +111,7 @@
  		<tr>
   			<td align="center" valign="bottom">
    				<select name="keyField" size="1" >
-    				<option value="idKey"> 작성자 </option> 
+    				<option value="user_id"> 작성자 </option> 
     				<option value="title"> 책 제목 </option>
     				<option value="writer"> 저자 </option>
     				<option value="content"> 내용 </option>
