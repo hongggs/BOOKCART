@@ -6,9 +6,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="./index.css">
-<link rel="stylesheet" href="./signup.css">
-<title>mypagef</title>
+<link rel="stylesheet" href="./mypage.css?ver=1">
+<title>mypage</title>
 </head>
 <body>
 <% 
@@ -27,7 +26,28 @@
 		else{//로그인 된 경우
 			%>
 			 
-
+<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+		</div>
+	</div>
+	<nav class="nav">
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="bookList.jsp">market</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="mypage.jsp">Mypage</a></li>
+    
+        </ul>
+    </nav>
 <div class="mypage">
    <h1>마이페이지</h1>
 

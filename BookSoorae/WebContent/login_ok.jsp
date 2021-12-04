@@ -14,9 +14,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8" />
 
-<title>Insert title here</title>
+<title>Login-success</title>
 	<!-- 외부 스타일시트 적용 -->
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./login.css?ver=1">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 		}
 		if(userId==null){ //로그인 되지 않은 경우
 	%>
-	<header>
+	<!-- <header>
         <h1>
             <img src="./images/logo.png" alt="shop" width="50" height="50">
             <a href="index.jsp">BookSooRae</a>
@@ -40,48 +40,41 @@
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
         
-    </header>
+    </header> -->
     <%}
 		else{//로그인 된 경우
 	%>
-	<header>
-        <h1>
-            <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.html">BookSooRae</a>
-			
-        </h1>
-       
-             <ul>
-            <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="logout.jsp">LOGOUT</a>
-            </ul>
-        
-    </header>
-    <%} %>
-    
-    <nav>
+	<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+		</div>
+	</div>
+	<nav class="nav">
         <ul>
             <li><a href="index.jsp">Home</a></li>
-            <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a onclick="location.href='review_list.jsp'"">Review</a></li>
-            <li><a href="search.jsp">search</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="mypage.jsp">Mypage</a></li>
     
         </ul>
     </nav>
-    <aside id="left">
-        
-    </aside>
+    <%} %>
     <section id="main">
-       <h1><%=id %>님, 북수레에 로그인 되었습니다!</h1>
-    	<button type="button" onclick="document.location.href='index.jsp'">메인페이지 이동</button> 
-        <button type="button" onclick="document.location.href='myBookList.jsp'">내 책 목록</button>
-        <button type="button" onclick="document.location.href='logout.jsp'">로그아웃</button> 
+       <h1 class="login-sign"><%=id %>님, 북수레에 로그인 되었습니다!</h1>
+       <div class="login-btns">
+	    	<button type="button" onclick="document.location.href='index.jsp'">메인페이지 이동</button> 
+	        <button type="button" onclick="document.location.href='myBookList.jsp'">내 책 목록</button>
+	        <button type="button" onclick="document.location.href='logout.jsp'">로그아웃</button> 
+        </div>
     </section>
-    <aside id="right">
-        
- 
-    </aside>
     <footer>
         <div class="container">
             <a class="footerButton" href="https://www.nl.go.kr/" >

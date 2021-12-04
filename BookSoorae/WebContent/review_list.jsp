@@ -51,7 +51,8 @@
 <html>
 <head>
 <title>REVIEW Board</title>
-<link href="review_list.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8">
+<link href="review_list.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list() {
 		document.listFrm.action = "review_list.jsp";
@@ -87,22 +88,37 @@
 <body bgcolor="#FFFFCC">
 <div class="top-line"></div>
 <div class="header">
-	<i class="fas fa-book"></i>
-	<h1>BookSoorae</h1>
-	<div class="header-btns">
-		<button type="button" class="signup-button">Sign-up</button>
-		<button type="button" class="login-button">Login</button>
-	</div>
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./login_main.jsp'" class="login-button">Login</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
+		</div>
 </div>
+	<nav class="nav">
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="bookList.jsp">market</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="mypage.jsp">Mypage</a></li>
+    
+        </ul>
+    </nav>
 <div class="search-area">
 	<form name="searchFrm"  method="get" action="review_list.jsp">
-		<select name="keyField" size="1" >
-    				<option value="user_id"> 이 름</option>
-    				<option value="subject"> 제 목</option>
-    				<option value="content"> 내 용</option>
-   		</select>
-		<input type="text" name="keyWord"  class="search-input" placeholder="검색어를 입력하세요">
-		<input type="button"  value="Search" onClick="javascript:check()">
+		<div class="search-row">
+			<select name="keyField" size="1"class="select-btn">
+	    				<option value="user_id"> 이 름</option>
+	    				<option value="subject"> 제 목</option>
+	    				<option value="content"> 내 용</option>
+	   		</select>
+			<input type="text" name="keyWord"  class="search-input" placeholder="검색어를 입력하세요">
+			<input type="button" class="search-btn" value="Search" onClick="javascript:check()">
+		</div>
 		<input type="hidden" name="nowPage" value="1">
 	</form>
 </div>
@@ -117,7 +133,7 @@
 			</tr>
 		<%}%>
 			<tr>
-				<td>Total : <%=totalRecord%>Articles(<font color="red">
+				<td>Total : <%=totalRecord%>Articles(<font color="black">
 				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
 			</tr>
 	</table>
@@ -132,7 +148,7 @@
 				  } else {
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
-					<tr align="center" bgcolor="#D0D0D0" height="120%">
+					<tr align="center" bgcolor="#C5E2E1" height="120%">
 						<td>번 호</td>
 						<td>제 목</td>
 						<td>이 름</td>

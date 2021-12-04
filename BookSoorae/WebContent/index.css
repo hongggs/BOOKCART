@@ -1,10 +1,118 @@
+:root {
+    /* color */
+    --color_main_green : #517D73;
+    --color_dark_green : #347C6E;
+    --color_background : #F4F4EF; /*왜 선언한걸로 적용이 안될까 이건*/
+    --color_navy : #30355C;
+    --color_point-mint : #00D1FF;
+
+    --color_white : #FFFFFF;
+    --color_black : #000000;
+    --color_light-gray :#b9b9b9;
+    --color_gray : #D2D2D2;
+    --color_dark-gray : #898A8D;
+}
+
+
 /*  모든 요소들은 default 마진, 패딩 제거 */
-*{margin: 0; padding: 0;}
- 
+*{margin: 0; padding: 0;box-sizing: border-box;}
+
+
+.top-line{
+	height: 3vh; width: 100%;
+	background-color: var(--color_main_green);
+	margin: none;
+	
+}
+
+.header-left a, .write-btn a{
+	color: var(--color_main_green);
+	font-size: 25px;
+	text-decoration-line : none;
+	margin-top: 1vh;
+}
+
+.header-left{
+	width: 10vw;
+	display:flex;
+	flex-direction: row;
+	align-content: center;
+	
+}
+
+.header{
+	margin: 0 5vw 0 5vw;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.header-left{
+	
+	margin-top: 1.5vh;
+	font-size: 18px;
+		
+}
+.header-left{
+	width: 10vw;
+	display:flex;
+	flex-direction: row;
+	align-content: center;
+	
+}
+
+.header{
+	margin: 0 5vw 0 5vw;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.header-btns{
+	width: 30%;
+	display:flex;
+	flex-direction: row;
+	justify-content: end;
+}
+
+.signup-button{
+	width: 27%; height: 50%;
+	border: none; background:none;
+	font-size: 16px;
+	color: var(--color_main_green);
+}
+
+
+.login-button{
+	width: 15%; height: 50%;
+	margin-left: 20px;
+	border: none;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	color: #517D73;
+	
+}
+
+.mypage-button{
+	width: 27%; height: 50%;
+	border: none; background:none;
+	text-decoration : none;
+	background-color: var(--color_main_green);
+	color: white;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	
+}
+.header-btns button{
+	font-size: 17px;
+	
+}
+
+
 /* 화면에 너무 붙어 있어서...  */
 body{
-    padding: 30px;
     background-color: #F0F0EA;
+    /*전체에 padding을 적용했더니 일부 속성들이 이상해져서 그냥 필요한 부분에만 따로 패딩을 적용하기로 함..*/
 }
  
 /* header 영역  */
@@ -30,7 +138,10 @@ header a{text-decoration: none; color: #333333;}
     }
  
 /* nav 영역 */
-nav{margin-top: 12px; margin-bottom: 20px;}
+nav{
+margin-top: 12px; margin-bottom: 20px;
+margin-left: 3%;margin-right: 3%;
+}
  
 nav ul{
     list-style: none;
@@ -60,54 +171,36 @@ nav ul li a{
  
 nav ul li a:hover{ text-decoration: underline;}
  
-/* 왼쪽 사이드 메뉴 */
-aside#left{
-    float: left;
-    width: 10em;
-    margin-right: 1em;
-}
- 
-aside#left ul{ list-style: none}
- 
-aside#left ul li{
-    background-color: #3f3f3f;
-    padding: 5px 10px;
-    border-bottom: 1px solid black;
-}
- 
-aside#left ul li a{
-    color: white;
-    text-decoration: none;
-}
- 
-aside#left ul li:hover{
-    background-color: red;
-}
- 
-aside#main{
-    float: left;
-}
+
  
 /* 가운데 본문 영역 */
 section#main{
-    float: center;
-    min-height: 500px; 
+    /* float: center;
+    min-height: 500px;  */
+    display:flex;
+    flex-direction: row;
+    /* justify-content: center; */
 
 }
- 
-/* 오른쪽 사이드 메뉴 */
-aside#right{
-    float: right;
-    padding: 10px;
-    width: 12em;
-}
- 
- 
-aside#right #shopcart{
-    margin-bottom: 30px;
+.main-right{
+	margin-left: 20%;
+	margin-top: 2%;	
 }
 
- 
+.main-right p{
+	margin-top: 5%;
+	font-size: 18px;
+	color: #646464;
+	line-height: 1.8;
+}
+
+.main-img{
+	transform: rotate( -90deg );
+	width: 20%; height: auto;
+	/* max-width: 100%; */
+	position: relative;
+	top: -12vh; left: 7vw;
+}
 /* footer영역 */
 footer{
     clear: both;
