@@ -11,6 +11,7 @@
     <!--로그인 css 연결-->
     
     <% 
+    
 		String userId = null;
 		if(session.getAttribute("idKey")!=null){
 			userId=(String)session.getAttribute("idKey");
