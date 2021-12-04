@@ -11,6 +11,7 @@
 </head>
 <body>
 	<% 
+	//손홍서 push함 
 		String userId = null;
 		if(session.getAttribute("idKey")!=null){
 			userId=(String)session.getAttribute("idKey");
