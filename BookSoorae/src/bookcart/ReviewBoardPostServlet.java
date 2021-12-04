@@ -13,7 +13,7 @@ public class ReviewBoardPostServlet extends HttpServlet {
 	HttpSession session=null;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 		session=request.getSession();
 		ReviewBoardMgr bMgr = new ReviewBoardMgr();
 		bMgr.insertBoard(request,session.getAttribute("idKey").toString());

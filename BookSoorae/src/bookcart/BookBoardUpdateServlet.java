@@ -16,8 +16,8 @@ public class BookBoardUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("EUC-KR");
-		response.setContentType("text/html; charset=EUC-KR");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter(); 
@@ -27,16 +27,18 @@ public class BookBoardUpdateServlet extends HttpServlet {
 		String nowPage = request.getParameter("nowPage");
 		
 		BookBoardBean upBean = new BookBoardBean();
-		upBean.setUser_id(request.getParameter("user_id"));
+		upBean.setUser_id(session.getAttribute("idKey").toString());
 		upBean.setBook_id(Integer.parseInt(request.getParameter("book_id")));
 		upBean.setTitle(request.getParameter("title"));
 		upBean.setWriter(request.getParameter("writer"));
 		upBean.setPublisher(request.getParameter("publisher"));
 		upBean.setMoney(Integer.parseInt(request.getParameter("money")));
-		upBean.setIsValid(request.getParameter("isValid"));
+		if(request.getParameter("isValid").equals("valid"))
+			upBean.setIsValid("Y");
+		else
+			upBean.setIsValid("N");
 		upBean.setContent(request.getParameter("content"));
 		upBean.setFilename(request.getParameter("filename"));
-		upBean.setFilesize(Integer.parseInt(request.getParameter("filesize")));
 
 		bMgr.updateBoard(upBean);
 		String url = "bookRead.jsp?nowPage=" + nowPage + "&book_id=" + upBean.getBook_id();

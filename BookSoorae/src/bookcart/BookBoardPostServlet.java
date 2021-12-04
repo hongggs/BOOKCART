@@ -13,7 +13,7 @@ public class BookBoardPostServlet extends HttpServlet {
 	HttpSession session = null;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 		BookBoardMgr bMgr = new BookBoardMgr();
 		session = request.getSession();
 		bMgr.insertBoard(request,session.getAttribute("idKey").toString());

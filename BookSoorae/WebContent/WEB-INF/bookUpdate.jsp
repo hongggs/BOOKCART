@@ -6,13 +6,6 @@
 	  BookBoardBean bean = (BookBoardBean)session.getAttribute("bean");
 	  String id = (String)session.getAttribute("idKey"); 
 	  String user_id = bean.getUser_id();
-		if(!id.equals(user_id)){
-%>
-<script>
-alert("수정권한이 없습니다.")
-</script>
-<% 	}
-			
 	  String title = bean.getTitle();
 	  String writer = bean.getWriter(); 
 	  String publisher= bean.getPublisher();
@@ -22,7 +15,6 @@ alert("수정권한이 없습니다.")
 	  String filename = bean.getFilename();
 	  int filesize= bean.getFilesize();
 %>
-
 <html>
 <head>
 <title>책 목록</title>

@@ -1,15 +1,15 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=EUC-KR" %>
 <%@page import="bookcart.BookBoardBean"%>
 <jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
 <%
-	  request.setCharacterEncoding("utf-8");
+	  request.setCharacterEncoding("EUC-KR");
 	  int book_id = Integer.parseInt(request.getParameter("book_id"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");
 	  String keyWord = request.getParameter("keyWord");
 	  String id = (String)session.getAttribute("idKey");  
-	  bMgr.upCount(book_id);//ì¡°íšŒìˆ˜ ì¦ê°€
-	  BookBoardBean bean = bMgr.getBoard(book_id);//ê²Œì‹œë¬¼ ê°€ì ¸ì˜¤ê¸°
+	  bMgr.upCount(book_id);//Á¶È¸¼ö Áõ°¡
+	  BookBoardBean bean = bMgr.getBoard(book_id);//°Ô½Ã¹° °¡Á®¿À±â
 	  String user_id = bean.getUser_id();
 	  String title = bean.getTitle();
 	  String writer = bean.getWriter();
@@ -20,11 +20,11 @@
 	  int filesize = bean.getFilesize();
 	  String isValid = bean.getIsValid();
 	  int hit = bean.getHit();
-	  session.setAttribute("bean", bean);//ê²Œì‹œë¬¼ì„ ì„¸ì…˜ì— ì €ìž¥
+	  session.setAttribute("bean", bean);//°Ô½Ã¹°À» ¼¼¼Ç¿¡ ÀúÀå
 %>
 <html>
 <head>
-<title>ì±… ëª©ë¡</title>
+<title>Ã¥ ¸ñ·Ï</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list(){
@@ -41,35 +41,35 @@
 <br/><br/>
 <table align="center" width="600" cellspacing="3">
  <tr>
-  <td bgcolor="#9CA2EE" height="25" align="center">ê¸€ì½ê¸°</td>
+  <td bgcolor="#9CA2EE" height="25" align="center">±ÛÀÐ±â</td>
  </tr>
  <tr>
   <td colspan="2">
    <table cellpadding="3" cellspacing="0" width="100%"> 
    <tr>
-    <td align="center" bgcolor="#DDDDDD" width="15%"> ìž‘ì„±ìž </td>
+    <td align="center" bgcolor="#DDDDDD" width="15%"> ÀÛ¼ºÀÚ </td>
  	<td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=user_id%></td>
    </tr>
  <tr> 
- 	<td align="center" bgcolor="#DDDDDD" width="15%"> ì±… ì œëª© </td>
+ 	<td align="center" bgcolor="#DDDDDD" width="15%"> Ã¥ Á¦¸ñ </td>
  	<td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=title%></td>
- 	<td align="center" bgcolor="#DDDDDD" width="15%"> ì €ìž </td>
+ 	<td align="center" bgcolor="#DDDDDD" width="15%"> ÀúÀÚ </td>
  	<td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=writer%></td>
  </tr>
  <tr> 
-    <td align="center" bgcolor="#DDDDDD" width="15%"> ì¶œíŒì‚¬ </td>
+    <td align="center" bgcolor="#DDDDDD" width="15%"> ÃâÆÇ»ç </td>
     <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=publisher%></td>
-    <td align="center" bgcolor="#DDDDDD" width="15%"> ë³´ì¦ê¸ˆ </td>
-    <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=money%>ì›</td>
+    <td align="center" bgcolor="#DDDDDD" width="15%"> º¸Áõ±Ý </td>
+    <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=money%>¿ø</td>
  </tr>
  <tr> 
-     <td align="center" bgcolor="#DDDDDD" width="15%">ì²¨ë¶€íŒŒì¼</td>
+     <td align="center" bgcolor="#DDDDDD" width="15%">Ã·ºÎÆÄÀÏ</td>
      <td bgcolor="#FFFFE8">&nbsp;
      <% if( filename !=null && !filename.equals("")) {%>
   		<a href="javascript:down('<%=filename%>')"><%=filename%></a>  
-  		 <%} else{%> ë“±ë¡ëœ íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.<%}%>
+  		 <%} else{%> µî·ÏµÈ ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.<%}%>
 	 </td>
-	 <td align="center" bgcolor="#DDDDDD" width="15%"> ëŒ€ì—¬ </td>
+	 <td align="center" bgcolor="#DDDDDD" width="15%"> ´ë¿© </td>
      <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=isValid%></td>
  </tr>
    <tr> 
@@ -77,7 +77,7 @@
    </tr>
    <tr>
     <td colspan="4" align="right">
-     	ì¡°íšŒìˆ˜  <%=hit%>
+     	Á¶È¸¼ö  <%=hit%>
     </td>
    </tr>
    </table>
@@ -88,11 +88,11 @@
  <hr/>
  <% if(id!=null && id.equals(user_id)){ 
  %>
- <a href="javascript:list()" >ì±… ëª©ë¡</a> 
- <a href="bookUpdate.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" >ìˆ˜ ì •</a> 
- <a href="bookDelete.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>">ì‚­ ì œ</a> <br/>
+ <a href="javascript:list()" >Ã¥ ¸ñ·Ï</a> 
+ <a href="bookUpdate.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" >¼ö Á¤</a> 
+ <a href="bookDelete.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>">»è Á¦</a> <br/>
   </td>
-  <%} else{%>  <a href="javascript:list()" >ì±… ëª©ë¡</a> <% }%>
+  <%} else{%>  <a href="javascript:list()" >Ã¥ ¸ñ·Ï</a> <% }%>
  </tr>
 </table>
 

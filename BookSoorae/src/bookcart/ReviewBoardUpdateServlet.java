@@ -16,8 +16,8 @@ public class ReviewBoardUpdateServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("EUC-KR");
-		response.setContentType("text/html; charset=EUC-KR");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter(); 

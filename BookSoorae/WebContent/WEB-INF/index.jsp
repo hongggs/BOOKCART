@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 	<!-- 외부 스타일시트 적용 -->
     <link rel="stylesheet" href="./index.css">
 </head>
@@ -24,7 +24,7 @@
         </h1>
        
              <ul>
-            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="mypage.jsp">MY PAGE</a>
             <a class="button" href="signup1.jsp">SIGN-UP</a>
             <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
@@ -41,7 +41,7 @@
         </h1>
        
              <ul>
-            <a class="button" href="#">MY PAGE</a>
+            <a class="button" href="mypage.jsp">MY PAGE</a>
             <a class="button" href="logout.jsp">LOGOUT</a>
             </ul>
         
@@ -62,7 +62,7 @@
         
     </aside>
     <section id="main">
-         <h1>search-웹사이트 북수레 검색 페이지 입니다.</h1>
+        <h1>메인페이지</h1>
     </section>
     <aside id="right">
         

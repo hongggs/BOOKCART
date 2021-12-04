@@ -1,5 +1,6 @@
 package bookcart;
 
+
 public class BookBoardBean {
 	private int book_id;
 	private String user_id;

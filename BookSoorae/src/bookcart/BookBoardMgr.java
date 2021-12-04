@@ -21,7 +21,7 @@ public class BookBoardMgr {
 
 	private DBConnectionMgr pool;
 	private static final String  SAVEFOLDER = "C:/Jsp/BookSoorae/WebContent/bookcart/fileupload";
-	private static final String ENCTYPE = "EUC-KR";
+	private static final String ENCTYPE = "utf-8";
 	private static int MAXSIZE = 5*1024*1024;
 
 	public BookBoardMgr() {
@@ -32,7 +32,7 @@ public class BookBoardMgr {
 		}
 	}
 
-	// 게시판 리스트
+	// �Խ��� ����Ʈ
 	public Vector<BookBoardBean> getBoardList(String keyField, String keyWord,
 			int start, int end) {
 		Connection con = null;
@@ -74,7 +74,7 @@ public class BookBoardMgr {
 		return vlist;
 	}
 	
-	//총 게시물수
+	//�� �Խù���
 	public int getTotalCount(String keyField, String keyWord) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -103,7 +103,7 @@ public class BookBoardMgr {
 		return totalCount;
 	}
 	
-	// 게시물 입력
+	// �Խù� �Է�
 		public void insertBoard(HttpServletRequest req, String user_id) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -155,7 +155,7 @@ public class BookBoardMgr {
 			}
 		}
 	
-	// 게시물 리턴
+	// �Խù� ����
 	public BookBoardBean getBoard(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -191,7 +191,7 @@ public class BookBoardMgr {
 		return bean;
 	}
 
-	// 조회수 증가
+	// ��ȸ�� ����
 	public void upCount(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -209,7 +209,7 @@ public class BookBoardMgr {
 		}
 	}
 
-	// 게시물 삭제
+	// �Խù� ����
 	public void deleteBoard(int book_id) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -239,7 +239,6 @@ public class BookBoardMgr {
 		}
 	}
 
-	// 게시물 수정
 	public void updateBoard(BookBoardBean bean) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -253,14 +252,11 @@ public class BookBoardMgr {
 			pstmt.setString(3, bean.getWriter());
 			pstmt.setString(4, bean.getPublisher());
 			pstmt.setInt(5, bean.getMoney());
-			if(bean.getIsValid().equals("valid"))
-				pstmt.setString(6,"Y");
-			else
-				pstmt.setString(6,"N");
+			pstmt.setString(6,bean.getIsValid());
 			pstmt.setString(7, bean.getContent());
-			pstmt.setInt(8, bean.getBook_id());
-			pstmt.setString(9, bean.getFilename());
-			pstmt.setInt(10, bean.getFilesize());
+			pstmt.setInt(10, bean.getBook_id());
+			pstmt.setString(8, bean.getFilename());
+			pstmt.setInt(9, bean.getFilesize());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -269,7 +265,8 @@ public class BookBoardMgr {
 		}
 	}
 
-	//파일 다운로드
+
+	//���� �ٿ�ε�
 		public void downLoad(HttpServletRequest req, HttpServletResponse res,
 				JspWriter out, PageContext pageContext) {
 			try {
@@ -279,10 +276,10 @@ public class BookBoardMgr {
 				res.setHeader("Accept-Ranges", "bytes");
 				String strClient = req.getHeader("User-Agent");
 				if (strClient.indexOf("MSIE6.0") != -1) {
-					res.setContentType("application/smnet;charset=euc-kr");
+					res.setContentType("application/smnet;charset=utf-8");
 					res.setHeader("Content-Disposition", "filename=" + filename + ";");
 				} else {
-					res.setContentType("application/smnet;charset=euc-kr");
+					res.setContentType("application/smnet;charset=utf-8");
 					res.setHeader("Content-Disposition", "attachment;filename="+ filename + ";");
 				}
 				out.clear();

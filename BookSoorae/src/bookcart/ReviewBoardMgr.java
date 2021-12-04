@@ -18,7 +18,7 @@ public class ReviewBoardMgr {
 
 	private DBConnectionMgr pool;
 	//private static final String  SAVEFOLDER = "C:/Jsp/myapp/WebContent/ch15/fileupload";
-	private static final String ENCTYPE = "EUC-KR";
+	private static final String ENCTYPE = "utf-8";
 	private static int MAXSIZE = 5*1024*1024;
 
 	public ReviewBoardMgr() {
