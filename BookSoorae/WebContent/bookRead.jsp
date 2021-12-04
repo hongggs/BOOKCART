@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@page import="bookcart.BookBoardBean"%>
 <jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
 <%
-	  request.setCharacterEncoding("EUC-KR");
+	  request.setCharacterEncoding("utf-8");
 	  int book_id = Integer.parseInt(request.getParameter("book_id"));
 	  String nowPage = request.getParameter("nowPage");
 	  String keyField = request.getParameter("keyField");

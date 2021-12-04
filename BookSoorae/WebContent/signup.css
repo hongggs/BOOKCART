@@ -7,11 +7,6 @@ body{position: relative;}
 .signup h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
 .updateMember{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
 .updateMember h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
-.mypage{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
-.mypage h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
-.mypage h3{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
-.mypost{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
-.mypost h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
 
 
 

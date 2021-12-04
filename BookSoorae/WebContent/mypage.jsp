@@ -6,8 +6,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="./mypage.css?ver=1">
+ <link rel="stylesheet" href="./index.css?ver=1">
+ <link rel="stylesheet" href="./mypage.css">
 <title>mypage</title>
+<div class="top-line"></div>
 </head>
 <body>
 <% 
@@ -26,7 +28,7 @@
 		else{//로그인 된 경우
 			%>
 			 
-<div class="top-line"></div>
+	<div class="top-line"></div>
 	<div class="header">
 		<div class="header-left">
 			<img src="./images/logo.png" alt="shop" width="50" height="50">
@@ -48,40 +50,83 @@
     
         </ul>
     </nav>
-<div class="mypage">
-   <h1>마이페이지</h1>
+     <%} %>
+     <section id="main">
+     
+	 <div class="mypage">
+      <div class="my">
+      <div class="thumb-wrapper stagger-item">
+        <a href="index.jsp"
+          ><img class="thumb" src="images/logo.png"
+        /></a>
+        
+      </div>
 
-	<div class="mypost">
-	<%--내 review, 내 bookcart 넣는 큰 틀 --%>
-	
-	<h3><%=userId %>님의 마이페이지 </h3>
-	
-		<div style="border: 1px; float: right; width: 30%; padding:10px;">
-		<%--내 book  --%>
-		<h3>내가 작성한 책 보러가기 </h3>
-		<button type="button" onclick="document.location.href='myBookList.jsp'">bookmarket</button>
-		</div>
-		
-		<div style="border: 1px; float: right; width: 30%; padding:10px;">
-    	<%--내 review --%>
-    	<h3>내가 작성한 리뷰 보러가기 </h3>
-    	<button type="button" onclick="document.location.href='myBookList.jsp'">내북리뷰jsp만들어서넣어야됨</button>
-    	</div>
-	
-	</div>
-    <div class="mybutton">
-    <%--버튼2개(회원정보수정, 탈퇴하기) 넣는 큰 틀 --%>
-   		<div style="border: 1px; float: right; width: 30%; padding:10px;">
-   		<%--회원정보 수정 버튼 --%>
-   		<button type="button" onclick="document.location.href='update_member.jsp'">회원정보 확인 및 수정</button> 
-   		</div>
-   		<div style="border: 1px; float: right; width: 30%; padding:10px;">
-   		<%--탈퇴하기 버튼 --%>
-   		<button type="button" onclick="document.location.href='deleteMember.jsp'">탈퇴하기</button> 
-   		</div>
+      <div class="text-area">
+        <h3 class="greeting stagger-item"><%=userId %>님의 마이페이지 </h3>
+      </div>
     </div>
-    
-    <%}%> 
- </div> 
+
+    <ul class="list">
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
+          <img src="images/bookcart.svg" />
+          <div  style=" cursor: pointer;" onclick="location.href='myBookList.jsp';" class="name">내가 쓴 Bookcart 목록</div>
+        </div>
+      </li>
+
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
+          <img src="images/review.svg" />
+          <div style=" cursor: pointer;" onclick="location.href='index.jsp';"class="name">내가 쓴 review 목록</div>
+        </div>
+      </li>
+      
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
+          <img src="images/member.svg" />
+          <div style=" cursor: pointer;" onclick="location.href='update_member.jsp';"class="name">회원 정보 수정</div>
+        </div>
+      </li>
+
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
+          <img src="images/delete.svg" />
+          <div style=" cursor: pointer;" onclick="location.href='deleteMember.jsp';"class="name">탈퇴</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+ 
+</section>
+  <footer>
+        <div class="container">
+            <a class="footerButton" href="https://www.nl.go.kr/" >
+                <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
+            </a>
+
+            <a class="footerButton" href="https://childlib.sen.go.kr/" >
+                <img class="btn-img" src="./images/child.png">
+            </a>
+            
+            <a class="footerButton" href="https://www.sblib.seoul.kr" >
+                <img class="btn-img" src="./images/sungbuk.png">
+            </a>
+            
+            <a class="footerButton" href="https://nslib.sen.go.kr" >
+                <img class="btn-img" src="./images/namsan.png">
+            </a>
+          
+            <a class="footerButton" href="https://www.nanet.go.kr/main.do" >
+                <img class="btn-img" src="./images/nationalAssembly.png">
+            </a>
+
+        </div>
+        <div class="container">
+            Copyright© 성신여자대학교 웹정보프로그래밍_북수레
+        </div>
+      
+    </footer>
+	
 </body>
 </html>
