@@ -17,6 +17,28 @@ public class MemberRegisterMgr {
  	      System.out.println("Error : 커넥션 얻어오기 실패");
  	   }
      }
+	
+
+	// 회원탈퇴
+	public void deleteMember(String user_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		ResultSet rs = null;
+		try {
+			con = pool.getConnection();
+			sql = "delete from member where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+	}
+
+	
 	// ID 중복확인
 	public boolean checkId(String user_id) {
 		Connection con = null;

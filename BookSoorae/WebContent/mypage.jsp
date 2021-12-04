@@ -77,7 +77,7 @@
    		</div>
    		<div style="border: 1px; float: right; width: 30%; padding:10px;">
    		<%--탈퇴하기 버튼 --%>
-   		<button type="button" >탈퇴하기</button> 
+   		<button type="button" onclick="document.location.href='deleteMember.jsp'">탈퇴하기</button> 
    		</div>
     </div>
     
