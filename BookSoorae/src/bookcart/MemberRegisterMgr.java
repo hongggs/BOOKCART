@@ -38,6 +38,44 @@ public class MemberRegisterMgr {
 		}
 	}
 
+	// È¸¿øÅ»ÅðÀü Ã¥»èÁ¦
+	public void deleteBook(String user_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		ResultSet rs = null;
+		try {
+			con = pool.getConnection();
+			sql = "delete from book where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+	}
+	
+	
+	// È¸¿øÅ»ÅðÀü ¸®ºä»èÁ¦
+	public void deleteReveiw(String user_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		ResultSet rs = null;
+		try {
+			con = pool.getConnection();
+			sql = "delete from review where user_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+	}
 	
 	// ID Áßº¹È®ÀÎ
 	public boolean checkId(String user_id) {
