@@ -87,7 +87,6 @@
 </script>
 </head>
 
- <div class="top-line"></div>
 	
 <body bgcolor="#FFFFCC">
 <div class="top-line"></div>
@@ -239,10 +238,10 @@
      					<%if(pageStart==nowPage) {%></font> <%}%></a> 
     					<%}//for%>&nbsp; 
     					<%if (totalBlock > nowBlock ) {%>
-    					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
+    					<a href="javascript:block('<%=nowBlock+1%>')">…..next</a>
     				<%}%>&nbsp;  
    				<%}%>
- 				<!-- 페이징 및 블럭 처리 End-->
+ 				<!— 페이징 및 블럭 처리 End—>
 				</td>
 				<td align="right">
 					<a href="review_post.jsp">[글쓰기]</a> 
