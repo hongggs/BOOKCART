@@ -26,6 +26,7 @@
 <head>
 <title>책 목록</title>
 <link href="style.css" rel="stylesheet" type="text/css">
+<link href="./review.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list(){
 	    document.listFrm.submit();
@@ -37,40 +38,41 @@
 	}
 </script>
 </head>
-<body bgcolor="#FFFFCC">
+<body bgcolor="#F4F4EF" class="review-read">
 <br/><br/>
 <table align="center" width="600" cellspacing="3">
  <tr>
-  <td bgcolor="#9CA2EE" height="25" align="center">글읽기</td>
+  <td bgcolor="#517D73" height="25" align="center" class="table-head">글읽기</td>
  </tr>
  <tr>
   <td colspan="2">
    <table cellpadding="3" cellspacing="0" width="100%"> 
    <tr>
-    <td align="center" bgcolor="#DDDDDD" width="15%"> 작성자 </td>
- 	<td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=user_id%></td>
+ 	 <td align="center" bgcolor="#ADCCC5" width="10%"> 이 름 </td>
+     <td><%=user_id%></td>
    </tr>
  <tr> 
- 	<td align="center" bgcolor="#DDDDDD" width="15%"> 책 제목 </td>
- 	<td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=title%></td>
- 	<td align="center" bgcolor="#DDDDDD" width="15%"> 저자 </td>
- 	<td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=writer%></td>
+	<td align="center" bgcolor="#ADCCC5" width="10%"> 책 제목 </td>
+     <td><%=title%></td> 
+     <td align="center" bgcolor="#ADCCC5" width="10%"> 저자 </td>
+     <td><%=writer%></td>
  </tr>
  <tr> 
-    <td align="center" bgcolor="#DDDDDD" width="15%"> 출판사 </td>
-    <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=publisher%></td>
-    <td align="center" bgcolor="#DDDDDD" width="15%"> 보증금 </td>
-    <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=money%>원</td>
+ 	<td align="center" bgcolor="#ADCCC5" width="10%">출판사</td>
+     <td><%=publisher%></td> 
+     <td align="center" bgcolor="#ADCCC5" width="10%"> 보증금  </td>
+     <td><%=money%></td> 
+    
  </tr>
  <tr> 
-     <td align="center" bgcolor="#DDDDDD" width="15%">첨부파일</td>
-     <td bgcolor="#FFFFE8">&nbsp;
+     <td align="center" bgcolor="#ADCCC5" width="15%">첨부파일</td>
+     <td>
      <% if( filename !=null && !filename.equals("")) {%>
   		<a href="javascript:down('<%=filename%>')"><%=filename%></a>  
   		 <%} else{%> 등록된 파일이 없습니다.<%}%>
 	 </td>
-	 <td align="center" bgcolor="#DDDDDD" width="15%"> 대여 </td>
-     <td bgcolor="#FFFFE8">&nbsp;&nbsp;<%=isValid%></td>
+	 <td align="center" bgcolor="#ADCCC5" width="15%"> 대여 </td>
+     <td ><%=isValid%></td>
  </tr>
    <tr> 
     <td colspan="4"><br/><pre><%=content%></pre><br/></td>

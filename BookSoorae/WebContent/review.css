@@ -1,5 +1,5 @@
 
-
+/*1205 ¼öÁ¤ÇÔ */
 :root {
     /* color */
     --color_main_green : #517D73;
@@ -16,13 +16,13 @@
     --color_dark-gray : #898A8D;
 }
 
-.review-read, .reply{
+.review-read, .reply, .review-post{
 	width: 40vw; height: 40vh;
 	margin: auto auto;
 	margin-top: 10vh;
 }
 
-.table-head, .update-head, .reply-head{
+.table-head, .update-head, .reply-head, .reviewpost-head{
 	color:white;
 	height: 30px;
 	border-top-left-radius: 12px;

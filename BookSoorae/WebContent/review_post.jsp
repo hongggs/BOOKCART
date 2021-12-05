@@ -12,14 +12,14 @@ location.href = "login_main.jsp";
 <html>
 <head>
 <title>JSP Board</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="./review.css?ver=1" rel="stylesheet" type="text/css">
 </head>
-<body bgcolor="#FFFFCC">
-<div align="center">
+<body bgcolor="#F4F4EF">
+<div align="center" class="review-post">
 <br/><br/>
 <table width="600" cellpadding="3">
 	<tr>
-		<td bgcolor="84F399" height="25" align="center">글쓰기</td>
+		<td bgcolor="#517D73" height="25" align="center" class="reviewpost-head">글쓰기</td>
 	</tr>
 </table>
 <br/>
@@ -29,31 +29,31 @@ location.href = "login_main.jsp";
 		<td align=center>
 		<table align="center">
 			<tr>
-				<td width="10%">제 목</td>
+				<td width="10%" bgcolor="#ADCCC5">제 목</td>
 				<td width="90%">
 				<input name="subject" size="50" maxlength="30"></td>
 			</tr>
 			<tr>
-				<td>아이디</td>
+				<td bgcolor="#ADCCC5">아이디</td>
 				<td>
 				<%=id %></td>
 			</tr>
 			<tr>
-				<td>작 가</td>
+				<td bgcolor="#ADCCC5">작 가</td>
 				<td>
 				<input name="writer" size="50" maxlength="30"></td>
 			</tr>
 			<tr>
-				<td>출판사</td>
+				<td bgcolor="#ADCCC5">출판사</td>
 				<td>
 				<input name="publisher" size="50" maxlength="30"></td>
 			</tr>
 			<tr>
-				<td>내 용</td>
+				<td bgcolor="#ADCCC5">내 용</td>
 				<td><textarea name="content" rows="10" cols="50"></textarea></td>
 			</tr>
 			<tr>
-				<td>비밀 번호</td>
+				<td bgcolor="#ADCCC5">비밀 번호</td>
 				<td><input type="password" name="pass" size="15" maxlength="15"></td>
 			</tr>
 			 <!-- 파일 지움  

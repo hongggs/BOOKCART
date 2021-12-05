@@ -9,7 +9,7 @@
  <link rel="stylesheet" href="./index.css?ver=1">
  <link rel="stylesheet" href="./mypage.css">
 <title>mypage</title>
-<div class="top-line"></div>
+
 </head>
 <body>
 <% 
@@ -38,7 +38,7 @@
 		<div class="header-btns">
 			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
             <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
-            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
 		</div>
 	</div>
 	<nav class="nav">

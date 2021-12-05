@@ -86,7 +86,7 @@
 </script>
 </head>
 <body bgcolor="#FFFFCC">
-<div class="top-line"></div>
+
 <% 
 		String userId = null;
 		if(session.getAttribute("idKey")!=null){
