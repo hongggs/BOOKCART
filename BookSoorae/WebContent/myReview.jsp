@@ -1,10 +1,10 @@
-<%@page contentType="text/html; charset=utf-8" %>
-<%@page import="bookcart.BookBoardBean"%>
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@page import="bookcart.ReviewBoardBean"%>
 <%@page import="java.util.Vector"%>
-<jsp:useBean id="bMgr" class="bookcart.BookBoardMgr" />
+<jsp:useBean id="bMgr" class="bookcart.ReviewBoardMgr" />
 <%	
 	  request.setCharacterEncoding("utf-8");
-	  String id = (String)session.getAttribute("idKey");
+	  
       int totalRecord=0; //전체레코드수
 	  int numPerPage=10; // 페이지당 레코드 수 
 	  int pagePerBlock=15; //블럭당 페이지수 
@@ -20,8 +20,10 @@
 	  
 	  int listSize=0; //현재 읽어온 게시물의 수
 
+
 	String keyWord = "", keyField = "";
-	Vector<BookBoardBean> vlist = null;
+	Vector<ReviewBoardBean> vlist = null;
+	//검색 처리
 	if (request.getParameter("keyWord") != null) {
 		keyWord = request.getParameter("keyWord");
 		keyField = request.getParameter("keyField");
@@ -32,13 +34,14 @@
 			keyField = "";
 		}
 	}
-	
 	if (request.getParameter("nowPage") != null) {
 		nowPage = Integer.parseInt(request.getParameter("nowPage"));
 	}
+	//현재 내가 접근한 페이지 계산
 	 start = (nowPage * numPerPage)-numPerPage;
 	 end = numPerPage;
 	 
+	//페이지,블럭 계산
 	totalRecord = bMgr.getTotalCount(keyField, keyWord);
 	totalPage = (int)Math.ceil((double)totalRecord / numPerPage);  //전체페이지수
 	nowBlock = (int)Math.ceil((double)nowPage/pagePerBlock); //현재블럭 계산
@@ -47,12 +50,12 @@
 %>
 <html>
 <head>
-<title>책 목록</title>
-<link href="bookList.css" rel="stylesheet" type="text/css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 --> 
+<title>REVIEW Board</title>
+<meta charset="utf-8">
+<link href="review_list.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list() {
-		document.listFrm.action = "bookList.jsp";
+		document.listFrm.action = "review_list.jsp";
 		document.listFrm.submit();
 	}
 	
@@ -67,89 +70,78 @@
 	} 
 	
 	function read(num){
-		console.log("num:"+ num)
-		document.readFrm.book_id.value = num;//이게 이름이 잘못됨
-		document.readFrm.action="bookRead.jsp";
+		document.readFrm.num.value=num;
+		document.readFrm.action="review_read.jsp";
 		document.readFrm.submit();
 	}
 	
 	function check() {
-	   if (document.searchFrm.keyWord.value == "") {
+	     if (document.searchFrm.keyWord.value == "") {
 	   alert("검색어를 입력하세요.");
 	   document.searchFrm.keyWord.focus();
 	   return;
 	     }
 	  document.searchFrm.submit();
 	 }
-
 </script>
 </head>
-<body>
-
-
-    <div class="top-line"></div>
-	 <% 
+<body bgcolor="#FFFFCC">
+<div class="top-line"></div>
+<% 
 		String userId = null;
 		if(session.getAttribute("idKey")!=null){
 			userId=(String)session.getAttribute("idKey");
 		}
 		if(userId==null){ //로그인 되지 않은 경우
-			%>
-			<div class="header">
-				<div class="header-left">
-					<img src="./images/logo.png" alt="shop" width="50" height="50">
-					<a href="./index.jsp">BookSoore</a>
-				</div>
-				
-				<div class="header-btns">
-					<button onclick="location.href='./login_main.jsp'" class="login-button">Login</button>
-		            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
-		            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
-				</div>
-			</div>
-		<%}
-				else{//로그인 된 경우
-			%>
-			<div class="header">
-				<div class="header-left">
-					<img src="./images/logo.png" alt="shop" width="50" height="50">
-					<a href="./index.jsp">BookSoore</a>
-				</div>
-				
-				<div class="header-btns">
-					<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
-		            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
-		            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
-				</div>
-			</div>
-			   <%} %>
+	%>
+	<script>
+    alert("로그인 후 접근가능합니다.");
+	location.href="index.jsp";
+	</script>
 	
-	<div class="write-btn">
-		<button type="button">글 작성하러 가기
-			<i class="fas fa-pencil-alt"></i>
-		</button>
+	<%}
+		else{//로그인 된 경우
+			%>
+			 
+	<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+		</div>
 	</div>
-	<div align="center">
+	<nav class="nav">
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="bookList.jsp">market</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="mypage.jsp">Mypage</a></li>
+    
+        </ul>
+    </nav>
+     <%} %>
+
+<div align="center">
 	<br/>
-	<h2>책 목록</h2>
+	<h2>내 리뷰 목록</h2>
 	<br/>
-	<form name="searchFrm"  method="get" action="bookList.jsp">
-	<table width="600" cellpadding="2" cellspacing="0">
- 		<tr>
-  			<td align="center" valign="bottom">
-   				<select name="keyField" size="1" >
-    				<option value="user_id"> 작성자 </option> 
-    				<option value="title"> 책 제목 </option>
-    				<option value="writer"> 저자 </option>
-    				<option value="content"> 내용 </option>
-   				</select>
-   				<input size="16" name="keyWord">
-   				<input type="button"  value="찾기" onClick="javascript:check()">
-   				<input type="hidden" name="nowPage" value="1">
-  			</td>
- 		</tr>
+	<table align="center" width="600">
+		<%if(!keyWord.equals("")){ %>
+			<tr>
+				<td><%=keyWord%>의 검색결과는 다음과 같습니다.</td>
+			</tr>
+		<%}%>
+			<tr>
+				<td>Total : <%=totalRecord%>Articles(<font color="black">
+				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
+			</tr>
 	</table>
-	</form>
 	<table align="center" width="600" cellpadding="3">
 		<tr>
 			<td align="center" colspan="2">
@@ -157,60 +149,56 @@
 				  vlist = bMgr.getBoardList(keyField, keyWord, start, end);
 				  listSize = vlist.size();//브라우저 화면에 보여질 게시물갯수
 				  if (vlist.isEmpty()) {
-			%>
-			
-				  <table width="100%" cellpadding="2" cellspacing="0">
-					<tr align="center" bgcolor="#D0D0D0" height="120%">
-						<th>번호</th>
-						<th>책 제목</th>
-						<th>저자</th>
-						<th>보증금</th>
-						<th>대여가능</th>
-						<th>작성자</th>
-					</tr>
-				  </table>
-			<% 
-			out.println("등록된 책이 없습니다.");} 
-				  else {
+					out.println("등록된 게시물이 없습니다.");
+				  } else {
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
-					<tr align="center" bgcolor="#D0D0D0" height="120%">
-						<th>번호</th>
-						<th>책 제목</th>
-						<th>저자</th>
-						<th>보증금</th>
-						<th>대여가능</th>
-						<th>작성자</th>
+					<tr align="center" bgcolor="#C5E2E1" height="120%">
+						<td>번 호</td>
+						<td>제 목</td>
+						<td>이 름</td>
+						<td>날 짜</td>
+						<td>조회수</td>
 					</tr>
 					<%
 						  for (int i = 0;i<numPerPage; i++) {
 							if (i == listSize) break;
-							BookBoardBean bean = vlist.get(i);
-							int book_id = bean.getBook_id();
-							String user_id = bean.getUser_id();
-							String title = bean.getTitle();
-							String writer = bean.getWriter();
-							int money = bean.getMoney();
-							String isValid = bean.getIsValid();
-							  
+							ReviewBoardBean bean = vlist.get(i);
+							int num = bean.getRv_id();
+							String name = bean.getUser_id();
+							String subject = bean.getSubject();
+							String regdate = bean.getWr_date();
+							int depth = bean.getDepth();
+							int count = bean.getHit();
 					%>
+					<% if(userId!=null && userId.equals(name)){ %>
 					<tr>
 						<td align="center">
 							<%=totalRecord-((nowPage-1)*numPerPage)-i%>
 						</td>
 						<td>
-						  <a href="javascript:read('<%=book_id%>')"><%=title%></a>
+						<%
+							  if(depth>0){
+								for(int j=0;j<depth;j++){
+									out.println("&nbsp;&nbsp;");
+									}
+								}
+						%>
+						  <a href="javascript:read('<%=num%>')"><%=subject%></a>
 						</td>
-						<td align="center"><%=writer%></td>
-						<td align="center"><%=money%>원</td>
-						<td align="center"><%=isValid%></td>
-						<td align="center"><%=user_id%></td>
+						<td align="center"><%=name%></td>
+						<td align="center"><%=regdate%></td>
+						<td align="center"><%=count%></td>
 					</tr>
+					<% if(userId==null){out.println("등록된 리뷰가 없습니다.");} %>
+					<%}else{} %>
+					
 					<%}//for%>
 				</table> <%
  			}//if
  		%>
- 		</td>
+			</td>
+		</tr>
 		<tr>
 			<td colspan="2"><br /><br /></td>
 		</tr>
@@ -235,23 +223,20 @@
     				<%}%>&nbsp;  
    				<%}%>
  				<!-- 페이징 및 블럭 처리 End-->
-			</td>
-		</tr>
-	</table>
+				</td>
+				<td align="right">
+					<a href="review_post.jsp">[글쓰기]</a> 
+					<a href="javascript:list()">[처음으로]</a>
+				</td>
+			</tr>
+		</table>
 	<hr width="600"/>
-	<table width="600" cellpadding="4" cellspacing="0">
- 		<tr>
-			<td align="center" valign="bottom">
-				<a href="bookPost.jsp">책 등록</a> 
-			</td>
- 		</tr>
-	</table>
 	<form name="listFrm" method="post">
 		<input type="hidden" name="reload" value="true"> 
 		<input type="hidden" name="nowPage" value="1">
 	</form>
 	<form name="readFrm" method="get">
-		<input type="hidden" name="book_id"> 
+		<input type="hidden" name="num"> 
 		<input type="hidden" name="nowPage" value="<%=nowPage%>"> 
 		<input type="hidden" name="keyField" value="<%=keyField%>"> 
 		<input type="hidden" name="keyWord" value="<%=keyWord%>">

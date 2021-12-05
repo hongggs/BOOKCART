@@ -78,7 +78,7 @@
       <li class="item mouse-effect stagger-item">
         <div class="left">
           <img src="images/review.svg" />
-          <div style=" cursor: pointer;" onclick="location.href='index.jsp';"class="name">내가 쓴 review 목록</div>
+          <div style=" cursor: pointer;" onclick="location.href='myReview.jsp';"class="name">내가 쓴 review 목록</div>
         </div>
       </li>
       

@@ -27,7 +27,7 @@
 %>		
 		<script> 
 	  		alert("로그인 되었습니다.");
-      		location.href="login_ok.jsp";
+      		location.href="index.jsp";
 		</script>
 		
 <%}%>

@@ -79,22 +79,17 @@
 		if(session.getAttribute("idKey")!=null){
 			userId=(String)session.getAttribute("idKey");
 		}
-		if(userId==null){ //로그인 되지 않은 경우
+		if(userId!=null){ //로그인된 경우(회원가입 접근하면 안됨.)
 	%>
-	<header>
-        <h1>
-            <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.jsp">BookSooRae</a>
-			
-        </h1>
-       
-             <ul>
-            <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="signup1.jsp">SIGN-UP</a>
-            <a class="button" href="login_main.jsp">LOGIN</a>
-            </ul>
-        
-    </header>
+
+
+	<script>
+    alert("로그인 된 계정입니다.");
+    location.href="index.jsp";
+	</script>
+	
+	
+	
     <%}
 		else{//로그인 된 경우
 	%>
@@ -107,7 +102,8 @@
        
              <ul>
             <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="logout.jsp">LOGOUT</a>
+            <a class="button" href="signup1.jsp">SIGN-UP</a>
+            <a class="button" href="login_main.jsp">LOGIN</a>
             </ul>
         
     </header>

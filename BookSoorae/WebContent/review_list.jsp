@@ -86,9 +86,20 @@
 	 }
 </script>
 </head>
+
+ <div class="top-line"></div>
+	
 <body bgcolor="#FFFFCC">
 <div class="top-line"></div>
-<div class="header">
+
+<% 
+		String userId = null;
+		if(session.getAttribute("idKey")!=null){
+			userId=(String)session.getAttribute("idKey");
+		}
+		if(userId==null){ //로그인 되지 않은 경우
+	%>
+	<div class="header">
 		<div class="header-left">
 			<img src="./images/logo.png" alt="shop" width="50" height="50">
 			<a href="./index.jsp">BookSoore</a>
@@ -99,7 +110,24 @@
             <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
             <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
 		</div>
-</div>
+	</div>
+<%}
+		else{//로그인 된 경우
+	%>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
+		</div>
+	</div>
+	   <%} %>
+
 	<nav class="nav">
         <ul>
             <li><a href="index.jsp">Home</a></li>
