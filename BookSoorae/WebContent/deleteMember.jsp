@@ -93,7 +93,7 @@ String user_id = bean.getUser_id();
 
 <form name=delMember method=post action="deleteMember.jsp">
 
-<label for="loginpw" class="labelpw">패스워드</label>
+<label for="loginpw" class="labelpw">비밀번호</label>
 
 <input type="password" name="pw">
 

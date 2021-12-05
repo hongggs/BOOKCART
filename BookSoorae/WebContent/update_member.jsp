@@ -81,7 +81,7 @@
         <input type="text" name="area2"value="<%=area2%>"><br/>
         <div>
 	        <button type="submit">회원정보수정</button>
-	        <button type="button" onclick="document.location.href='index.jsp'">취소</button>  
+	        <button type="button" onClick="history.go(-1)">취소</button>  
     	</div>
     </div>
     
