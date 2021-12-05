@@ -21,41 +21,41 @@
 <html>
 <head>
 <title>REVIEW BOARD</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="./review.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list(){
 	    document.listFrm.submit();
 	 } 
 	
-	//file필요없음
+	<!--file필요없음-->
 </script>
 </head>
-<body bgcolor="#FFFFCC">
+<body bgcolor="#F4F4EF" class="review-read">
 <br/><br/>
-<table align="center" width="600" cellspacing="3">
+<table align="center" width="700" cellspacing="3">
  <tr>
-  <td bgcolor="#9CA2EE" height="25" align="center">글읽기</td>
+  <td bgcolor="#517D73" height="25" align="center" class="table-head">글읽기</td>
  </tr>
  <tr>
   <td colspan="2">
    <table cellpadding="3" cellspacing="0" width="100%"> 
     <tr> 
-  <td align="center" bgcolor="#DDDDDD" width="10%"> 이 름 </td>
-  <td bgcolor="#FFFFE8"><%=name%></td>
-  <td align="center" bgcolor="#DDDDDD" width="10%"> 등록날짜 </td>
-  <td bgcolor="#FFFFE8"><%=regdate%></td>
+  <td align="center" bgcolor="#ADCCC5" width="10%"> 이 름 </td>
+  <td><%=name%></td>
+  <td align="center" bgcolor="#ADCCC5" width="10%"> 등록날짜 </td>
+  <td><%=regdate%></td>
  </tr>
  <tr> 
-    <td align="center" bgcolor="#DDDDDD"> 제 목</td>
-    <td bgcolor="#FFFFE8" colspan="3"><%=subject%></td>
+    <td align="center" bgcolor="#ADCCC5"> 제 목</td>
+    <td colspan="3"><%=subject%></td>
    </tr>
     <tr> 
-    <td align="center" bgcolor="#DDDDDD"> 작 가</td>
-    <td bgcolor="#FFFFE8" colspan="3"><%=writer%></td>
+    <td align="center" bgcolor="#ADCCC5"> 작 가</td>
+    <td colspan="3"><%=writer%></td>
    </tr>
     <tr> 
-    <td align="center" bgcolor="#DDDDDD"> 출판사</td>
-    <td bgcolor="#FFFFE8" colspan="3"><%=publisher%></td>
+    <td align="center" bgcolor="#ADCCC5"> 출판사</td>
+    <td colspan="3"><%=publisher%></td>
    </tr>
   <!-- 파일첨부 필요없음 -->
    <tr> 

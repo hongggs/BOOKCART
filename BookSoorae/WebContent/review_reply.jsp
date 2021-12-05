@@ -19,14 +19,14 @@ location.href = "login_main.jsp";
 <html>
 <head>
 <title>ReviewBoard</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="./review.css?ver=1" rel="stylesheet" type="text/css">
 </head>
-<body bgcolor="#FFFFCC">
+<body bgcolor="#F4F4EF" class="reply">
 <div align="center">
 <br><br>
  <table width="600" cellpadding="3">
   <tr>
-   <td bgcolor="#CCCC00" height="21" align="center">답변하기</td>
+   <td bgcolor="#517D73" height="21" align="center" class="reply-head">답변하기</td>
   </tr>
 </table>
 <form method="post" action="boardReply" >
@@ -35,16 +35,16 @@ location.href = "login_main.jsp";
   <td>
    <table>
     <tr>
-     <td>제 목</td>
+     <td bgcolor="#ADCCC5">제 목</td>
      <td>
 	  <input name="subject" size="50" value="답변 : <%=subject%>" maxlength="50"></td> 
     </tr>
     <tr>
-			<td>아이디</td>
+			<td bgcolor="#ADCCC5">아이디</td>
 			<td><%=id%></td>
 	</tr>
 	<tr>
-     <td>내 용</td>
+     <td bgcolor="#ADCCC5">내 용</td>
      <td>
 	  <textarea name="content" rows="12" cols="50">
       	<%=content %>
@@ -53,7 +53,7 @@ location.href = "login_main.jsp";
       </td>
     </tr>
     <tr>
-     <td>비밀 번호</td> 
+     <td bgcolor="#ADCCC5">비밀 번호</td> 
      <td>
 	  <input type="password" name="pass" size="15" maxlength="15"></td> 
     </tr>

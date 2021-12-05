@@ -23,7 +23,7 @@ location.href = "login_main.jsp";
 <html>
 <head>
 <title>JSP Board</title>
-<link href="style.css" rel="stylesheet" type="text/css">
+<link href="./review.css?ver=1" rel="stylesheet" type="text/css">
 <script>
 	function check() {
 	   if (document.updateFrm.pass.value == "") {
@@ -35,11 +35,11 @@ location.href = "login_main.jsp";
 	}
 </script>
 </head>
-<body bgcolor="#FFFFCC">
+<body bgcolor="#F4F4EF">
 <div align="center"><br/><br/>
 <table width="600" cellpadding="3">
   <tr>
-   <td bgcolor="#FF9018"  height="21" align="center">수정하기</td>
+   <td bgcolor="#517D73"  height="21" align="center" class="update-head">수정하기</td>
   </tr>
 </table>
 <form name="updateFrm" method="post" action="boardUpdate">

@@ -3,10 +3,37 @@
 
 html{height: 100%}
 body{position: relative;}
-.signup{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
+
+.signup{ 
+	text-align: center;
+	padding: 20px;
+	margin-left:60px;
+	margin-right:60px;
+	border:1px solid #ccc;
+	padding:25px 15px;
+	box-sizing:border-box;
+	height: 50vh; width: 30%;
+	display: flex;
+	flex-direction: column;
+	margin: auto auto;
+	    
+}
+
+.sign-up-p{
+	height:32vh;
+}
+.sign-up-p label, .sign-up-p input{
+	margin-top:1vh;
+}
+	    
 .signup h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
 .updateMember{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
 .updateMember h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
+.mypage{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
+.mypage h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
+.mypage h3{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
+.mypost{ text-align: center;padding: 20px;margin-left:60px;margin-right:60px; border:1px solid #ccc;  padding:25px 15px; box-sizing:border-box;}
+.mypost h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
 
 
 
@@ -28,4 +55,17 @@ body{position: relative;}
 
 #loginbtn{width:129px; height:35px;  margin-top:20px;border:none; background-color: #517D73; border-radius:3px; color:#fff; font-size:14px; font-weight:bold; position:relative; top:1px;}
 
+/* footer영역 */
+footer{
+    clear: both;
+    background-color: #444444;
+    color: white;
+    text-align: center;
+    text-size-adjust: 3px;
+    padding: 2em 0px;
+    margin:auto auto;
+    width: 100%;
+    position: fixed; bottom: 0%;
+    
+}
 

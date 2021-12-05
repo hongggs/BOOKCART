@@ -35,7 +35,7 @@
 		<div class="header-btns">
 			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
             <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
-            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
 		</div>
 	</div>
 	<nav class="nav">
@@ -50,29 +50,28 @@
 
 <section id="main">
 <div class="loginbox">
-    
-
-<h1>로그인</h1>
-
-<form method=post action="login_proc.jsp">
-
-<label for="loginid" class="labelid">아이디</label>
-
-<input type="text" name="user_id"><br />
-
-<label for="loginpw" class="labelpw">패스워드</label>
-
-<input type="password" name="pw">
-
-<div class="chk">
-
-<input type="checkbox" id="idchk">
-
-<label for="idchk">아이디 저장</label>
-
-<input type="checkbox" id="pwchk">
-
-<label for="pwchk">비밀번호 저장</label>
+	    
+	<h1>로그인</h1>
+	
+	<form method=post action="login_proc.jsp">
+	
+	<label for="loginid" class="labelid">아이디</label>
+	
+	<input type="text" name="user_id"><br />
+	
+	<label for="loginpw" class="labelpw">패스워드</label>
+	
+	<input type="password" name="pw">
+	
+	<div class="chk">
+	
+	<input type="checkbox" id="idchk">
+	
+	<label for="idchk">아이디 저장</label>
+	
+	<input type="checkbox" id="pwchk">
+	
+	<label for="pwchk">비밀번호 저장</label>
 
 </div>
 

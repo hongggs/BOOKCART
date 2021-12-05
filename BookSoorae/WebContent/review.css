@@ -1,0 +1,55 @@
+
+
+:root {
+    /* color */
+    --color_main_green : #517D73;
+    --color_dark_green : #347C6E;
+     --color_light_green: #6bb1a1;
+    --color_background : #F4F4EF; 
+    --color_navy : #30355C;
+    --color_point-mint : #00D1FF;
+
+    --color_white : #FFFFFF;
+    --color_black : #000000;
+    --color_light-gray :#b9b9b9;
+    --color_gray : #D2D2D2;
+    --color_dark-gray : #898A8D;
+}
+
+.review-read, .reply{
+	width: 40vw; height: 40vh;
+	margin: auto auto;
+	margin-top: 10vh;
+}
+
+.table-head, .update-head, .reply-head{
+	color:white;
+	height: 30px;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+}
+
+.update-member{
+	width: 30vw; height: 40vh;
+	margin: auto auto;
+	margin-top: 20vh;
+	border: solid 1px  #517D73;
+	border-radius: 20px;
+	display:flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	margin-top:10%;
+	margin-bottom: 10%;
+	padding: 20px;
+	
+}
+
+.update-member h1, .updateMember{
+	width: 200px;
+	margin: auto auto;
+
+}
+.update-member h1{
+	color:#517D73;	
+}

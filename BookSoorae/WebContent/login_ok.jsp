@@ -54,7 +54,7 @@
 		<div class="header-btns">
 			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
             <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
-            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
 		</div>
 	</div>
 	<nav class="nav">
@@ -67,7 +67,7 @@
         </ul>
     </nav>
     <%} %>
-    <section id="main">
+    <section id="loginok-main">
        <h1 class="login-sign"><%=id %>님, 북수레에 로그인 되었습니다!</h1>
        <div class="login-btns">
 	    	<button type="button" onclick="document.location.href='index.jsp'">메인페이지 이동</button> 

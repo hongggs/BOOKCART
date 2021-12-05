@@ -48,7 +48,7 @@
 <html>
 <head>
 <title>내 책 목록</title>
-<link href="bookList.css" rel="stylesheet" type="text/css">
+<link href="./bookList.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list() {
 		document.listFrm.action = "myBookList.jsp";
@@ -87,19 +87,28 @@
 	<div class="top-line"></div>
 	<div class="header">
 		<div class="header-left">
-			<div class="book-icon"><i class="fas fa-book fa-2x"></i></div>
-			<h1>BookSoorae</h1>
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
 		</div>
 		
 		<div class="header-btns">
-			<button type="button" class="signup-button">Sign-up</button>
-			<button type="button" class="login-button">Login</button>
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
 		</div>
 	</div>
+	<nav class="nav">
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="bookList.jsp">Market</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="mypage.jsp">Mypage</a></li>
+    
+        </ul>
+    </nav>
 	<div class="write-btn">
-		<button type="button">글 작성하러 가기
-			<i class="fas fa-pencil-alt"></i>
-		</button>
+		<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
+		<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
 	</div>
 	<div align="center">
 	<br/>
@@ -132,7 +141,7 @@
 			%>
 			
 				  <table width="100%" cellpadding="2" cellspacing="0">
-					<tr align="center" bgcolor="#D0D0D0" height="120%">
+					<tr align="center" bgcolor="#C5E2E1" height="120%">
 						<th>번호</th>
 						<th>책 제목</th>
 						<th>저자</th>
@@ -146,7 +155,7 @@
 				  else {
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
-					<tr align="center" bgcolor="#D0D0D0" height="120%">
+					<tr align="center" bgcolor="#C5E2E1" height="120%">
 						<th>번호</th>
 						<th>책 제목</th>
 						<th>저자</th>
@@ -214,13 +223,13 @@
 		</tr>
 	</table>
 	<hr width="600"/>
-	<table width="600" cellpadding="4" cellspacing="0">
+	<!-- <table width="600" cellpadding="4" cellspacing="0">
  		<tr>
 			<td align="center" valign="bottom">
 				<a href="bookPost.jsp">책 등록</a> 
 			</td>
  		</tr>
-	</table>
+	</table> -->
 	<form name="listFrm" method="post">
 		<input type="hidden" name="reload" value="true"> 
 		<input type="hidden" name="nowPage" value="1">

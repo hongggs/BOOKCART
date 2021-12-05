@@ -6,11 +6,10 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="./index.css">
-<link rel="stylesheet" href="./signup.css">
+<link rel="stylesheet" href="./review.css">
 <title>Insert title here</title>
 </head>
-<body>
+<body bgcolor="#F4F4EF">
 <% 
 		String userId = null;
 		if(session.getAttribute("idKey")!=null){
@@ -53,7 +52,7 @@
 	  
  %>
 
-<div class="updateMember">
+<div class="update-member">
    <h1>정보 수정</h1>
  <form name="updateMemberFrm" method="post" action="memberUpdate">
     <div class="updateMember">
@@ -80,11 +79,12 @@
 
         <label for="address-2" class="label-address2">거주지 동</label>
         <input type="text" name="area2"value="<%=area2%>"><br/>
+        <div>
+	        <button type="submit">회원정보수정</button>
+	        <button type="button" onclick="document.location.href='index.jsp'">취소</button>  
+    	</div>
     </div>
-    <div>
-        <button type="submit">회원정보수정</button>
-        <button type="button" onclick="document.location.href='index.jsp'">취소</button>  
-    </div>
+    
     <%}%> 
 </form>
  </div> 

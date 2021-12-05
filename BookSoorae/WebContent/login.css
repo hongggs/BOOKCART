@@ -9,7 +9,8 @@ body{position: relative;  }
     /* color */
     --color_main_green : #517D73;
     --color_dark_green : #347C6E;
-    --color_background : #F4F4EF; /*왜 선언한걸로 적용이 안될까 이건*/
+     --color_light_green: #6bb1a1;
+    --color_background : #F4F4EF; 
     --color_navy : #30355C;
     --color_point-mint : #00D1FF;
 
@@ -191,7 +192,7 @@ body{
 }
 
 
-.loginbox{ text-align: center;width:350px; height:340px; border:1px solid #ccc;margin: 7% auto 8% auto; padding:25px 15px; box-sizing:border-box;}
+.loginbox{ text-align: center;width:70%; height:42vh; border:1px solid #ccc;margin: 7% auto 8% auto; padding:25px 15px; box-sizing:border-box;}
 
 .loginbox h1{width:100%; height:40px; font-size: 28px; color: #517D73; border-bottom:1px solid #517D73; padding-left:15px; box-sizing:border-box; background-repeat:no-repeat; background-position: 3px 5px; margin-bottom:30px;}
 
@@ -219,7 +220,7 @@ body{
 
 ​
 
-.btnwrap{width:100%; text-align:center; }
+.btnwrap{width:100%; text-align:center; margin-top: 3vh;}
 
 .btnwrap label{position:absolute; left:-999em;}
 
@@ -227,9 +228,9 @@ body{
 
 #loginbtn{width:129px; height:35px;  margin-top:20px;border:none; background-color: #517D73; border-radius:3px; color:#fff; font-size:14px; font-weight:bold; position:relative; top:1px;}
 
-#main{
-	width: 40%; height: 10vh;
-	margin:auto; margin-top: 10%;
+#main, #loginok-main{
+	width: 40%; height: 100%;
+	margin:auto; margin-top: 1%;
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -238,11 +239,31 @@ body{
 /* .login-sign, .login-btns{
 	margin-top: 10%;
 } */
+
+#loginok-main{
+	height: 16vh;
+	margin-top: 7%;
+}
+
 .login-btns{
-	width:55%;
+	width:100%;
 	display:flex;
 	flex-direction: row;
 	justify-content: space-around;
+}
+
+.login-btns button{
+	width:123px;height:30px;
+	background-color: var(--color_light_green);
+	border-radius: 15px;
+	color: white;
+	border: none;
+	
+}
+
+
+.loginbox input, .loginbox label{
+	margin-top:2vh;
 }
 /* footer영역 */
 footer{

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@page import="bookcart.ReviewBoardBean"%>
 <%@page import="java.util.Vector"%>
 <jsp:useBean id="bMgr" class="bookcart.ReviewBoardMgr" />
@@ -27,6 +27,7 @@
 	if (request.getParameter("keyWord") != null) {
 		keyWord = request.getParameter("keyWord");
 		keyField = request.getParameter("keyField");
+		System.out.print("keyWord:"+keyWord);
 	}
 	if (request.getParameter("reload") != null){
 		if(request.getParameter("reload").equals("true")) {
