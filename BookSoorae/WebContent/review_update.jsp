@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
- <%@ page import="bookcart.ReviewBoardBean"%>
+<%@ page import="bookcart.ReviewBoardBean"%>
  <%
  		String id = (String)session.getAttribute("idKey");  
  		if(id!=null){
@@ -9,11 +9,17 @@
 alert("로그인이 필요한 서비스입니다");
 location.href = "login_main.jsp";
 </script>
-		<%} %>
-<% 
+		<%} 
+ 	
+ 		ReviewBoardBean bean = (ReviewBoardBean)session.getAttribute("bean");
+ 		if(!bean.getUser_id().equals(id)){%>
+<script>
+alert("권한이 없습니다");
+location.href = "review_list.jsp";
+</script>			
+<% }
 	  int num = Integer.parseInt(request.getParameter("num"));
 	  String nowPage = request.getParameter("nowPage");
-	  ReviewBoardBean bean = (ReviewBoardBean)session.getAttribute("bean");
 	  String subject = bean.getSubject();
 	  String name = bean.getUser_id(); 
 	  String content = bean.getContent(); 
@@ -24,16 +30,6 @@ location.href = "login_main.jsp";
 <head>
 <title>JSP Board</title>
 <link href="./review.css?ver=1" rel="stylesheet" type="text/css">
-<script>
-	function check() {
-	   if (document.updateFrm.pass.value == "") {
-		 alert("수정을 위해 패스워드를 입력하세요.");
-		 document.updateFrm.pass.focus();
-		 return false;
-		 }
-	   document.updateFrm.submit();
-	}
-</script>
 </head>
 <body bgcolor="#F4F4EF">
 <div align="center"><br/><br/>
@@ -74,11 +70,6 @@ location.href = "login_main.jsp";
      <td>
 	  <textarea name="content" rows="10" cols="50"><%=content%></textarea>
 	 </td>
-    </tr>
-	<tr>
-     <td>비밀 번호</td> 
-     <td><input type="password" name="pass" size="15" maxlength="15">
-      수정 시에는 비밀번호가 필요합니다.</td>
     </tr>
 	<tr>
      <td colspan="2" height="5"><hr/></td>

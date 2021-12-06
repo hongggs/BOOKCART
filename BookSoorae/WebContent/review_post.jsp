@@ -53,17 +53,6 @@ location.href = "login_main.jsp";
 				<td><textarea name="content" rows="10" cols="50"></textarea></td>
 			</tr>
 			<tr>
-				<td bgcolor="#ADCCC5">비밀 번호</td>
-				<td><input type="password" name="pass" size="15" maxlength="15"></td>
-			</tr>
-			 <!-- 파일 지움  
- 			<tr>
- 				<td>내용타입</td>
- 				<td> HTML<input type=radio name="contentType" value="HTTP" >&nbsp;&nbsp;&nbsp;
-  			 	TEXT<input type=radio name="contentType" value="TEXT" checked>
-  			 	</td>
- 			</tr>-->
-			<tr>
 				<td colspan="2"><hr/></td>
 			</tr>
 			<tr>

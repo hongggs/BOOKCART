@@ -31,22 +31,11 @@ public class ReviewBoardUpdateServlet extends HttpServlet {
 		upBean.setUser_id(session.getAttribute("idKey").toString());
 		upBean.setSubject(request.getParameter("subject"));
 		upBean.setContent(request.getParameter("content"));
-		upBean.setPass(request.getParameter("pass"));
 		upBean.setWriter(request.getParameter("writer"));
 		upBean.setPublisher(request.getParameter("publisher"));
-
-		String upPass = upBean.getPass();
-		String inPass = bean.getPass();
-
-		if (upPass.equals(inPass)) {
-			bMgr.updateBoard(upBean);
-			String url = "review_read.jsp?nowPage=" + nowPage + "&num=" + upBean.getRv_id();
-			response.sendRedirect(url);
-		} else {
-			out.println("<script>");
-			out.println("alert('입력하신 비밀번호가 아닙니다.');");
-			out.println("history.back();");
-			out.println("</script>");
-		}
+		bMgr.updateBoard(upBean);
+		String url = "review_read.jsp?nowPage=" + nowPage + "&num=" + upBean.getRv_id();
+		response.sendRedirect(url);
+		
 	}
 }

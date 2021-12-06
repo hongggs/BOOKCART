@@ -53,11 +53,6 @@ location.href = "login_main.jsp";
       </td>
     </tr>
     <tr>
-     <td bgcolor="#ADCCC5">비밀 번호</td> 
-     <td>
-	  <input type="password" name="pass" size="15" maxlength="15"></td> 
-    </tr>
-    <tr>
      <td colspan="2" height="5"><hr/></td>
     </tr>
 	<tr> 

@@ -28,6 +28,32 @@ public class ReviewBoardMgr {
 			e.printStackTrace();
 		}
 	}
+	//권한 체크 함수
+	public boolean check(int num, String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String writer=null;
+		boolean result=false;
+		try {
+			con = pool.getConnection();
+			sql="select user_id from review where "+num;
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				writer=rs.getString("user_id");
+				if(writer.equals(id)) 
+					result=true;	
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+			
+		return result;
+	}
 
 	// 게시판 리스트
 	public Vector<ReviewBoardBean> getBoardList(String keyField, String keyWord,
@@ -118,16 +144,15 @@ public class ReviewBoardMgr {
 			if (rs.next())
 				ref = rs.getInt(1) + 1;
 			String content = req.getParameter("content");
-			sql = "insert review(user_id,content,subject,ref,pos,depth,wr_date,pass,hit,publisher,writer)";
-			sql += "values(?, ?, ?, ?, 0, 0, now(), ?, 0,?,?)";
+			sql = "insert review(user_id,content,subject,ref,pos,depth,wr_date,hit,publisher,writer)";
+			sql += "values(?, ?, ?, ?, 0, 0, now(), 0,?,?)";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1,user_id);//!!!!!변경 필요
+			pstmt.setString(1,user_id);
 			pstmt.setString(2, content);
 			pstmt.setString(3, req.getParameter("subject"));
 			pstmt.setInt(4, ref);
-			pstmt.setString(5, req.getParameter("pass"));
-			pstmt.setString(6, req.getParameter("publisher"));
-			pstmt.setString(7, req.getParameter("writer"));
+			pstmt.setString(5, req.getParameter("publisher"));
+			pstmt.setString(6, req.getParameter("writer"));
 			System.out.print(sql);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -161,7 +186,6 @@ public class ReviewBoardMgr {
 				bean.setRef(rs.getInt("ref"));
 				bean.setDepth(rs.getInt("depth"));
 				bean.setWr_date(rs.getString("wr_date"));
-				bean.setPass(rs.getString("pass"));
 				bean.setHit(rs.getInt("hit"));
 			}
 		} catch (Exception e) {
@@ -239,8 +263,8 @@ public class ReviewBoardMgr {
 		String sql = null;
 		try {
 			con = pool.getConnection();
-			sql = "insert review (user_id,content,subject,writer,publisher,ref,pos,depth,wr_date,pass,hit)";
-			sql += "values(?,?,?,?,?,?,?,?,now(),?,0)";
+			sql = "insert review (user_id,content,subject,writer,publisher,ref,pos,depth,wr_date,hit)";
+			sql += "values(?,?,?,?,?,?,?,?,now(),0)";
 			int depth = bean.getDepth() + 1;
 			int pos = bean.getPos() + 1;
 			pstmt = con.prepareStatement(sql);
@@ -252,7 +276,6 @@ public class ReviewBoardMgr {
 			pstmt.setInt(6, bean.getRef());
 			pstmt.setInt(7, pos);
 			pstmt.setInt(8, depth);
-			pstmt.setString(9, bean.getPass());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -279,30 +302,5 @@ public class ReviewBoardMgr {
 			pool.freeConnection(con, pstmt);
 		}
 	}
-	/*
-	//페이징 및 블럭 테스트를 위한 게시물 저장 메소드 
-	public void post1000(){
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-		try {
-			con = pool.getConnection();
-			sql = "insert tblBoard(name,content,subject,ref,pos,depth,regdate,pass,count,ip,filename,filesize)";
-			sql+="values('aaa', 'bbb', 'ccc', 0, 0, 0, now(), '1111',0, '127.0.0.1', null, 0);";
-			pstmt = con.prepareStatement(sql);
-			for (int i = 0; i < 1000; i++) {
-				pstmt.executeUpdate();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			pool.freeConnection(con, pstmt);
-		}
-	}
 	
-	//main
-	public static void main(String[] args) {
-		new ReviewBoardMgr().post1000();
-		System.out.println("SUCCESS");
-	}*/
 }
