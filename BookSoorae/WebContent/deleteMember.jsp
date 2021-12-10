@@ -78,10 +78,10 @@ String user_id = bean.getUser_id();
     <nav>
         <ul>
             <li><a href="index.jsp">Home</a></li>
-            <li><a href="aboutus.jsp">About Us</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a href="review_list.jsp">Review</a></li>
-            <li><a href="search.jsp">search</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="pickbook.jsp">PickBook</a></li>
+            <li><a href="./mypage.jsp">Mypage</a></li>
     
         </ul>
     </nav>

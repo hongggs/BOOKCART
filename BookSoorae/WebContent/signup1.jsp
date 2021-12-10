@@ -91,31 +91,28 @@
 	
 	
     <%}
-		else{//로그인 된 경우
+		else{//로그인 안된 경우
 	%>
-	<header>
-        <h1>
-            <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.jsp">BookSooRae</a>
-			
-        </h1>
-       
-             <ul>
-            <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="signup1.jsp">SIGN-UP</a>
-            <a class="button" href="login_main.jsp">LOGIN</a>
-            </ul>
-        
-    </header>
-    <%} %>
-    
-    <nav>
+	<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./login_main.jsp'" class="login-button">Login</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
+		</div>
+	</div>
+	<nav class="nav">
         <ul>
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="aboutus.jsp">About Us</a></li>
+           <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">market</a></li>
-            <li><a onclick="location.href='review_list.jsp'"">Review</a></li>
-            <li><a href="search.jsp">search</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="pickbook.jsp">PickBook</a></li>
+            <li><a href="./mypage.jsp">Mypage</a></li>
     
         </ul>
     </nav>
@@ -158,6 +155,7 @@
     </div>
     </form>
      </div>
+     <%} %>
         
     </section>
     <aside id="right">

@@ -121,7 +121,8 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">market</a></li>
             <li><a onclick="location.href='review_list.jsp'">Review</a></li>
-            <li><a href="mypage.jsp">Mypage</a></li>
+            <li><a href="pickbook.jsp">PickBook</a></li>
+            <li><a href="./mypage.jsp">Mypage</a></li>
     
         </ul>
     </nav>
@@ -137,10 +138,7 @@
 				<td><%=keyWord%>의 검색결과는 다음과 같습니다.</td>
 			</tr>
 		<%}%>
-			<tr>
-				<td>Total : <%=totalRecord%>Articles(<font color="black">
-				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
-			</tr>
+			
 	</table>
 	<table align="center" width="600" cellpadding="3">
 		<tr>
