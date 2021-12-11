@@ -140,23 +140,23 @@
 	<br/>
 	<h2>북수레 목록</h2>
 	<br/>
+	
+	<div class="search-area">
 	<form name="searchFrm"  method="get" action="bookList.jsp">
-	<table width="600" cellpadding="2" cellspacing="0">
- 		<tr>
-  			<td align="center" valign="bottom">
-   				<select name="keyField" size="1" >
+		<div class="search-row">
+			<select name="keyField" size="1"class="select-btn">
     				<option value="user_id"> 작성자 </option> 
     				<option value="title"> 책 제목 </option>
     				<option value="writer"> 저자 </option>
     				<option value="content"> 내용 </option>
-   				</select>
-   				<input size="16" name="keyWord">
-   				<input type="button"  value="찾기" onClick="javascript:check()">
-   				<input type="hidden" name="nowPage" value="1">
-  			</td>
- 		</tr>
-	</table>
+	   		</select>
+			<input type="text" name="keyWord"  class="search-input" placeholder="검색어를 입력하세요">
+			<input type="button" class="search-btn" value="Search" onClick="javascript:check()">
+		</div>
+		<input type="hidden" name="nowPage" value="1">
 	</form>
+	</div>	
+		
 	<table align="center" width="600" cellpadding="3">
 		<tr>
 			<td align="center" colspan="2">
