@@ -72,6 +72,12 @@
 		document.readFrm.action="bookRead.jsp";
 		document.readFrm.submit();
 	}
+	function returnBtn(book_id,lendbook_id){
+		document.listFrm.book_id.value = book_id;
+		document.listFrm.lendbook_id.value = lendbook_id;
+		document.listFrm.action="returnBook.jsp";
+		document.listFrm.submit();
+	}
 	
 </script>
 </head>
@@ -159,9 +165,9 @@
 						<td align="center"><%=writer%></td>
 						<td align="center"><%=money%>원</td>
 						<td align="center"><%=user_id%></td>
-						<form name="listFrm" method="post" action="returnBook.jsp">
-						<td align="center"><input type="submit" value="반납하기"></td>
-						</form>
+						<td align="center"><input type="button" value="반납하기" onclick="returnBtn('<%=book_id%>','<%=lendbook_id%>');"></td>
+						<td align="center"><%=book_id%></td>
+						<td align="center"><%=lendbook_id%></td>
 					</tr>
 					<%}//for%>
 				</table> <%
@@ -203,9 +209,11 @@
 			</td>
  		</tr>
 	</table> -->
-	<form name="listFrm" method="post">
+	<form name="listFrm" method="post" action="returnBook.jsp">
 		<input type="hidden" name="reload" value="true"> 
-		<input type="hidden" name="nowPage" value="1">
+		<input type="hidden" name="nowPage" value="<%=nowPage%>">
+		<input type="hidden" name="book_id"> 
+		<input type="hidden" name="lendbook_id"> 
 	</form>
 	<form name="readFrm" method="get">
 		<input type="hidden" name="book_id"> 

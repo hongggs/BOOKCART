@@ -343,7 +343,6 @@ public class BookBoardMgr {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
 			pstmt.executeUpdate();
-			pstmt.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -361,11 +360,11 @@ public class BookBoardMgr {
 			sql = "update book set isValid='Y' where book_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
+			pstmt.executeUpdate();
 			sql = "delete from lendbook where lendbook_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, lendbook_id);
 			pstmt.executeUpdate();
-			pstmt.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

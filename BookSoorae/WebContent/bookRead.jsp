@@ -34,9 +34,6 @@
          
         frmData.submit() ;
 
-		//document.msgFrm.submit();
-		//window.open("message.jsp","message",'width=600, height=300')
-
 	}
 </script>
 <html>
