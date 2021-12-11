@@ -9,8 +9,9 @@
 	request.setCharacterEncoding("utf-8");
 	String nowPage = request.getParameter("nowPage");
 	int book_id = Integer.parseInt(request.getParameter("book_id"));
-		
+	
 	bMgr.lendBook(book_id);
-	String url = "bookList.jsp?nowPage=" + nowPage;
+	bMgr.insertLendBook(book_id);
+	String url = "myLendBook.jsp?nowPage=" + nowPage;
 	response.sendRedirect(url);
 %>
