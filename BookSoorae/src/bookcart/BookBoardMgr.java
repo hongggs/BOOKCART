@@ -74,6 +74,46 @@ public class BookBoardMgr {
 		return vlist;
 	}
 	
+	public Vector<BookBoardBean> getLendList(String keyField, String keyWord,
+			int start, int end) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<BookBoardBean> vlist = new Vector<BookBoardBean>();
+		try {
+			con = pool.getConnection();
+			if (keyWord.equals("null") || keyWord.equals("")) {
+				sql = "select * from lendbook order by lendbook_id desc, lendbook_id limit ?, ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
+			} else {
+				sql = "select * from lendbook where " + keyField + " like ? ";
+				sql += "order by lendbook_id desc, lendbook_id limit ? , ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + keyWord + "%");
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+			}
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BookBoardBean bean = new BookBoardBean();
+				bean.setLendbook_id(rs.getInt("lendbook_id"));
+				bean.setTitle(rs.getString("title"));
+				bean.setWriter(rs.getString("writer"));
+				bean.setMoney(rs.getInt("money"));
+				bean.setUser_id(rs.getString("user_id"));
+				vlist.add(bean);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
 	//�� �Խù���
 	public int getTotalCount(String keyField, String keyWord) {
 		Connection con = null;
@@ -88,6 +128,34 @@ public class BookBoardMgr {
 				pstmt = con.prepareStatement(sql);
 			} else {
 				sql = "select count(book_id) from book where " + keyField + " like ? ";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + keyWord + "%");
+			}
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return totalCount;
+	}
+	
+	public int getLendCount(String keyField, String keyWord) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		int totalCount = 0;
+		try {
+			con = pool.getConnection();
+			if (keyWord.equals("null") || keyWord.equals("")) {
+				sql = "select count(lendbook_id) from lendbook";
+				pstmt = con.prepareStatement(sql);
+			} else {
+				sql = "select count(lendbook_id) from lendbook where " + keyField + " like ? ";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, "%" + keyWord + "%");
 			}
@@ -154,6 +222,30 @@ public class BookBoardMgr {
 				pool.freeConnection(con, pstmt, rs);
 			}
 		}
+	
+	public void insertLendBook(int book_id) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = null;
+			MultipartRequest multi = null;
+			try {
+				con = pool.getConnection();
+				sql = "select max(lendbook_id) from lendbook";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				sql = "insert into lendbook(book_id,user_id,title,publisher,writer,money,wr_date)";
+				sql += "select book_id,user_id,title,publisher,writer,money,wr_date from book where book_id=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, book_id);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				pool.freeConnection(con, pstmt, rs);
+			}
+		}
+	
 	
 	// �Խù� ����
 	public BookBoardBean getBoard(int book_id) {
@@ -255,6 +347,28 @@ public class BookBoardMgr {
 			e.printStackTrace();
 		} finally {
 			pool.freeConnection(con, pstmt);
+		}
+	}
+	
+	public void returnBook(int book_id, int lendbook_id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		ResultSet rs = null;
+		try {
+			con = pool.getConnection();
+			sql = "update book set isValid='Y' where book_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			sql = "delete from lendbook where lendbook_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, lendbook_id);
+			pstmt.executeUpdate();
+			pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
 	}
 
