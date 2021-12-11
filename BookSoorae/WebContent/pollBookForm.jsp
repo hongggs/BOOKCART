@@ -53,7 +53,7 @@
 		</td>
 		<td>
 		<input type="button" value="°á°ú" 
-		onclick="javascript:window.open('pollBookView.jsp?num=<%=num%>',
+		onclick="javascript:window.open('pickbook.jsp?num=<%=num%>',
 		               'PollBookView','width=500, height=350')">
 		</td>
 	</tr>

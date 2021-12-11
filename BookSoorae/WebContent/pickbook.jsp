@@ -89,7 +89,7 @@
 								String edate = plBean.getEdate();
 
 								out.println("	<tr><td align='center'>" + count + "</td>");
-								out.println("<td><a href='pollBookList.jsp?num=" + num + "'>"
+								out.println("<td><a href='pickbook.jsp?num=" + num + "'>"
 										+ question + "</a></td>");
 								out.println("<td>" + sdate +" ~ "+ edate + "</td></tr>");
 								count = count - 1;
