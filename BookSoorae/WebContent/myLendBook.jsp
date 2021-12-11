@@ -48,7 +48,7 @@
 %>
 <html>
 <head>
-<title>대여한 책 목록</title>
+<title>내 대여 목록</title>
 <link href="./bookList.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list() {
@@ -97,7 +97,7 @@
 	</div>
 	<div align="center">
 	<br/>
-	<h2>대여한 책 목록</h2>
+	<h2>내 대여 목록</h2>
 	<br/>
 	<table align="center" width="600" cellpadding="3">
 		<tr>
