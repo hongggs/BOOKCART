@@ -97,7 +97,7 @@
   <%} else{%> 
   <a href="javascript:list()" >책 목록</a>
   <% if(id!=null && isValid.equals("Y")){ %>
-  <a href="lendBook.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" action="myLendBook" enctype="multipart/form-data">대여하기</a><%} }%>
+  <a href="lendBook.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>">대여하기</a><%} }%>
  </tr>
 </table>
 
