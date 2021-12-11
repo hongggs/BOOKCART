@@ -47,7 +47,7 @@
 %>
 <html>
 <head>
-<title>내 책 목록</title>
+<title>내 북수레 목록</title>
 <link href="./bookList.css?ver=1" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function list() {
@@ -113,7 +113,7 @@
 	</div>
 	<div align="center">
 	<br/>
-	<h2>내 책 목록</h2>
+	<h2>내 북수레 목록</h2>
 	<br/>
 	<form name="searchFrm"  method="get" action="myBookList.jsp" >
 	<table width="600" cellpadding="2" cellspacing="0">
