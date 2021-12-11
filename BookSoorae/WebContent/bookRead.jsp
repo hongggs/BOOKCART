@@ -119,7 +119,7 @@
 <input type="hidden" name="from" value="<%=id%>">
 <input type="hidden" name="to" value="<%=user_id%>">
 </form>
-<form name="downFrm" action="download.jsp" method="post">
+<form name="downFrm" action="bookDownload.jsp" method="post">
 	<input type="hidden" name="filename">
 </form>
 
