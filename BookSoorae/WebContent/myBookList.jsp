@@ -113,7 +113,7 @@
 	</div>
 	<div align="center">
 	<br/>
-	<h2>내 책 목록</h2>
+	<h2>내 북수레 목록</h2>
 	<br/>
 	<form name="searchFrm"  method="get" action="myBookList.jsp" >
 	<table width="600" cellpadding="2" cellspacing="0">
