@@ -1,11 +1,10 @@
 *{margin: 0; padding: 0;}
 
-
 html{height: 100%}
 body{position: relative;}
 
-.signup{ 
-	text-align: center;
+.updateMember{ 
+  text-align: center;
 	padding: 20px;
 	margin-left:60px;
 	margin-right:60px;
@@ -16,13 +15,13 @@ body{position: relative;}
 	display: flex;
 	flex-direction: column;
 	margin: auto auto;
-	    
+	
 }
 
-.sign-up-p{
+.update-Member-p{
 	height:32vh;
 }
-.sign-up-p label, .sign-up-p input{
+.update-Member-p label, .update-Member-p input{
 	margin-top:1vh;
 }
 	    
@@ -68,4 +67,3 @@ footer{
     position: fixed; bottom: 0%;
     
 }
-

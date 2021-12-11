@@ -92,7 +92,7 @@
       
       <li class="item mouse-effect stagger-item">
         <div class="left">
-          <img src="images/delete.svg" />
+          <img src="images/chat.svg" />
           <div style=" cursor: pointer;" onclick="location.href='myMessage.jsp';"class="name">쪽지함</div>
         </div>
       </li>

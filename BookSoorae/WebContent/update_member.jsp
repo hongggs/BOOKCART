@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="./review.css">
+ <link rel="stylesheet" href="./index.css">
+ <link rel="stylesheet" href="./updatemember.css">
+
 <title>Insert title here</title>
 </head>
 <body bgcolor="#F4F4EF">
@@ -23,9 +25,33 @@
 	</script>
 	
 	<%}
-		else{//로그인 된 경우 &현재 비번 입력받아서 권한 제어 추가해야 함.
+		else{//로그인 된 경우 
 			%>
-			  
+			 
+	<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
+		</div>
+	</div>
+	<nav class="nav">
+        <ul>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="bookList.jsp">market</a></li>
+            <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+            <li><a href="pickbook.jsp">PickBook</a></li>
+            <li><a href="./mypage.jsp">Mypage</a></li>
+    
+        </ul>
+    </nav>
+    
 
 	<% 
 	  //회원정보를 bean에 저장.
@@ -50,12 +76,17 @@
 	   area2=bean2.getArea2();
 	   phone=bean2.getPhone();
 	  
- %>
+  %>
+ <aside id="left">
+        
+   </aside>
+ 
 
-<div class="update-member">
+ <section  id="main">
+  <div class="updateMember">
    <h1>정보 수정</h1>
- <form name="updateMemberFrm" method="post" action="memberUpdate">
-    <div class="updateMember">
+  <form name="updateMemberFrm" method="post" action="memberUpdate">
+    <div class="update-Member-p">
         <label for="user-name" class="label-username">이름</label>
         <input name="name" value="<%=name%>" ><br/>
 
@@ -84,9 +115,45 @@
 	        <button type="button" onClick="history.go(-1)">취소</button>  
     	</div>
     </div>
-    
-    <%}%> 
+
 </form>
  </div> 
+   <%}%> 
+  </section>
+  
+  <aside id="right">
+        
+ 
+    </aside>
+ <footer>
+        <div class="container">
+            <a class="footerButton" href="https://www.nl.go.kr/" >
+                <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
+            </a>
+
+            <a class="footerButton" href="https://childlib.sen.go.kr/" >
+                <img class="btn-img" src="./images/child.png">
+            </a>
+            
+            <a class="footerButton" href="https://www.sblib.seoul.kr" >
+                <img class="btn-img" src="./images/sungbuk.png">
+            </a>
+            
+            <a class="footerButton" href="https://nslib.sen.go.kr" >
+                <img class="btn-img" src="./images/namsan.png">
+            </a>
+          
+            <a class="footerButton" href="https://www.nanet.go.kr/main.do" >
+                <img class="btn-img" src="./images/nationalAssembly.png">
+            </a>
+
+        </div>
+        <div class="container">
+            Copyright© 성신여자대학교 웹정보프로그래밍_북수레
+        </div>
+      
+    </footer>
+ 
+ 
 </body>
 </html>

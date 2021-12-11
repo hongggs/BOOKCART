@@ -62,6 +62,30 @@ public class MessageMgr {
 		}
 		return vlist;
 	}
+	
+	//보낸사람 가져오기 + 검색 추가
+	public Vector<String> getFromIdSearch(String id , String searchId){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		Vector<String> vlist = new Vector<String>();
+		try {
+			con = pool.getConnection();
+			sql = "select a.`from` from(select `from` from message where `to` like '"+id+"' group by `from` order by wr_date desc)a where a.`from` like '"+searchId+"'";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				vlist.add(rs.getString("from"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
+		}
+		return vlist;
+	}
+	
 	//받은 메세지 가져오기
 	public Vector<MessageBean> getMessageList(String my_id, String from_id ){
 		Connection con = null;
