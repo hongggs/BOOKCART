@@ -132,16 +132,8 @@
     
         </ul>
     </nav>
-	<div class="write-btn">
-		<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
-		<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
-	</div>
-	<div align="center">
-	<br/>
-	<h2>북수레 목록</h2>
-	<br/>
-	
-	<div class="search-area">
+    
+    <div class="search-area">
 	<form name="searchFrm"  method="get" action="bookList.jsp">
 		<div class="search-row">
 			<select name="keyField" size="1"class="select-btn">
@@ -155,8 +147,31 @@
 		</div>
 		<input type="hidden" name="nowPage" value="1">
 	</form>
-	</div>	
-		
+	</div>
+    
+    
+    	<div class="write-btn">
+			<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
+			<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
+		</div>
+
+	<div align="center">
+	<br/>
+	<h2>북수레 목록</h2>
+	<br/>
+	
+	<table align="center" width="600">
+		<%if(!keyWord.equals("")){ %>
+			<tr>
+				<td><%=keyWord%>의 검색결과는 다음과 같습니다.</td>
+			</tr>
+		<%}%>
+			<tr>
+				<td>Total : <%=totalRecord%>Articles(<font color="black">
+				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
+			</tr>
+	</table>
+	
 	<table align="center" width="600" cellpadding="3">
 		<tr>
 			<td align="center" colspan="2">
@@ -242,9 +257,9 @@
     				<%}%>&nbsp;  
    				<%}%>
  				<!-- 페이징 및 블럭 처리 End-->
-			</td>
-		</tr>
-	</table>
+			</td>		
+		</tr>		
+	</table>	
 	<hr width="600"/>
 	<!-- <!-- <form  name="searchFrm"  method="get" action="bookList.jsp"></form> -->
 	<!-- <table width="600" cellpadding="4" cellspacing="0">
