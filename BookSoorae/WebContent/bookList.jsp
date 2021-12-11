@@ -47,7 +47,7 @@
 %>
 <html>
 <head>
-<title>책 목록</title>
+<title>북수레 목록</title>
 <link href="bookList.css?ver=1" rel="stylesheet" type="text/css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 --> 
 </head>
@@ -138,7 +138,7 @@
 	</div>
 	<div align="center">
 	<br/>
-	<h2>책 목록</h2>
+	<h2> 목록</h2>
 	<br/>
 	<form name="searchFrm"  method="get" action="bookList.jsp">
 	<table width="600" cellpadding="2" cellspacing="0">
