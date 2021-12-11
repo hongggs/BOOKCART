@@ -11,14 +11,16 @@
 	System.out.print(my_id+", "+from_id);
 %>
 <script type="text/javascript">
-	function sendMessage(){
+	function sendMessage(contents){
 		var pop_title = "message" ;
         
         window.open("", pop_title,'width=600, height=300') ;
+        
+        document.msgFrm.contents.value=contents
          
         var frmData = document.msgFrm ;
         frmData.target = pop_title ;
-        frmData.action = "message.jsp" ;
+        frmData.action = "message_read.jsp" ;
          
         frmData.submit();
 	}
@@ -104,9 +106,9 @@
 					String contents=bean.getContents();
 			%>	
 			<tr>
-				<td align="center">
-					<a href="javascript:sendMessage()">
-						<%=contents%> </a>
+				<td align="center"  class="text_overflow">
+					<a href="javascript:sendMessage('<%=contents%>')">
+						<%=contents%></a>
 				</td>
 				<td align="center"><%=from%></td>
 				<td align="center"><%=to%></td>
@@ -151,6 +153,7 @@
 <form name="msgFrm" method="post" action="message.jsp">
 <input type="hidden" name="from" value="<%=my_id%>">
 <input type="hidden" name="to" value="<%=from_id%>">
+<input type="hidden" name="contents">
 </form>
 </body>
 </html>
