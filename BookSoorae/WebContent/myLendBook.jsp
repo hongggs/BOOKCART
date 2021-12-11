@@ -66,6 +66,13 @@
 		 document.readFrm.submit();
 	} 
 	
+	function read(num){
+		console.log("num:"+ num)
+		document.readFrm.book_id.value = num;//이게 이름이 잘못됨
+		document.readFrm.action="bookRead.jsp";
+		document.readFrm.submit();
+	}
+	
 </script>
 </head>
 <body>
@@ -145,7 +152,9 @@
 					%>
 					<tr>
 						<td align="center"><%=totalRecord-((nowPage-1)*numPerPage)-i%></td>
-						<td align="center"><%=title%></td>
+						<td>
+						  <a href="javascript:read('<%=book_id%>')"><%=title%></a>
+						</td>
 						<td align="center"><%=writer%></td>
 						<td align="center"><%=money%>원</td>
 						<td align="center"><%=user_id%></td>
@@ -198,7 +207,7 @@
 		<input type="hidden" name="nowPage" value="1">
 	</form>
 	<form name="readFrm" method="get">
-		<input type="hidden" name="lendbook_id"> 
+		<input type="hidden" name="book_id"> 
 		<input type="hidden" name="nowPage" value="<%=nowPage%>"> 
 		<input type="hidden" name="keyField" value="<%=keyField%>"> 
 		<input type="hidden" name="keyWord" value="<%=keyWord%>">
