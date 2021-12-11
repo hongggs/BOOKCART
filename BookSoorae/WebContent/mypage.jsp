@@ -75,6 +75,13 @@
           <div  style=" cursor: pointer;" onclick="location.href='myBookList.jsp';" class="name">내가 쓴 Bookcart 목록</div>
         </div>
       </li>
+	    
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
+          <img src="images/bookcart.svg" />
+          <div  style=" cursor: pointer;" onclick="location.href='myLendBook.jsp';" class="name">내 대여 목록</div>
+        </div>
+      </li>
 
       <li class="item mouse-effect stagger-item">
         <div class="left">
