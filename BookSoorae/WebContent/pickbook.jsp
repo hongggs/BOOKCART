@@ -52,7 +52,7 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">Market</a></li>
             <li><a onclick="location.href='review_list.jsp'">Review</a></li>
-			<li><a href="pollBooklist.jsp">PICK BOOK</a></li>   
+			<li><a href="pickbook.jsp">PICKBOOK</a></li>   
             <li><a href="mypage.jsp">Mypage</a></li>        
     
         </ul>
