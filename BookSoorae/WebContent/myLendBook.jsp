@@ -68,7 +68,7 @@
 	
 	function read(num){
 		console.log("num:"+ num)
-		document.readFrm.book_id.value = num;//이게 이름이 잘못됨
+		document.readFrm.book_id.value = num;
 		document.readFrm.action="bookRead.jsp";
 		document.readFrm.submit();
 	}
@@ -94,6 +94,7 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">Market</a></li>
             <li><a onclick="location.href='review_list.jsp'">Review</a></li>
+	    <li><a href="pickbook.jsp">PickBook</a></li>
             <li><a href="mypage.jsp">Mypage</a></li>
     
         </ul>
