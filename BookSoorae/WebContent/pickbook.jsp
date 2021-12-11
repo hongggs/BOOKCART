@@ -59,13 +59,14 @@
     </nav>
 	<div align="center">
 		<br/>
-		<h2>투표프로그램</h2>
+		<h2> 책을 골라주세요 </h2>
+		<br>
 		<hr width="600"/>
-		<b>설문폼</b>
+		<b> 최근에 올라온 설문  </b>
 		<!--폴 리스트 폼 자리-->
 		<jsp:include page="pollBookForm.jsp" />
 		<hr width="600"/>
-		<b>설문리스트</b>
+		<b>↓ 설문리스트 ↓</b>
 		<!--폴 리스트 테이블 자리-->
 		<table>
 			<tr>

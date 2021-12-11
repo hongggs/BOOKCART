@@ -19,7 +19,7 @@
 		String url = "pollBookInsert.jsp";
 		if(flag){
 			msg = "설문이 추가 되었습니다.";
-			url = "pollBookList.jsp";
+			url = "pickbook.jsp";
 		}
 %>
 <script>
