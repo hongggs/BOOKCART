@@ -138,7 +138,7 @@
 	</div>
 	<div align="center">
 	<br/>
-	<h2> 목록</h2>
+	<h2>북수레 목록</h2>
 	<br/>
 	<form name="searchFrm"  method="get" action="bookList.jsp">
 	<table width="600" cellpadding="2" cellspacing="0">
