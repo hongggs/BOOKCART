@@ -166,8 +166,7 @@
 						<td align="center"><%=money%>원</td>
 						<td align="center"><%=user_id%></td>
 						<td align="center"><input type="button" value="반납하기" onclick="returnBtn('<%=book_id%>','<%=lendbook_id%>');"></td>
-						<td align="center"><%=book_id%></td>
-						<td align="center"><%=lendbook_id%></td>
+						
 					</tr>
 					<%}//for%>
 				</table> <%
