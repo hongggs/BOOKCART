@@ -100,6 +100,7 @@ public class BookBoardMgr {
 			while (rs.next()) {
 				BookBoardBean bean = new BookBoardBean();
 				bean.setLendbook_id(rs.getInt("lendbook_id"));
+				bean.setBook_id(rs.getInt("book_id"));
 				bean.setTitle(rs.getString("title"));
 				bean.setWriter(rs.getString("writer"));
 				bean.setMoney(rs.getInt("money"));
