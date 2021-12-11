@@ -18,7 +18,6 @@ public class MemberRegisterMgr {
  	   }
      }
 	
-	/*
 	// ¸Þ¼¼Áö »èÁ¦
 	public void deleteMessage(String user_id) {
 		Connection con = null;
@@ -27,7 +26,7 @@ public class MemberRegisterMgr {
 		ResultSet rs = null;
 		try {
 			con = pool.getConnection();
-			sql="delete from message (`to=?`) or (`from`=?)";
+			sql="delete from message where ((`to`=?) or (`from`=?))";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1,user_id);			
 			pstmt.setString(2,user_id);
@@ -38,7 +37,6 @@ public class MemberRegisterMgr {
 			pool.freeConnection(con, pstmt, rs);
 		}
 	}
-	*/
 	
 	// È¸¿øÅ»Åð
 	public void deleteMember(String user_id) {

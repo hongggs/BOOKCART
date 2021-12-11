@@ -25,7 +25,7 @@ String user_id = bean.getUser_id();
 		String inPass = request.getParameter("pw");
 		String pw = bean.getPw();
 		if (inPass.equals(pw)) {
-			//regMgr.deleteMessage(user_id);
+			regMgr.deleteMessage(user_id);
 			regMgr.deleteBook(user_id);
 			regMgr.deleteReveiw(user_id);
 			regMgr.deleteMember(user_id);
