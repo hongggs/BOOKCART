@@ -3,6 +3,7 @@ package bookcart;
 
 public class BookBoardBean {
 	private int book_id;
+	private int lendbook_id;
 	private String user_id;
 	private String title;
 	private String publisher;
@@ -21,6 +22,12 @@ public class BookBoardBean {
 	}
 	public void setBook_id(int book_id) {
 		this.book_id = book_id;
+	}
+	public int getLendbook_id() {
+		return lendbook_id;
+	}
+	public void setLendbook_id(int lendbook_id) {
+		this.lendbook_id = lendbook_id;
 	}
 	public String getUser_id() {
 		return user_id;
