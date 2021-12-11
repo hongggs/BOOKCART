@@ -85,6 +85,13 @@
       
       <li class="item mouse-effect stagger-item">
         <div class="left">
+          <img src="images/delete.svg" />
+          <div style=" cursor: pointer;" onclick="location.href='myMessage.jsp';"class="name">쪽지함</div>
+        </div>
+      </li>
+      
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
           <img src="images/member.svg" />
           <div style=" cursor: pointer;" onclick="location.href='update_member.jsp';"class="name">회원 정보 수정</div>
         </div>
@@ -96,6 +103,7 @@
           <div style=" cursor: pointer;" onclick="location.href='deleteMember.jsp';"class="name">탈퇴</div>
         </div>
       </li>
+      
     </ul>
   </div>
  
