@@ -107,12 +107,12 @@
  <hr/>
  <% if(id!=null && id.equals(user_id)){ 
  %>
- <a href="javascript:list()" >책 목록</a>  
+ <a href="javascript:list()" >북수레 목록</a>  
  <a href="bookUpdate.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" >수 정</a> 
  <a href="bookDelete.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>">삭 제</a> <br/>
   </td>
   <%} else{%> 
-  <a href="javascript:list()" >책 목록</a>
+  <a href="javascript:list()" >북수레 목록</a>
   <% if(id!=null && isValid.equals("Y")){ %>
   <a href="lendBook.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>">대여하기</a><%} }%>
  </tr>
