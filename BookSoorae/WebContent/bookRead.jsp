@@ -22,6 +22,23 @@
 	  int hit = bean.getHit();
 	  session.setAttribute("bean", bean);//게시물을 세션에 저장
 %>
+<script type="text/javascript">
+	function sendMessage(){
+		var pop_title = "message" ;
+        
+        window.open("", pop_title,'width=600, height=300') ;
+         
+        var frmData = document.msgFrm ;
+        frmData.target = pop_title ;
+        frmData.action = "message.jsp" ;
+         
+        frmData.submit() ;
+
+		//document.msgFrm.submit();
+		//window.open("message.jsp","message",'width=600, height=300')
+
+	}
+</script>
 <html>
 <head>
 <title>책 목록</title>
@@ -100,7 +117,11 @@
   <a href="lendBook.jsp?nowPage=<%=nowPage%>&book_id=<%=book_id%>" action="myLendBook" enctype="multipart/form-data">대여하기</a><%} }%>
  </tr>
 </table>
-
+<input type="button" value="쪽지 보내기" onclick="sendMessage();"/>
+<form name="msgFrm" method="post" action="message.jsp">
+<input type="hidden" name="from" value="<%=id%>">
+<input type="hidden" name="to" value="<%=user_id%>">
+</form>
 <form name="downFrm" action="download.jsp" method="post">
 	<input type="hidden" name="filename">
 </form>
@@ -112,6 +133,5 @@
 	<input type="hidden" name="keyWord" value="<%=keyWord%>">
 	<%}%>
 </form>
-
 </body>
 </html>
