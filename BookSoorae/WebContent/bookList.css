@@ -86,6 +86,11 @@ body{
 	background-color: #F4F4EF;
 }
 
+h2{
+	color: var(--color_main_green);
+	font-size: 25px;
+}
+
 .top-line{
 	height: 3vh; width: 100vw;
 	background-color: var(--color_main_green);
@@ -163,8 +168,8 @@ body{
 	height: 5vh;
 	display: block; */
 	
-	width: 25%;  height: 5vh;
-	margin: 7vh auto 2vh auto;
+	width: 20%;  height: 5vh;
+	margin: 1vh auto 5vh auto;
 	border-radius: 8px;
 	border: thin solid var(--color_main_green);
 	background-color: #F9F9F6;
@@ -173,7 +178,7 @@ body{
 	justify-content: center;
 }
 .write-btn a{
-	font-size: 23px;	
+	font-size: 15px;	
 }
 
 .header-left{

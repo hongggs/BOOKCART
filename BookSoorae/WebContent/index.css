@@ -2,7 +2,7 @@
     /* color */
     --color_main_green : #517D73;
     --color_dark_green : #347C6E;
-    --color_background : #F4F4EF; /*�� �����Ѱɷ� ������ �ȵɱ� �̰�*/
+    --color_background : #F4F4EF; /*        Ѱɷ          ȵɱ   ̰ */
     --color_navy : #30355C;
     --color_point-mint : #00D1FF;
 
@@ -14,7 +14,7 @@
 }
 
 
-/*  ��� ��ҵ��� default ����, �е� ���� */
+/*        ҵ    default     ,  е       */
 *{margin: 0; padding: 0;box-sizing: border-box;}
 
 
@@ -109,13 +109,13 @@
 }
 
 
-/* ȭ�鿡 �ʹ� �پ� �־...  */
+/* ȭ 鿡  ʹ   پ   ־...  */
 body{
     background-color: #F0F0EA;
-    /*��ü�� padding�� �����ߴ��� �Ϻ� �Ӽ����� �̻������� �׳� �ʿ��� �κп��� ���� �е��� �����ϱ�� ��..*/
+    /*  ü   padding        ߴ     Ϻ   Ӽ       ̻         ׳   ʿ     κп          е         ϱ     ..*/
 }
  
-/* header ����  */
+/* header       */
 header{ padding: 5px;}
  
 header a{text-decoration: none; color: #333333;}
@@ -137,7 +137,7 @@ header a{text-decoration: none; color: #333333;}
 
     }
  
-/* nav ���� */
+/* nav      */
 nav{
 margin-top: 12px; margin-bottom: 20px;
 margin-left: 3%;margin-right: 3%;
@@ -173,14 +173,20 @@ nav ul li a:hover{ text-decoration: underline;}
  
 
  
-/* ��� ���� ���� */
+/*               */
 section#main{
     /* float: center;
     min-height: 500px;  */
     display:flex;
     flex-direction: row;
     /* justify-content: center; */
+	margin-bottom: 2%;
+}
 
+#mypage-main{
+	display:flex;
+    flex-direction: column;
+    margin-bottom: 11%;
 }
 .main-right{
 	margin-left: 20%;
@@ -201,7 +207,7 @@ section#main{
 	position: relative;
 	top: -12vh; left: 7vw;
 }
-/* footer���� */
+/* footer     */
 footer{
     clear: both;
     background-color: #444444;
@@ -209,10 +215,10 @@ footer{
     text-align: center;
     text-size-adjust: 3px;
     padding: 2em 0px;
-    position:fixed;
     margin:auto auto;
     width: 100%;
-    position: fixed; bottom: 0%; left:0;
+   	/* position: absolute;
+    bottom: 0; */
 }
 
 .semi-title-1, .semi-title{

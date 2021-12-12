@@ -49,6 +49,7 @@
 <head>
 <title>내 북수레 목록</title>
 <link href="./bookList.css?ver=1" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 --> 
 <script type="text/javascript">
 	function list() {
 		document.listFrm.action = "myBookList.jsp";
@@ -216,15 +217,15 @@
      					<%if(pageStart==nowPage) {%></font> <%}%></a> 
     					<%}//for%>&nbsp; 
     					<%if (totalBlock > nowBlock ) {%>
-    					<a href="javascript:block('<%=nowBlock+1%>')">.....next</a>
+    					<a href="javascript:block('<%=nowBlock+1%>')">…..next</a>
     				<%}%>&nbsp;  
    				<%}%>
- 				<!-- 페이징 및 블럭 처리 End-->
+ 				<!— 페이징 및 블럭 처리 End—>
 			</td>
 		</tr>
 	</table>
 	<hr width="600"/>
-	<!-- <table width="600" cellpadding="4" cellspacing="0">
+	<!--  <table width="600" cellpadding="4" cellspacing="0">
  		<tr>
 			<td align="center" valign="bottom">
 				<a href="bookPost.jsp">책 등록</a> 

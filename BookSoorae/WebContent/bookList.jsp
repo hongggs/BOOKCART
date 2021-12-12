@@ -148,12 +148,6 @@
 		<input type="hidden" name="nowPage" value="1">
 	</form>
 	</div>
-    
-    
-    	<div class="write-btn">
-			<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
-			<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
-		</div>
 
 	<div align="center">
 	<br/>
@@ -168,8 +162,10 @@
 		<%}%>
 			<tr>
 				<td>Total : <%=totalRecord%>Articles(<font color="black">
-				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>
+				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>		
 			</tr>
+			
+
 	</table>
 	
 	<table align="center" width="600" cellpadding="3">
@@ -257,9 +253,10 @@
     				<%}%>&nbsp;  
    				<%}%>
  				<!-- 페이징 및 블럭 처리 End-->
-			</td>		
-		</tr>		
-	</table>	
+			</td>					
+		</tr>				
+	</table>		
+	
 	<hr width="600"/>
 	<!-- <!-- <form  name="searchFrm"  method="get" action="bookList.jsp"></form> -->
 	<!-- <table width="600" cellpadding="4" cellspacing="0">
@@ -279,6 +276,12 @@
 		<input type="hidden" name="keyField" value="<%=keyField%>"> 
 		<input type="hidden" name="keyWord" value="<%=keyWord%>">
 	</form>
+	
+		<div class="write-btn">
+			<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
+			<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
+		</div>	
+	
 </div>
 </body>
 </html>

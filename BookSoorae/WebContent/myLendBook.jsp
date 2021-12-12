@@ -105,10 +105,7 @@
     
         </ul>
     </nav>
-	<div class="write-btn">
-		<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
-		<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
-	</div>
+
 	<div align="center">
 	<br/>
 	<h2>내 대여 목록</h2>

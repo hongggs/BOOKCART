@@ -52,7 +52,7 @@
         </ul>
     </nav>
      <%} %>
-     <section id="main">
+  <section id="mypage-main">
      
 	 <div class="mypage">
       <div class="my">
@@ -115,7 +115,7 @@
   </div>
  
 </section>
-  <footer>
+ <footer>
         <div class="container">
             <a class="footerButton" href="https://www.nl.go.kr/" >
                 <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
@@ -142,7 +142,7 @@
             Copyright© 성신여자대학교 웹정보프로그래밍_북수레
         </div>
       
-    </footer>
+    </footer> 
 	
 </body>
 </html>

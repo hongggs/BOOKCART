@@ -71,8 +71,8 @@
 		<table>
 			<tr>
 				<td>
-					<table width="500" border="0" bgcolor="#C5E2E1">
-						<tr>
+					<table width="500" border="0">
+						<tr  bgcolor="#C5E2E1">
 							<td align="center"><b>번호</b></td>
 							<td><b>제목</b></td>
 							<td><b>시작일~종료일</b></td>

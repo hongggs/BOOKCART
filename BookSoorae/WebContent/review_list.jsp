@@ -153,7 +153,7 @@
 </div>
 <div align="center">
 	<br/>
-	<h2>REVIEW BOARD</h2>
+	<h2>리뷰 게시판</h2>
 	<br/>
 	<table align="center" width="600">
 		<%if(!keyWord.equals("")){ %>
@@ -178,11 +178,11 @@
 			%>
 				  <table width="100%" cellpadding="2" cellspacing="0">
 					<tr align="center" bgcolor="#C5E2E1" height="120%">
-						<td>번 호</td>
-						<td>제 목</td>
-						<td>이 름</td>
-						<td>날 짜</td>
-						<td>조회수</td>
+						<th>번 호</th>
+						<th>제 목</th>
+						<th>이 름</th>
+						<th>날 짜</th>
+						<th>조회수</th>
 					</tr>
 					<%
 						  for (int i = 0;i<numPerPage; i++) {
