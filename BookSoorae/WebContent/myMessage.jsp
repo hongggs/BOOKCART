@@ -4,14 +4,14 @@
 <%@page import="java.util.Vector"%>
 <jsp:useBean id="MMgr" class="bookcart.MessageMgr"/>
 <%
-	request.setCharacterEncoding("utf-8");
-	Vector<String> vlist = null;
-	String id=(String)session.getAttribute("idKey");
-	String keyWord = "";
-	//검색 처리
-		if (request.getParameter("keyWord") != null) {
-			keyWord = request.getParameter("keyWord");
-		}
+   request.setCharacterEncoding("utf-8");
+   Vector<String> vlist = null;
+   String id=(String)session.getAttribute("idKey");
+   String keyWord = "";
+   //검색 처리
+      if (request.getParameter("keyWord") != null) {
+         keyWord = request.getParameter("keyWord");
+      }
 %>
 <!DOCTYPE html>
 <html>
@@ -22,48 +22,48 @@
 <link rel="stylesheet" href="./message.css?ver=1">
 <link rel="stylesheet" href="./index.css?ver=1">
 <script type="text/javascript">
-	function readMsg(id){
-		document.myFrm.from_id.value=id;
-		console.log("read");
-		console.log(document.myFrm.from_id.value);
-		console.log(document.myFrm.my_id.value);
-		document.myFrm.action="myMessageRead.jsp";
-		document.myFrm.submit();
-	}
-	
+   function readMsg(id){
+      document.myFrm.from_id.value=id;
+      console.log("read");
+      console.log(document.myFrm.from_id.value);
+      console.log(document.myFrm.my_id.value);
+      document.myFrm.action="myMessageRead.jsp";
+      document.myFrm.submit();
+   }
+   
 </script>
 </head>
 <body>
-	<% 
-		String userId = null;
-		if(session.getAttribute("idKey")!=null){
-			userId=(String)session.getAttribute("idKey");
-		}
-		if(userId==null){ //로그인 되지 않은 경우
-	%>
-	<script>
+   <% 
+      String userId = null;
+      if(session.getAttribute("idKey")!=null){
+         userId=(String)session.getAttribute("idKey");
+      }
+      if(userId==null){ //로그인 되지 않은 경우
+   %>
+   <script>
     alert("로그인 후 접근가능합니다.");
-	location.href="index.jsp";
-	</script>
-	
-	<%}
-		else{//로그인 된 경우
-			%>
-			 
-	<div class="top-line"></div>
-	<div class="header">
-		<div class="header-left">
-			<img src="./images/logo.png" alt="shop" width="50" height="50">
-			<a href="./index.jsp">BookSoore</a>
-		</div>
-		
-		<div class="header-btns">
-			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+   location.href="index.jsp";
+   </script>
+   
+   <%}
+      else{//로그인 된 경우
+         %>
+          
+   <div class="top-line"></div>
+   <div class="header">
+      <div class="header-left">
+         <img src="./images/logo.png" alt="shop" width="50" height="50">
+         <a href="./index.jsp">BookSoore</a>
+      </div>
+      
+      <div class="header-btns">
+         <button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
             <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
             <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
-		</div>
-	</div>
-	<nav class="nav">
+      </div>
+   </div>
+   <nav class="nav">
         <ul>
             <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">market</a></li>
@@ -75,42 +75,52 @@
     </nav>
      <%} %>
 
-	
-	<div id="container">
+   
+   <div id="container">
     <main>
         <header>
             <h2>받은 쪽지함</h2>
             <form name="searchFrm"  method="get" action="myMessage.jsp">
-				<input type="text" name="keyWord" placeholder="검색어를 입력하세요" >
-			</form>
+            <input type="text" name="keyWord" placeholder="검색어를 입력하세요" >
+         </form>
             
          
           </header>
           
           <%if(!keyWord.equals("")){  
-			 vlist = MMgr.getFromIdSearch(id,keyWord);
-			}
-			else {   
-			vlist = MMgr.getFromId(id);
+          vlist = MMgr.getFromIdSearch(id,keyWord);
+         }
+         else {   
+         vlist = MMgr.getFromId(id);
           }%>
           
           <% 
-			if (vlist.isEmpty()) {
-				System.out.println("받은 쪽지가 없습니다.");
-			} 
-			else {
-	     %>
+         if (vlist.isEmpty()) {
+            System.out.println("받은 쪽지가 없습니다.");%>
+            
+            <ul>
+                
+                  <div>
+                     <h2>받은 쪽지가 없습니다.</h2>
+                 </div>
+                 
+               </ul>
+               
+            
+      <%    } 
+         else {
+        %>
 
           <ul>
           <%
-				for (int i = 0;i<vlist.size(); i++) {
-					String from_id=vlist.get(i);
-			%>	
+            for (int i = 0;i<vlist.size(); i++) {
+               String from_id=vlist.get(i);
+         %>   
             <li type="button" onclick="readMsg('<%=from_id%>');">
               <img src="./images/face.svg" alt="">
               <div>
          
-               	<h2><%=from_id%></h2>
+                  <h2><%=from_id%></h2>
                 
               </div>
               
@@ -120,7 +130,7 @@
 
     </main>
   </div>
-  <%} %>
+  <%}%>
   <footer>
         <div class="container">
             <a class="footerButton" href="https://www.nl.go.kr/" >
@@ -150,12 +160,12 @@
       
     </footer>
   
-	
-	
-	<form name="myFrm" method="post" action="myMessageRead.jsp">
-		<input type="hidden" name="from_id"> 
-		<input type="hidden" name="my_id" value="<%=id%>"> 
-	</form>
+   
+   
+   <form name="myFrm" method="post" action="myMessageRead.jsp">
+      <input type="hidden" name="from_id"> 
+      <input type="hidden" name="my_id" value="<%=id%>"> 
+   </form>
 
 </body>
 </html>

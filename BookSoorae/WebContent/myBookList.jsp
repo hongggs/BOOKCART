@@ -108,31 +108,28 @@
     
         </ul>
     </nav>
-	<div class="write-btn">
-		<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
-		<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
+    
+     <div class="search-area">
+	<form name="searchFrm"  method="get" action="bookList.jsp">
+		<div class="search-row">
+			<select name="keyField" size="1"class="select-btn">
+    				<option value="user_id"> 작성자 </option> 
+    				<option value="title"> 책 제목 </option>
+    				<option value="writer"> 저자 </option>
+    				<option value="content"> 내용 </option>
+	   		</select>
+			<input type="text" name="keyWord"  class="search-input" placeholder="검색어를 입력하세요">
+			<input type="button" class="search-btn" value="Search" onClick="javascript:check()">
+		</div>
+		<input type="hidden" name="nowPage" value="1">
+	</form>
 	</div>
+
 	<div align="center">
 	<br/>
 	<h2>내 북수레 목록</h2>
 	<br/>
-	<form name="searchFrm"  method="get" action="myBookList.jsp" >
-	<table width="600" cellpadding="2" cellspacing="0">
- 		<tr>
-  			<td align="center" valign="bottom">
-   				<select name="keyField" size="1" >
-    				<option value="idKey"> 작성자 </option> 
-    				<option value="title"> 책 제목 </option>
-    				<option value="writer"> 저자 </option>
-    				<option value="content"> 내용 </option>
-   				</select>
-   				<input size="16" name="keyWord">
-   				<input type="button"  value="찾기" onClick="javascript:check()">
-   				<input type="hidden" name="nowPage" value="1">
-  			</td>
- 		</tr>
-	</table>
-	</form>
+	
 	<table align="center" width="600" cellpadding="3">
 		<tr>
 			<td align="center" colspan="2">
@@ -242,6 +239,12 @@
 		<input type="hidden" name="keyField" value="<%=keyField%>"> 
 		<input type="hidden" name="keyWord" value="<%=keyWord%>">
 	</form>
+	
+	<div class="write-btn">
+		<a href="./bookPost.jsp">내 책도 등록하러 가기</a>
+		<div class="pencil-icon"><i class="fas fa-pencil-alt"></i></div>
+	</div>
+	
 </div>
 </body>
 </html>

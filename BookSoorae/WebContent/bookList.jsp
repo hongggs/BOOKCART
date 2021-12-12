@@ -161,7 +161,7 @@
 			</tr>
 		<%}%>
 			<tr>
-				<td>Total : <%=totalRecord%>Articles(<font color="black">
+				<td>Total : <%=totalRecord%>Books(<font color="black">
 				<%=nowPage%>/<%=totalPage%>Pages</font>)</td>		
 			</tr>
 			
