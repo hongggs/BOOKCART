@@ -4,7 +4,7 @@
 <head>
 <title>PICK BOOK</title>
 <meta charset="utf-8">
-<link href="review_list.css?ver=1" rel="stylesheet" type="text/css">
+<link href="./review_list.css?ver=1" rel="stylesheet" type="text/css">
 </head>
 <body bgcolor="#FFFFCC">
 <%
@@ -22,7 +22,7 @@
 	  int active = plBean.getActive();
 %>
 <form method="post" action="pollBookFormProc.jsp">
-<table border="1" width="300">
+<table border="0" width="300" height="150" class="poll-table">
 	<tr>
 		<td colspan="2">Q : <%=question%></td>
 	</tr>
@@ -53,7 +53,7 @@
 		</td>
 		<td>
 		<input type="button" value="°á°ú" 
-		onclick="javascript:window.open('pickbook.jsp?num=<%=num%>',
+		onclick="javascript:window.open('pollBookView.jsp?num=<%=num%>',
 		               'PollBookView','width=500, height=350')">
 		</td>
 	</tr>

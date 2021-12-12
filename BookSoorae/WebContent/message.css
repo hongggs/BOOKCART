@@ -7,7 +7,7 @@
   }
   #container{
     width:750px;
-    height:800px;
+    height:60vh;
     background:#eff3f7;
     margin:0 auto;
     font-size:0;
@@ -16,7 +16,7 @@
   }
   main{
     width:750px;
-    height:800px;
+    height:60vh;
     background-color:#F4F4EF;
     display:inline-block;
     font-size:15px;
@@ -102,8 +102,20 @@
 }
 
 
-  
-  
+/* footer영역 */
+/* footer{
+    clear: both;
+    background-color: #444444;
+    color: white;
+    text-align: center;
+    text-size-adjust: 3px;
+    padding: 2em 0px;
+    margin:auto auto;
+    width: 100%;
+    position: fixed; bottom: 0%;
+    
+}
+   */
   
   
   

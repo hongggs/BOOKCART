@@ -20,7 +20,7 @@
 <title>Login-Page</title>
 
 <!-- 외부 스타일시트 적용 -->
-    <link rel="stylesheet" href="login.css?ver=1"><!--로그인 css 연결-->
+    <link rel="stylesheet" href="./login.css?ver=1"><!--로그인 css 연결-->
 
 </head>
 
@@ -43,7 +43,8 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">market</a></li>
             <li><a onclick="location.href='review_list.jsp'">Review</a></li>
-            <li><a href="mypage.jsp">Mypage</a></li>
+            <li><a href="pickbook.jsp">PickBook</a></li>
+            <li><a href="./mypage.jsp">Mypage</a></li>
     
         </ul>
     </nav>
@@ -62,42 +63,16 @@
 	<label for="loginpw" class="labelpw">패스워드</label>
 	
 	<input type="password" name="pw">
-	
-	<div class="chk">
-	
-	<input type="checkbox" id="idchk">
-	
-	<label for="idchk">아이디 저장</label>
-	
-	<input type="checkbox" id="pwchk">
-	
-	<label for="pwchk">비밀번호 저장</label>
-
-</div>
-
-<div class="search">
-
-<span class="text">·아이디 또는 비밀번호를 잊으셨나요?</span>
-
-<a href="#">ID/PW찾기</a>
-
-</div>
 
 <div class="btnwrap">
-
-<button type="button" class="sign-up-btn" onclick="document.location.href='signup1.jsp'">회원가입</button>
-<button type="submit" class="login-btn">로그인</button>
-
-
+	<button type="button" class="sign-up-btn" onclick="document.location.href='signup1.jsp'">회원가입</button>
+	<button type="submit" class="login-btn">로그인</button>
 </div>
 
 </form>
 
-​
-
 </div>
- </section>
- <footer>
+<footer>
         <div class="container">
             <a class="footerButton" href="https://www.nl.go.kr/" >
                 <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
@@ -125,7 +100,7 @@
         </div>
       
     </footer>
-​
+ </section>
 
 </body>
 

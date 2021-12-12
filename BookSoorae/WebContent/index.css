@@ -2,7 +2,7 @@
     /* color */
     --color_main_green : #517D73;
     --color_dark_green : #347C6E;
-    --color_background : #F4F4EF; /*¿Ö ¼±¾ðÇÑ°É·Î Àû¿ëÀÌ ¾ÈµÉ±î ÀÌ°Ç*/
+    --color_background : #F4F4EF; /*ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°É·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÉ±ï¿½ ï¿½Ì°ï¿½*/
     --color_navy : #30355C;
     --color_point-mint : #00D1FF;
 
@@ -14,7 +14,7 @@
 }
 
 
-/*  ¸ðµç ¿ä¼ÒµéÀº default ¸¶Áø, ÆÐµù Á¦°Å */
+/*  ï¿½ï¿½ï¿½ ï¿½ï¿½Òµï¿½ï¿½ï¿½ default ï¿½ï¿½ï¿½ï¿½, ï¿½Ðµï¿½ ï¿½ï¿½ï¿½ï¿½ */
 *{margin: 0; padding: 0;box-sizing: border-box;}
 
 
@@ -109,13 +109,13 @@
 }
 
 
-/* È­¸é¿¡ ³Ê¹« ºÙ¾î ÀÖ¾î¼­...  */
+/* È­ï¿½é¿¡ ï¿½Ê¹ï¿½ ï¿½Ù¾ï¿½ ï¿½Ö¾î¼­...  */
 body{
     background-color: #F0F0EA;
-    /*ÀüÃ¼¿¡ paddingÀ» Àû¿ëÇß´õ´Ï ÀÏºÎ ¼Ó¼ºµéÀÌ ÀÌ»óÇØÁ®¼­ ±×³É ÇÊ¿äÇÑ ºÎºÐ¿¡¸¸ µû·Î ÆÐµùÀ» Àû¿ëÇÏ±â·Î ÇÔ..*/
+    /*ï¿½ï¿½Ã¼ï¿½ï¿½ paddingï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ ï¿½Ïºï¿½ ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ÎºÐ¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ðµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ ï¿½ï¿½..*/
 }
  
-/* header ¿µ¿ª  */
+/* header ï¿½ï¿½ï¿½ï¿½  */
 header{ padding: 5px;}
  
 header a{text-decoration: none; color: #333333;}
@@ -137,7 +137,7 @@ header a{text-decoration: none; color: #333333;}
 
     }
  
-/* nav ¿µ¿ª */
+/* nav ï¿½ï¿½ï¿½ï¿½ */
 nav{
 margin-top: 12px; margin-bottom: 20px;
 margin-left: 3%;margin-right: 3%;
@@ -173,7 +173,7 @@ nav ul li a:hover{ text-decoration: underline;}
  
 
  
-/* °¡¿îµ¥ º»¹® ¿µ¿ª */
+/* ï¿½ï¿½ï¿½îµ¥ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 section#main{
     /* float: center;
     min-height: 500px;  */
@@ -201,7 +201,7 @@ section#main{
 	position: relative;
 	top: -12vh; left: 7vw;
 }
-/* footer¿µ¿ª */
+/* footerï¿½ï¿½ï¿½ï¿½ */
 footer{
     clear: both;
     background-color: #444444;
@@ -209,4 +209,26 @@ footer{
     text-align: center;
     text-size-adjust: 3px;
     padding: 2em 0px;
+    position:fixed;
+    margin:auto auto;
+    width: 100%;
+    position: fixed; bottom: 0%; left:0;
+}
+
+.semi-title-1, .semi-title{
+	margin-top: 10vh;
+	margin-bottom: 15px;
+	
+}
+
+.semi-title-1{
+	background: #C5E2E1;
+	height: 25px;
+	width: 200px;
+	margin-top: 20px;
+	
+}
+
+.line{
+	margin-bottom: 5vh;
 }

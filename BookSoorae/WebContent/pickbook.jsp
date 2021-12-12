@@ -61,17 +61,17 @@
 		<br/>
 		<h2> 책을 골라주세요 </h2>
 		<br>
-		<hr width="600"/>
-		<b> 최근에 올라온 설문  </b>
+		<hr class="line" width="600"/>
+		<h3 class="semi-title-1"> 최근에 올라온 설문  </h3>
 		<!--폴 리스트 폼 자리-->
 		<jsp:include page="pollBookForm.jsp" />
-		<hr width="600"/>
-		<b>↓ 설문리스트 ↓</b>
+		<hr width="600" class="line" />
+		<b class="semi-title">↓ 설문리스트 ↓</b>
 		<!--폴 리스트 테이블 자리-->
 		<table>
 			<tr>
 				<td>
-					<table width="500" border="1">
+					<table width="500" border="0" bgcolor="#C5E2E1">
 						<tr>
 							<td align="center"><b>번호</b></td>
 							<td><b>제목</b></td>

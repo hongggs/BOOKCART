@@ -12,7 +12,8 @@ body{position: relative;}
 	border:1px solid #ccc;
 	padding:25px 15px;
 	box-sizing:border-box;
-	width:100%;
+	width: 40%;
+	height: 52vh;
 	display: flex;
 	flex-direction: column;
 	margin: auto auto;
@@ -20,7 +21,7 @@ body{position: relative;}
 }
 
 .sign-up-p{
-	height:32vh;
+	height:34vh;
 }
 .sign-up-p label, .sign-up-p input{
 	margin-top:1vh;
@@ -66,6 +67,6 @@ footer{
     margin:auto auto;
     width: 100%;
     position: fixed; bottom: 0%;
-    
+   
 }
 

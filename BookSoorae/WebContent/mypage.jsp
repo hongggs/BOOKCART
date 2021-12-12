@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
  <link rel="stylesheet" href="./index.css?ver=1">
- <link rel="stylesheet" href="./mypage.css">
+ <link rel="stylesheet" href="./mypage.css?ver=1">
 <title>mypage</title>
 
 </head>

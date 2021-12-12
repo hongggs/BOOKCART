@@ -19,7 +19,7 @@
 <meta charset="utf-8">
 <title>My Messages</title>
 <!-- 외부 스타일시트 적용 -->
-<link rel="stylesheet" href="./message.css">
+<link rel="stylesheet" href="./message.css?ver=1">
 <link rel="stylesheet" href="./index.css?ver=1">
 <script type="text/javascript">
 	function readMsg(id){

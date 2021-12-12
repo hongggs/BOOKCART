@@ -61,22 +61,20 @@ String user_id = bean.getUser_id();
 
 <body>
 
-<header>
-        <h1>
-            <img src="./images/logo.png" alt="shop" width="50" height="50">
-            <a href="index.jsp">BookSooRae</a>
-			
-        </h1>
-       
-             <ul>
-            <a class="button" href="#">MY PAGE</a>
-            <a class="button" href="signup1.jsp">SIGN-UP</a>
-            <a class="button" href="logout.jsp">LOGOUT</a>
-            </ul>
-        
-    </header>
-
-    <nav>
+<div class="top-line"></div>
+	<div class="header">
+		<div class="header-left">
+			<img src="./images/logo.png" alt="shop" width="50" height="50">
+			<a href="./index.jsp">BookSoore</a>
+		</div>
+		
+		<div class="header-btns">
+			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
+            <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
+		</div>
+	</div>
+	<nav class="nav">
         <ul>
             <li><a href="index.jsp">Home</a></li>
             <li><a href="bookList.jsp">market</a></li>

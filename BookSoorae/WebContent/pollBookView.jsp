@@ -15,7 +15,7 @@
 %>
 <html>
 <head>
-<title>JSP Poll</title>
+<title>투표 확인</title>
 <link href="review_list.css?ver=1" rel="stylesheet" type="text/css">
 </head>
 <body bgcolor="#FFFFCC">

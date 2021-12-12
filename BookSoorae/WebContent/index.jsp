@@ -20,7 +20,7 @@
 	<div class="header">
 		<div class="header-left">
 			<img src="./images/logo.png" alt="shop" width="50" height="50">
-			<a href="./index.jsp">BookSooRe</a>
+			<a href="./index.jsp">BookSoore</a>
 		</div>
 		
 		<div class="header-btns">
@@ -35,7 +35,7 @@
 	<div class="header">
 		<div class="header-left">
 			<img src="./images/logo.png" alt="shop" width="50" height="50">
-			<a href="./index.jsp">BookSoorae</a>
+			<a href="./index.jsp">BookSoore</a>
 		</div>
 		
 		<div class="header-btns">
