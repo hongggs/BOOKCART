@@ -115,34 +115,7 @@
   </div>
  
 </section>
- <footer>
-        <div class="container">
-            <a class="footerButton" href="https://www.nl.go.kr/" >
-                <img class="btn-img" src="./images/national4.jpg" width="141" height="40">
-            </a>
 
-            <a class="footerButton" href="https://childlib.sen.go.kr/" >
-                <img class="btn-img" src="./images/child.png">
-            </a>
-            
-            <a class="footerButton" href="https://www.sblib.seoul.kr" >
-                <img class="btn-img" src="./images/sungbuk.png">
-            </a>
-            
-            <a class="footerButton" href="https://nslib.sen.go.kr" >
-                <img class="btn-img" src="./images/namsan.png">
-            </a>
-          
-            <a class="footerButton" href="https://www.nanet.go.kr/main.do" >
-                <img class="btn-img" src="./images/nationalAssembly.png">
-            </a>
-
-        </div>
-        <div class="container">
-            Copyright© 성신여자대학교 웹정보프로그래밍_북수레
-        </div>
-      
-    </footer> 
 	
 </body>
 </html>

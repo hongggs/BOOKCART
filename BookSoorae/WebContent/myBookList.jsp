@@ -95,7 +95,7 @@
 		<div class="header-btns">
 			<button onclick="location.href='./logout.jsp'" class="login-button">Logout</button>
             <button onclick="location.href='./signup1.jsp'" class="signup-button">Sign-Up</button>
-            <button onclick="location.href='./mypage-button'" class="mypage-button">MyPage</button>  
+            <button onclick="location.href='./mypage.jsp'" class="mypage-button">MyPage</button>  
 		</div>
 	</div>
 	<nav class="nav">
