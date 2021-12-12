@@ -106,7 +106,7 @@
 					String contents=bean.getContents();
 			%>	
 			<tr>
-				<td width="20" style="overflow: hidden; text-overflow: ellipsis;" align="center">
+				<td width="30%" style="overflow: hidden; text-overflow: ellipsis;" align="center">
 					<a href="javascript:sendMessage('<%=contents%>')">
 						<%=contents%></a>
 				</td>
